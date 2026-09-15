@@ -26,6 +26,7 @@
     "lab:examples:fetch": "node scripts/fetch-examples.mjs",
     "lab:example": "node scripts/import-example.mjs",
     "lab:03:bootstrap": "node scripts/bootstrap-lab-03.mjs",
+    "lab:09:bootstrap": "node scripts/bootstrap-lab-09.mjs",
     "toolkit:build": "node scripts/package-toolkit.mjs",
     "consumer:create": "node scripts/make-consumer.mjs",
     "docs:dev": "vitepress docs --host 127.0.0.1",

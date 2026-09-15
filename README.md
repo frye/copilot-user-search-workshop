@@ -30,6 +30,23 @@ npm start
 - Optional Lab 09 Spec Kit generation uses the latest learner-approved `specify-cli`; the lab also
   ships a reviewed artifact packet and does not require Python or `uv`.
 
+## Fast-forward to Lab 09
+
+Create a separate Lab 09-ready consumer without overwriting current lab work:
+
+```sh
+npm run lab:09:bootstrap -- --preview --destination ../user-search-lab-09
+npm run lab:09:bootstrap -- --apply --destination ../user-search-lab-09
+```
+
+- Dirty work is preserved in a new local backup branch and local commit.
+- Review preview output first; the local commit includes every listed non-ignored untracked file.
+- The original branch is restored.
+- The sibling consumer has no remote, uses `workshop/lab-09-ready`, and contains the reviewed Lab 07
+  solution plus current Lab 09 support.
+- The command does not install dependencies, push, or run Spec Kit. Continue with the
+  [Lab 09 instructions](docs/labs/09-spec-kit.md#fast-forward-from-an-earlier-lab).
+
 ## Documentation preview
 
 ```sh

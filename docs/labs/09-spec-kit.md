@@ -8,6 +8,33 @@
 - The primary route requires no Spec Kit installation. Supplied artifacts are reference material, not
   evidence that you ran the generator.
 
+## Fast-forward from an earlier lab
+
+Use the bootstrap when you want to preserve the current author workspace and create a separate
+consumer where the reviewed Lab 07 solution already passes:
+
+```sh
+npm run lab:09:bootstrap -- --preview --destination ../user-search-lab-09
+npm run lab:09:bootstrap -- --apply --destination ../user-search-lab-09
+cd ../user-search-lab-09
+npm ci
+npm run verify:solution
+node scripts/spec-kit-reference.mjs --preview
+```
+
+- Preview is read-only.
+- Apply preserves staged, unstaged, deleted, and untracked files in a new local backup branch and
+  local commit before creating the sibling consumer.
+- Review the preview before applying. The preservation commit includes every listed non-ignored
+  untracked file; remove credentials or unrelated sensitive files before continuing.
+- Use `--backup-branch workshop/my-lab-backup` to select the local preservation branch name.
+- The generated consumer has no remote and uses local branch `workshop/lab-09-ready`.
+- The bootstrap uses current local `origin/main` or `main` for Lab 09 support and verifies the pinned
+  `solution-v2` release before copying its Lab 07 implementation and tests.
+- It does not install packages, push, run Spec Kit, or change the original participant branch.
+- Inspect the reported backup branch and consumer commit. Do not delete the backup until you have
+  confirmed all earlier work is recoverable.
+
 ## Build it yourself
 
 1. Confirm the base capstone is complete with `npm run verify:solution`. Stop if search still returns
@@ -114,8 +141,8 @@ node scripts/spec-kit-reference.mjs --apply
 - Keep learner-authored specs, checklists, tests, and implementation. Never replace actual evidence
   with the supplied packet.
 - A consumer created before this Lab 09 update may not contain the support script, packet, or focused
-  test. Create a fresh consumer from the updated author workspace or copy only those named Lab 09
-  files after reviewing the diff.
+  test. Use the bootstrap above, create a fresh consumer from the updated author workspace, or copy
+  only those named Lab 09 files after reviewing the diff.
 - Live Spec Kit initialization is optional. If you already initialized it, keep useful `.specify/`
   and `specs/` work; do not apply the reference packet over active generated artifacts.
 
