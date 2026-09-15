@@ -18,15 +18,20 @@ function filesUnder(root, directory) {
   return visit(start);
 }
 
-export function makeConsumer(root, target) {
-  if (workspaceKind(root) !== 'author') throw new Error('Run consumer:create in the author workspace.');
-  release(root);
+export function consumerDestination(root, target) {
   const dest = resolve(root, target);
   if (dirname(dest) !== dirname(root) || dest === root || !/^[-a-zA-Z0-9 _]+$/.test(basename(dest))) throw new Error('Consumer must be a new, named immediate sibling of the author workspace.');
   if (realpathSync(dirname(dest)) !== dirname(root)) throw new Error('Consumer parent must not be a symlink.');
   try { lstatSync(dest); throw new Error('Consumer destination already exists; select a fresh name.'); }
   catch (error) { if (error.code !== 'ENOENT') throw error; }
   if (existsSync(resolve(dirname(root), '.github'))) throw new Error('Parent .github customizations may be inherited. Choose an isolated parent without them.');
+  return dest;
+}
+
+export function makeConsumer(root, target) {
+  if (workspaceKind(root) !== 'author') throw new Error('Run consumer:create in the author workspace.');
+  release(root);
+  const dest = consumerDestination(root, target);
   const pinned = json(resolve(root, 'workshop/starter-lock.json'));
   const starter = pinned.tag;
   if (!/^starter-v[0-9][a-zA-Z0-9.-]*$/.test(starter) || !/^[a-f0-9]{40}$/.test(pinned.commit)) throw new Error('Consumer starter must be an exact reviewed release pin.');
@@ -35,8 +40,18 @@ export function makeConsumer(root, target) {
   const guidance = ['.github/copilot-instructions.md', '.github/instructions/api.instructions.md', '.github/instructions/tests.instructions.md', '.github/prompts/plan-api-change.prompt.md'];
   const lab09 = [
     'package.json',
+    'docs/labs/09-spec-kit.md',
+    'docs/reference/spec-kit-vs-built-in.md',
+    'presenter/checkpoint-map.json',
+    'scripts/bootstrap-lab-03.mjs',
+    'scripts/bootstrap-lab-09.mjs',
+    'scripts/make-consumer.mjs',
     'scripts/spec-kit-reference.mjs',
+    'scripts/validate-assets.mjs',
+    'tests/helpers/workflows.test.mjs',
+    'tests/search/search.test.ts',
     ...filesUnder(root, 'tests/team-filter'),
+    'workshop/steps.json',
     ...filesUnder(root, 'workshop/spec-kit-reference'),
   ];
   const copies = [...new Set([...guidance, ...lab09])]
