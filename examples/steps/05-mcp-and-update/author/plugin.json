@@ -1,0 +1,7 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "user-search-toolkit",
+  "version": "1.1.0",
+  "description": "An approval-bounded API workflow using separately configured read-only fixture MCP standards, with explicit file fallback.",
+  "keywords": ["workshop", "api", "review", "mcp"]
+}

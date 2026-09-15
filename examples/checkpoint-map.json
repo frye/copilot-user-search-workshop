@@ -1,0 +1,76 @@
+{
+  "examplesTag": "examples-v1",
+  "source": "examples/manifest.json",
+  "checkpoints": [
+    {
+      "entry": "04-plugin",
+      "authorSteps": [
+        "00-start",
+        "01-instructions",
+        "02-planning-prompt",
+        "03-skill"
+      ],
+      "consumerSteps": [],
+      "steps": [
+        "00-start",
+        "01-instructions",
+        "02-planning-prompt",
+        "03-skill"
+      ]
+    },
+    {
+      "entry": "07-use-toolkit",
+      "authorSteps": [
+        "00-start",
+        "01-instructions",
+        "02-planning-prompt",
+        "03-skill",
+        "04-plugin",
+        "05-mcp-and-update"
+      ],
+      "consumerSteps": [
+        "05-mcp-and-update",
+        "06-agent-roles"
+      ],
+      "steps": [
+        "00-start",
+        "01-instructions",
+        "02-planning-prompt",
+        "03-skill",
+        "04-plugin",
+        "05-mcp-and-update",
+        "06-agent-roles"
+      ],
+      "installationRequired": true
+    },
+    {
+      "entry": "08-review-and-handoff",
+      "authorSteps": [
+        "00-start",
+        "01-instructions",
+        "02-planning-prompt",
+        "03-skill",
+        "04-plugin",
+        "05-mcp-and-update"
+      ],
+      "consumerSteps": [
+        "05-mcp-and-update",
+        "06-agent-roles",
+        "07-use-toolkit",
+        "08-review-and-handoff"
+      ],
+      "steps": [
+        "00-start",
+        "01-instructions",
+        "02-planning-prompt",
+        "03-skill",
+        "04-plugin",
+        "05-mcp-and-update",
+        "06-agent-roles",
+        "07-use-toolkit",
+        "08-review-and-handoff"
+      ],
+      "installationRequired": true
+    }
+  ]
+}

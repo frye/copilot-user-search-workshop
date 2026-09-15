@@ -1,0 +1,400 @@
+{
+  "version": 1,
+  "steps": [
+    {
+      "id": "00-start",
+      "explanation": "Reviewed 00-start customization payload; see docs/labs/00-start.md. Import explicitly, never merge examples.",
+      "prerequisiteSteps": [],
+      "requires": {},
+      "files": [
+        {
+          "source": "examples/steps/00-start/files/setup-checklist.md",
+          "destination": "workshop/artifacts/setup-checklist.md",
+          "workspace": "author",
+          "sha256": "3ea2f979e8a347265e0e8e9946b07e21a5464fd2521fb784e3951b3f1685d03a",
+          "accepts": []
+        }
+      ]
+    },
+    {
+      "id": "01-instructions",
+      "explanation": "Reviewed 01-instructions customization payload; see docs/labs/01-instructions.md. Import explicitly, never merge examples.",
+      "prerequisiteSteps": [
+        "00-start"
+      ],
+      "requires": {},
+      "files": [
+        {
+          "source": "examples/steps/01-instructions/files/copilot-instructions.md",
+          "destination": ".github/copilot-instructions.md",
+          "workspace": "author",
+          "sha256": "3c25802a357aad317f59d1d24c82101cc7f75aa17713a4adfac583e2ac7de41d",
+          "accepts": [
+            "b57ac9933b7c766e8b39809fc1510c348be49fb55fcac044b471cebc212f233a"
+          ]
+        },
+        {
+          "source": "examples/steps/01-instructions/files/api.instructions.md",
+          "destination": ".github/instructions/api.instructions.md",
+          "workspace": "author",
+          "sha256": "fbb885da29881641d5e49eaab4e87b828e9a2bf6a7d4e04555622eb801a8fd05",
+          "accepts": []
+        },
+        {
+          "source": "examples/steps/01-instructions/files/tests.instructions.md",
+          "destination": ".github/instructions/tests.instructions.md",
+          "workspace": "author",
+          "sha256": "b420795296577f0cbeb2eca89c8644c0ea38a1518849f7578f37bdf2c46218f6",
+          "accepts": []
+        }
+      ]
+    },
+    {
+      "id": "02-planning-prompt",
+      "explanation": "Reviewed 02-planning-prompt customization payload; see docs/labs/02-planning-prompt.md. Import explicitly, never merge examples.",
+      "prerequisiteSteps": [
+        "01-instructions"
+      ],
+      "requires": {
+        "author": [
+          ".github/instructions/api.instructions.md",
+          ".github/instructions/tests.instructions.md"
+        ]
+      },
+      "files": [
+        {
+          "source": "examples/steps/02-planning-prompt/files/plan-api-change.prompt.md",
+          "destination": ".github/prompts/plan-api-change.prompt.md",
+          "workspace": "author",
+          "sha256": "d4f437920a1def28370e380213e997c6df3ec10892ccb525c95f784ce6f795fc",
+          "accepts": []
+        }
+      ]
+    },
+    {
+      "id": "03-skill",
+      "explanation": "Reviewed 03-skill customization payload; see docs/labs/03-skill.md. Import explicitly, never merge examples.",
+      "prerequisiteSteps": [
+        "02-planning-prompt"
+      ],
+      "requires": {
+        "author": [
+          ".github/prompts/plan-api-change.prompt.md"
+        ]
+      },
+      "files": [
+        {
+          "source": "examples/steps/03-skill/files/SKILL.md",
+          "destination": ".github/skills/api-change-workflow/SKILL.md",
+          "workspace": "author",
+          "sha256": "365d9aa7bb9f132a7d962adb61f1b22ccc31027fbf9bf8464476b6e6b9947498",
+          "accepts": []
+        },
+        {
+          "source": "examples/steps/03-skill/files/review-checklist.md",
+          "destination": ".github/skills/api-change-workflow/references/review-checklist.md",
+          "workspace": "author",
+          "sha256": "19184e68555013e396e4aca1bacf08316a9e2343871a7f8d2fc0085eebc64a5e",
+          "accepts": []
+        }
+      ]
+    },
+    {
+      "id": "04-plugin",
+      "explanation": "Reviewed 04-plugin customization payload; see docs/labs/04-plugin.md. Import explicitly, never merge examples.",
+      "prerequisiteSteps": [
+        "03-skill"
+      ],
+      "requires": {
+        "author": [
+          ".github/skills/api-change-workflow/SKILL.md",
+          ".github/skills/api-change-workflow/references/review-checklist.md"
+        ]
+      },
+      "files": [
+        {
+          "source": "examples/steps/04-plugin/files/plugin.json",
+          "destination": "toolkit/plugin.json",
+          "workspace": "author",
+          "sha256": "1d161f4e8e05dff078fb792314cff389870b5d9c2e8447b33e89ae2a4bbd645d",
+          "accepts": []
+        },
+        {
+          "source": "examples/steps/04-plugin/files/catalog.md",
+          "destination": "toolkit/catalog.md",
+          "workspace": "author",
+          "sha256": "cfa930425346e154b78952859d97e81de30bf9dbaabb13c82ca75ff58c2b6305",
+          "accepts": []
+        }
+      ]
+    },
+    {
+      "id": "05-mcp-and-update",
+      "explanation": "Reviewed 05-mcp-and-update customization payload; see docs/labs/05-mcp-and-update.md. Import explicitly, never merge examples.",
+      "prerequisiteSteps": [
+        "04-plugin"
+      ],
+      "requires": {
+        "author": [
+          ".github/skills/api-change-workflow/SKILL.md",
+          "toolkit/plugin.json"
+        ],
+        "consumer": [
+          ".github/prompts/plan-api-change.prompt.md"
+        ]
+      },
+      "files": [
+        {
+          "source": "examples/steps/05-mcp-and-update/author/SKILL.md",
+          "destination": ".github/skills/api-change-workflow/SKILL.md",
+          "workspace": "author",
+          "sha256": "704a1cdc94acc7614c5c8fc3b13f364d76ea3851eedac4d7ce8a9cbd90e61f3b",
+          "accepts": [
+            "365d9aa7bb9f132a7d962adb61f1b22ccc31027fbf9bf8464476b6e6b9947498"
+          ]
+        },
+        {
+          "source": "examples/steps/05-mcp-and-update/author/review-checklist.md",
+          "destination": ".github/skills/api-change-workflow/references/review-checklist.md",
+          "workspace": "author",
+          "sha256": "00f29d16e7e4c1c2abdda03b517eff37924e2553d10eb46a493045cbb8a7f2ea",
+          "accepts": [
+            "19184e68555013e396e4aca1bacf08316a9e2343871a7f8d2fc0085eebc64a5e"
+          ]
+        },
+        {
+          "source": "examples/steps/05-mcp-and-update/author/plugin.json",
+          "destination": "toolkit/plugin.json",
+          "workspace": "author",
+          "sha256": "aed1fdf73aa405e4b14cf206bb1343f3cdb4d10f527328370f35899daf47ef34",
+          "accepts": [
+            "1d161f4e8e05dff078fb792314cff389870b5d9c2e8447b33e89ae2a4bbd645d"
+          ]
+        },
+        {
+          "source": "examples/steps/05-mcp-and-update/author/catalog.md",
+          "destination": "toolkit/catalog.md",
+          "workspace": "author",
+          "sha256": "ddc6d3c8921966950fdae75256dae75496e1f1f61e494f4c7a52271f56bd130b",
+          "accepts": [
+            "cfa930425346e154b78952859d97e81de30bf9dbaabb13c82ca75ff58c2b6305"
+          ]
+        },
+        {
+          "source": "examples/steps/05-mcp-and-update/consumer/vscode.mcp.json",
+          "destination": "client-configs/vscode.mcp.json",
+          "workspace": "consumer",
+          "clients": [
+            "vscode"
+          ],
+          "sha256": "9934f72edbe4564e057cd3bfe3e4e161835d83678ecfd3bc57d7122a9984698c",
+          "accepts": []
+        },
+        {
+          "source": "examples/steps/05-mcp-and-update/consumer/cli-mcp.md",
+          "destination": "client-configs/cli-mcp.md",
+          "workspace": "consumer",
+          "clients": [
+            "cli"
+          ],
+          "sha256": "7c04ba4504d5eb89580908b15affdb83f9859289b0105d78ea56104e68274e3c",
+          "accepts": []
+        },
+        {
+          "source": "examples/steps/05-mcp-and-update/consumer/app-mcp.md",
+          "destination": "client-configs/app-mcp.md",
+          "workspace": "consumer",
+          "clients": [
+            "app"
+          ],
+          "sha256": "3417d28c9b195255aa8e374aa9eef5d889a01a71cf4a483f90e888804de5ee5f",
+          "accepts": []
+        }
+      ]
+    },
+    {
+      "id": "06-agent-roles",
+      "explanation": "Reviewed 06-agent-roles customization payload; see docs/labs/06-agent-roles.md. Import explicitly, never merge examples.",
+      "prerequisiteSteps": [
+        "05-mcp-and-update"
+      ],
+      "requires": {
+        "consumer": [
+          ".github/prompts/plan-api-change.prompt.md"
+        ]
+      },
+      "files": [
+        {
+          "source": "examples/steps/06-agent-roles/clients/vscode/workshop-planner.agent.md",
+          "destination": ".github/agents/workshop-planner.agent.md",
+          "workspace": "consumer",
+          "clients": [
+            "vscode"
+          ],
+          "sha256": "cfe5ca0b5a1589e8813a1bdb60cf9f5615624b99a5de96ff3b45cd79ece5dd2b",
+          "accepts": []
+        },
+        {
+          "source": "examples/steps/06-agent-roles/clients/vscode/workshop-implementer.agent.md",
+          "destination": ".github/agents/workshop-implementer.agent.md",
+          "workspace": "consumer",
+          "clients": [
+            "vscode"
+          ],
+          "sha256": "c51d70d56f5ed28ca6e93d455e56f6525466b2a5dab4660e6f20fe42ca694daa",
+          "accepts": []
+        },
+        {
+          "source": "examples/steps/06-agent-roles/clients/vscode/workshop-reviewer.agent.md",
+          "destination": ".github/agents/workshop-reviewer.agent.md",
+          "workspace": "consumer",
+          "clients": [
+            "vscode"
+          ],
+          "sha256": "a8bdb5d6b86776d95198f5d5818b46919efd6e8e7207af7c3c0f518345deef15",
+          "accepts": []
+        },
+        {
+          "source": "examples/steps/06-agent-roles/clients/cli/workshop-planner.agent.md",
+          "destination": ".github/agents/workshop-planner.agent.md",
+          "workspace": "consumer",
+          "clients": [
+            "cli"
+          ],
+          "sha256": "b396bed805c25a31d0ade84bd4e767e60a0e99ab31f11f621f707d59dd244411",
+          "accepts": []
+        },
+        {
+          "source": "examples/steps/06-agent-roles/clients/cli/workshop-implementer.agent.md",
+          "destination": ".github/agents/workshop-implementer.agent.md",
+          "workspace": "consumer",
+          "clients": [
+            "cli"
+          ],
+          "sha256": "79fa4937b2e2f2128e49218224e0eb53c3778b5c76f18a3609612dab5747f492",
+          "accepts": []
+        },
+        {
+          "source": "examples/steps/06-agent-roles/clients/cli/workshop-reviewer.agent.md",
+          "destination": ".github/agents/workshop-reviewer.agent.md",
+          "workspace": "consumer",
+          "clients": [
+            "cli"
+          ],
+          "sha256": "cedb4ca14612e3959ac8e37343c60f4bc85b1947169315126841754c3956e1df",
+          "accepts": []
+        },
+        {
+          "source": "examples/steps/06-agent-roles/clients/app/workshop-planner.agent.md",
+          "destination": ".github/agents/workshop-planner.agent.md",
+          "workspace": "consumer",
+          "clients": [
+            "app"
+          ],
+          "sha256": "1c45e32c2aa0ae4bf284e750688e5f26958ec2526e77997db199dedb0fe0e5fa",
+          "accepts": []
+        },
+        {
+          "source": "examples/steps/06-agent-roles/clients/app/workshop-implementer.agent.md",
+          "destination": ".github/agents/workshop-implementer.agent.md",
+          "workspace": "consumer",
+          "clients": [
+            "app"
+          ],
+          "sha256": "de1dcdf7a7a1b85249d0d1b79bf524cac3430351685274790b47ad70f9d994f6",
+          "accepts": []
+        },
+        {
+          "source": "examples/steps/06-agent-roles/clients/app/workshop-reviewer.agent.md",
+          "destination": ".github/agents/workshop-reviewer.agent.md",
+          "workspace": "consumer",
+          "clients": [
+            "app"
+          ],
+          "sha256": "5529bd0a3459b7da2ddf76fdc0a9a7e8f766e325d1ef97d4ed36453537b6b492",
+          "accepts": []
+        }
+      ]
+    },
+    {
+      "id": "07-use-toolkit",
+      "explanation": "Reviewed 07-use-toolkit customization payload; see docs/labs/07-use-toolkit.md. Import explicitly, never merge examples.",
+      "prerequisiteSteps": [
+        "06-agent-roles"
+      ],
+      "requires": {
+        "consumer": [
+          ".github/agents/workshop-planner.agent.md",
+          ".github/agents/workshop-implementer.agent.md",
+          ".github/agents/workshop-reviewer.agent.md"
+        ]
+      },
+      "files": [
+        {
+          "source": "examples/steps/07-use-toolkit/files/toolkit-checkpoint.md",
+          "destination": "workshop/artifacts/toolkit-checkpoint.md",
+          "workspace": "consumer",
+          "sha256": "d222432d3bf3320f29efb2617c2176cb55a04842643dde568899d592ee4961a1",
+          "accepts": []
+        }
+      ]
+    },
+    {
+      "id": "08-review-and-handoff",
+      "explanation": "Reviewed 08-review-and-handoff customization payload; see docs/labs/08-review-and-handoff.md. Import explicitly, never merge examples.",
+      "prerequisiteSteps": [
+        "07-use-toolkit"
+      ],
+      "requires": {
+        "consumer": [
+          ".github/agents/workshop-reviewer.agent.md"
+        ]
+      },
+      "files": [
+        {
+          "source": "examples/steps/08-review-and-handoff/files/total-after-limit.mjs",
+          "destination": "workshop/artifacts/review/total-after-limit.mjs",
+          "workspace": "consumer",
+          "sha256": "79ceef4c20966ae4e09bfaa040c09086161f5355bfce2645693f6d7e203e27d3",
+          "accepts": []
+        },
+        {
+          "source": "examples/steps/08-review-and-handoff/files/probe.mjs",
+          "destination": "workshop/artifacts/review/probe.mjs",
+          "workspace": "consumer",
+          "sha256": "72dc9dd86e60e5cb419f553542840bf36f5be490df77c688710e0607f5a8f730",
+          "accepts": []
+        },
+        {
+          "source": "examples/steps/08-review-and-handoff/files/review-rubric.md",
+          "destination": "workshop/artifacts/review/review-rubric.md",
+          "workspace": "consumer",
+          "sha256": "832066b4b5fcff6d0eaa17608b84bcfccc8f44170f6efb53348fc8b10729d5d4",
+          "accepts": []
+        },
+        {
+          "source": "examples/steps/08-review-and-handoff/files/continuation-brief.md",
+          "destination": "workshop/artifacts/review/continuation-brief.md",
+          "workspace": "consumer",
+          "sha256": "ea3d494bc8273b3a3c14b386145c02a43f3f7031272a0e3ded24ef623ec3f50f",
+          "accepts": []
+        }
+      ]
+    },
+    {
+      "id": "09-spec-kit",
+      "explanation": "Reviewed 09-spec-kit customization payload; see docs/labs/09-spec-kit.md. Import explicitly, never merge examples.",
+      "prerequisiteSteps": [],
+      "requires": {},
+      "files": [
+        {
+          "source": "examples/steps/09-spec-kit/files/unavailable.md",
+          "destination": "workshop/artifacts/optional-spec-kit/unavailable.md",
+          "workspace": "consumer",
+          "sha256": "000c0ad9bf7135ff7a950bf2e7165c43a9384fcc86f4a2c1ee4a0f90f8eb4681",
+          "accepts": []
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "servers": {
+    "workshop-standards": {
+      "type": "stdio",
+      "command": "node",
+      "args": ["${workspaceFolder}/dist/src/standards-mcp/main.js"]
+    }
+  }
+}
