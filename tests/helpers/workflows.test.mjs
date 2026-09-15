@@ -121,6 +121,75 @@ test('source pin, manifest checksum, missing tag, unknown steps and prerequisite
   assert.throws(() => run(process.execPath, [resolve(repository, 'scripts/fetch-examples.mjs')], root), /No network attempted/);
 });
 
+test('Lab 03 bootstrap imports Labs 01-02 and commits only their reviewed assets', t => {
+  const root = fixture(t);
+  git(root, 'config', 'user.name', 'Workshop learner');
+  git(root, 'config', 'user.email', 'learner@example.invalid');
+  write(root, 'learner-notes.txt', 'preserve me\n');
+  const before = git(root, 'rev-parse', 'HEAD').trim();
+
+  const output = run(process.execPath, [resolve(repository, 'scripts/bootstrap-lab-03.mjs')], root);
+  const result = JSON.parse(output);
+  assert.equal(result.readyFor, '03-skill');
+  assert.equal(result.commit, git(root, 'rev-parse', 'HEAD').trim());
+  assert.equal(git(root, 'rev-list', '--count', `${before}..HEAD`).trim(), '1');
+  assert.deepEqual(
+    git(root, 'diff', '--name-only', before, 'HEAD').trim().split('\n').sort(),
+    [
+      '.github/copilot-instructions.md',
+      '.github/instructions/api.instructions.md',
+      '.github/instructions/tests.instructions.md',
+      '.github/prompts/plan-api-change.prompt.md',
+    ],
+  );
+  assert.match(git(root, 'log', '-1', '--format=%B'), new RegExp(trailer.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')));
+  assert.equal(read(root, 'learner-notes.txt'), 'preserve me\n');
+  assert.equal(git(root, 'status', '--porcelain', '--', 'learner-notes.txt').trim(), '?? learner-notes.txt');
+  assert.ok(!existsSync(resolve(root, '.github/skills')));
+  assert.match(read(root, 'src/api/search.ts'), /NOT_IMPLEMENTED/);
+
+  const committed = git(root, 'rev-parse', 'HEAD').trim();
+  const repeated = JSON.parse(run(process.execPath, [resolve(repository, 'scripts/bootstrap-lab-03.mjs')], root));
+  assert.equal(repeated.commit, null);
+  assert.equal(git(root, 'rev-parse', 'HEAD').trim(), committed);
+});
+
+test('Lab 03 bootstrap rejects staged work and destination conflicts before writing', async t => {
+  await t.test('staged learner work', t => {
+    const root = fixture(t);
+    git(root, 'config', 'user.name', 'Workshop learner');
+    git(root, 'config', 'user.email', 'learner@example.invalid');
+    write(root, 'learner-notes.txt', 'staged learner work\n');
+    git(root, 'add', 'learner-notes.txt');
+    const before = git(root, 'rev-parse', 'HEAD').trim();
+
+    assert.throws(
+      () => run(process.execPath, [resolve(repository, 'scripts/bootstrap-lab-03.mjs')], root),
+      /Existing staged changes/,
+    );
+    assert.equal(git(root, 'rev-parse', 'HEAD').trim(), before);
+    assert.ok(!existsSync(resolve(root, '.github/instructions')));
+    assert.ok(!existsSync(resolve(root, '.github/prompts')));
+  });
+
+  await t.test('learner-owned destination', t => {
+    const root = fixture(t);
+    git(root, 'config', 'user.name', 'Workshop learner');
+    git(root, 'config', 'user.email', 'learner@example.invalid');
+    write(root, '.github/instructions/api.instructions.md', 'learner-owned\n');
+    const before = git(root, 'rev-parse', 'HEAD').trim();
+
+    assert.throws(
+      () => run(process.execPath, [resolve(repository, 'scripts/bootstrap-lab-03.mjs')], root),
+      /preflight failed/,
+    );
+    assert.equal(git(root, 'rev-parse', 'HEAD').trim(), before);
+    assert.equal(read(root, '.github/instructions/api.instructions.md'), 'learner-owned\n');
+    assert.ok(!existsSync(resolve(root, '.github/instructions/tests.instructions.md')));
+    assert.ok(!existsSync(resolve(root, '.github/prompts')));
+  });
+});
+
 test('recheck catches a concurrent edit; injected I/O failure rolls back all earlier writes', t => {
   const root = fixture(t);
   const original = read(root, '.github/copilot-instructions.md');
