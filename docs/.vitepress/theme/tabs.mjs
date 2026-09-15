@@ -67,6 +67,8 @@ export function enhanceTabs(document, window) {
     if (updateURL) {
       const url = new URL(window.location.href);
       url.searchParams.set('client', key);
+      const anchoredClient = panels.some(panel => [...panel.querySelectorAll('[id]')].some(node => node.id === url.hash.slice(1)));
+      if (anchoredClient) url.hash = panels[clients.findIndex(client => client.key === key)].querySelector('h3').id;
       window.history.replaceState(window.history.state, '', url);
     }
   }
