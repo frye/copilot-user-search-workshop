@@ -41,3 +41,11 @@ test('SPA navigation enhances the next lab once and links with client anchors wo
   await expect(page.getByRole('tablist')).toHaveCount(1);
   await expect(page.getByRole('tab', { name: 'Copilot CLI', exact: true })).toHaveAttribute('aria-selected', 'true');
 });
+
+test('changing an anchor-selected client yields a reloadable direct link', async ({ page }) => {
+  await page.goto('labs/04-plugin.html#copilot-cli');
+  await page.getByRole('tab', { name: 'Copilot app', exact: true }).click();
+  await expect(page).toHaveURL(/client=app#copilot-app$/);
+  await page.reload();
+  await expect(page.getByRole('tab', { name: 'Copilot app', exact: true })).toHaveAttribute('aria-selected', 'true');
+});

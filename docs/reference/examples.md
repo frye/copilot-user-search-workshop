@@ -4,8 +4,8 @@
 
 - `main`: runnable unfinished app, acceptance tests, helpers, guide and minimal safety orientation only.
 - `examples`: browseable inert payloads under `examples/steps/`. Source is pinned to immutable **examples-v1**, exact commit and manifest SHA-256 in `workshop/examples-lock.json`.
-- `starter-v1.1`: approved consumer base. The consumer helper copies its release locks from author so bootstrap self-reference is not required.
-- Earlier `starter-v1` remains immutable but is superseded: v1.1 fixes browser heading enhancement and branch-independent validation in consumer workspaces.
+- `starter-v1.2`: approved consumer base. The consumer helper copies its release locks from author so bootstrap self-reference is not required.
+- Earlier `starter-v1` and `starter-v1.1` remain immutable but are superseded: v1.1 fixes heading enhancement/consumer validation; v1.2 preserves selected-client deep links after tab changes.
 - `solution` / **solution-v1**: separate full implementation. Only inspect after an attempt or deliberate walkthrough choice.
 - Actual release SHAs live in presenter release evidence. Tags are append-only release identifiers; never move them.
 - **Do not** pull/merge examples, switch an active learner workspace to examples, reset files, force checkout, or use solution as a hidden starter.

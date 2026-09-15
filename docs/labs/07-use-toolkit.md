@@ -64,7 +64,7 @@ npm run lab:example -- --step 07-use-toolkit --apply
 
 ```sh
 git show solution-v1:src/api/search.ts
-git diff starter-v1.1 solution-v1 -- src/api/search.ts tests/search
+git diff starter-v1.2 solution-v1 -- src/api/search.ts tests/search
 ```
 
 - Read-only local inspection; no merge/checkout/import into main. For full validation create a disposable worktree at `solution-v1`, install dependencies there and run `verify:solution`.
