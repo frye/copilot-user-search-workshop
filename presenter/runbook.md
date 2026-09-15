@@ -15,11 +15,11 @@
 
 ## Release refs
 
-- `starter-v1.2` is immutable consumer base; current main includes its exact pin and examples release metadata. Earlier starter tags are preserved but superseded, not moved.
+- `starter-v2` is immutable consumer base; current main includes its exact pin and examples release metadata. Earlier starter tags are preserved but superseded, not moved.
 - `examples-v1` pins inert per-step assets and hashes; moving examples branch is browseable only.
-- `solution-v1` pins full reference; no ordinary importer exposes implementation.
+- `solution-v2` pins full reference; no ordinary importer exposes implementation.
 - `presenter/evidence/releases.json` records real SHAs without a self-referential tag hash.
-- `starter-v1.2` itself contains the previous starter lock by design; current main's consumer helper carries the reviewed current locks into the new consumer. Clone main for entry, never the bootstrap tag directly.
+- `starter-v2` itself contains the previous starter lock by design; current main's consumer helper carries the reviewed current locks into the new consumer. Clone main for entry, never the bootstrap tag directly.
 - Fixes use new immutable tags; never force/move a released tag.
 - Consumer lock files are copied from approved author checkout so a bootstrap snapshot does not have to predict its own SHA.
 

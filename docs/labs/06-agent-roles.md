@@ -11,6 +11,9 @@
 2. Planner returns plan/questions/tests only. Reviewer returns supported findings, evidence, impact and next check.
 3. Implementer owns only `src/api/search.ts` and focused search tests after approval; no publishing or package edits.
 4. Inspect actual tool permissions. Any general terminal access means the planner/reviewer is **not enforced read-only**.
+   - After MCP discovery, add **only the two exact fixture-tool identifiers shown by this client** to the selected roles, preserving the read/write boundaries.
+   - The sample `read`/`search` groups do not automatically grant MCP. Server connection alone is not role-level availability.
+   - Static validation permits the two fixture-tool name suffixes, not namespace wildcards; it does not prove that a client recognizes the identifiers.
 5. Run plan → human approval → implementer handoff without implementing until 07. Optional contract analysis must not share writable scope.
 
 ## Inspect the example
@@ -40,12 +43,14 @@ npm run lab:example -- --step 06-agent-roles --workspace consumer --client cli -
 
 - Use `--client vscode`; inspect native custom-agent discovery and actual `read`, `search`, `edit`, `execute` tool groups.
 - Planner/reviewer candidates omit write/execute; confirm the UI grants really exclude them.
+- Add the two MCP identifiers from VS Code's actual tool picker before requesting MCP through this role. Do not copy CLI IDs.
 - If execution remains available through other tooling, record advisory-only boundaries. Select implementer only after human approval.
 
 ### Copilot CLI
 
 - Use `--client cli`; inspect `.github/agents` discovery through CLI's supported agent selector/help.
 - Samples use CLI tool candidates; verify loaded tools instead of assuming frontmatter alone enforces them.
+- Add the two MCP identifiers exposed by this CLI build and recheck role tool availability; no VS Code/CLI naming parity is assumed.
 - Hand off contract/ref/approved files to one implementer; record actual choice and permissions.
 
 ### Copilot app

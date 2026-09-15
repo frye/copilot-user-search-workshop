@@ -24,7 +24,7 @@ npm start
 - API binds loopback only: `http://127.0.0.1:3000/health`. Stop it with Ctrl+C before switching workspaces.
 - `npm run test:search` is **intentionally red on main**, asserting 200/400 where the stub returns 501. It is not in `npm test`.
 - `npm run verify:solution` is the real completion check after implementation; it does not run the starter-only 501 assertion.
-- `examples` / `examples-v1`: inert per-step assets. `solution` / `solution-v1`: explicit opt-in complete API reference. Do not merge either into main.
+- `examples` / `examples-v1`: inert per-step assets. `solution` / `solution-v2`: explicit opt-in complete API reference. `starter-v2` is the pinned consumer base. Do not merge examples or solution into main.
 - No remote repository, deployment, cloud task, PR, personal client setting, or plugin installation was created by preparing this workshop.
 - Optional author-only runtime: `npm ci --prefix tools/author`, then prepend `tools/author/node_modules/node/bin` and `tools/author/node_modules/.bin` to PATH for that shell only.
 

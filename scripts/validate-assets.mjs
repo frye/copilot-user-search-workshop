@@ -45,7 +45,9 @@ try {
         } else {
           if (!match) throw new Error('Role must declare tool candidates for this client.');
           const tools = JSON.parse(match[1]);
-          if (!Array.isArray(tools) || tools.some(tool => !['read', 'search', 'edit', 'execute'].includes(tool))) throw new Error('Inspect supported lab tool groups; wildcard/unknown grant rejected.');
+          const allowed = tool => typeof tool === 'string' && !tool.includes('*') &&
+            (['read', 'search', 'edit', 'execute'].includes(tool) || /(?:^|[/_.-])get_(?:api_conventions|validation_commands)$/.test(tool));
+          if (!Array.isArray(tools) || tools.some(tool => !allowed(tool))) throw new Error('Use bounded tool groups and exact discovered fixture-tool identifiers, never wildcard/unknown grants.');
           if (!entry.destination.includes('implementer') && tools.some(tool => ['edit', 'execute'].includes(tool))) throw new Error('Planner/reviewer must not declare generic edit/execute in the bounded sample route.');
         }
       }
