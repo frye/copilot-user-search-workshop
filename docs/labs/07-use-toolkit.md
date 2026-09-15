@@ -9,7 +9,7 @@
 
 1. Author `workshop/artifacts/toolkit-checkpoint.md` with readiness checks; verify current ref, package source/version and absence of `.github/skills`.
 2. Select planner and ask: “Use the installed api-change-workflow for the approved search task. Return a plan and stop for approval.”
-3. Inspect relevant repository/scoped rules and actual MCP conventions/validation lookup (or explicitly labeled file fallback).
+3. Inspect relevant repository/scoped rules and actual MCP conventions/validation lookup. Confirm both tools are available **to the selected role**, not merely connected globally; add their exact discovered IDs as described in 06 when needed. Use a labeled file fallback only when the capability is unavailable/denied.
 4. Human reviews scope, questions and tests; explicitly approves one implementer.
 5. Implement only search plus focused tests. Add at least one meaningful acceptance case, e.g. `?unused=1&q=LEE&limit=2` preserves filtering/total.
 6. Run `npm test`, `npm run test:search`, then `npm run verify:solution`. Review diff and privacy logs with independent reviewer.
@@ -63,10 +63,10 @@ npm run lab:example -- --step 07-use-toolkit --apply
 ## Explicit solution walkthrough (only after attempt or deliberate choice)
 
 ```sh
-git show solution-v1:src/api/search.ts
-git diff starter-v1.2 solution-v1 -- src/api/search.ts tests/search
+git show solution-v2:src/api/search.ts
+git diff starter-v2 solution-v2 -- src/api/search.ts tests/search
 ```
 
-- Read-only local inspection; no merge/checkout/import into main. For full validation create a disposable worktree at `solution-v1`, install dependencies there and run `verify:solution`.
+- Read-only local inspection; no merge/checkout/import into main. For full validation create a disposable worktree at `solution-v2`, install dependencies there and run `verify:solution`.
 - A walkthrough is not evidence that your own toolkit produced the change.
 - Next: [08 — Review and handoff](08-review-and-handoff.md).

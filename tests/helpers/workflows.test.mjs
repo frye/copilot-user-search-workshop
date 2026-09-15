@@ -269,6 +269,12 @@ test('exercise validation accepts complete authored routes and rejects invalid s
     assert.match(validate(consumer, id), /NOT runtime proof/);
   }
   const reviewer = '.github/agents/workshop-reviewer.agent.md';
+  const boundedReviewer = read(consumer, reviewer);
+  write(consumer, reviewer, boundedReviewer.replace('["read", "search"]', '["read", "search", "fixture/get_api_conventions", "fixture/get_validation_commands"]'));
+  assert.match(validate(consumer, '06-agent-roles'), /NOT runtime proof/);
+  write(consumer, reviewer, boundedReviewer.replace('["read", "search"]', '["read", "fixture/*"]'));
+  assert.throws(() => validate(consumer, '06-agent-roles'), /wildcard/);
+  write(consumer, reviewer, boundedReviewer);
   write(consumer, reviewer, read(consumer, reviewer).replace('["read", "search"]', '["read", "execute"]'));
   assert.throws(() => validate(consumer, '06-agent-roles'), /must not declare generic/);
   write(consumer, '.github/skills/api-change-workflow/SKILL.md', 'Duplicate local skill');
