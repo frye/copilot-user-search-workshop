@@ -61,3 +61,10 @@ test('repeatable results never mutate fixture and never log query, names or payl
   ]);
   assert.deepEqual((await app.get('/api/v1/users')).body, { items: users, total: 4 });
 });
+
+test('unknown query keys do not alter singleton parsing, matching or total', async t => {
+  const app = await api(t);
+  const response = await app.get(`${path}?unused=1&q=LEE&limit=2&unused=2`);
+  assert.equal(response.status, 200);
+  assert.deepEqual(response.body, { items: [users[1], users[3]], total: 3 });
+});
