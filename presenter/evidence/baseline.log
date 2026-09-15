@@ -1,0 +1,109 @@
+
+> copilot-user-search-workshop@1.0.0 verify:baseline
+> npm test && npm run test:stub && npm run test:helpers && npm run verify:assets && npm run test:docs && npm run docs:build
+
+
+> copilot-user-search-workshop@1.0.0 test
+> npm run build && node --test dist/tests/baseline/*.test.js dist/tests/mcp/*.test.js
+
+
+> copilot-user-search-workshop@1.0.0 build
+> tsc
+
+✔ health, archived list order and get remain stable (29.963875ms)
+✔ unknown routes and unsupported methods have exact error envelope (8.6145ms)
+✔ fixtures are frozen; logs expose only bounded route and status (2.090083ms)
+✔ real stdio initialize, exact list, both calls, strict inputs and clean close (107.575166ms)
+Fixture unavailable or invalid: api-conventions.json
+Fixture unavailable or invalid: api-conventions.json
+Fixture unavailable or invalid: api-conventions.json
+✔ missing and malformed fixtures fail closed, never returned as valid standards (13.724917ms)
+ℹ tests 5
+ℹ suites 0
+ℹ pass 5
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1137.849958
+
+> copilot-user-search-workshop@1.0.0 test:stub
+> node --test dist/tests/starter/*.test.js
+
+✔ starter search is deliberately unimplemented, including invalid queries (16.7995ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 77.588917
+
+> copilot-user-search-workshop@1.0.0 test:helpers
+> node --test tests/helpers/*.test.mjs
+
+✔ offline source pin, preview, inert stage, safe apply and exact repeat (1036.342375ms)
+▶ untracked collision, staged/unstaged edits and committed alternatives reject whole step
+  ✔ untracked (398.705916ms)
+  ✔ unstaged (648.451708ms)
+  ✔ staged (1398.269875ms)
+  ✔ committed (582.755917ms)
+  ✔ deleted (927.737542ms)
+✔ untracked collision, staged/unstaged edits and committed alternatives reject whole step (3956.498834ms)
+✔ untracked matching source is still a collision without an import receipt (419.86925ms)
+▶ symlink files, symlink ancestors, dangling links and traversal fail closed
+  ✔ file (321.875ms)
+  ✔ parent (275.526042ms)
+  ✔ dangling (684.893583ms)
+✔ symlink files, symlink ancestors, dangling links and traversal fail closed (1282.909167ms)
+✔ source pin, manifest checksum, missing tag, unknown steps and prerequisites are enforced (423.327625ms)
+✔ recheck catches a concurrent edit; injected I/O failure rolls back all earlier writes (1402.51775ms)
+✔ all source payload hashes, client groups and generated dependency maps agree (306.446583ms)
+✔ canonical packaging has schema, exact provenance, immutable versions and no hidden executable (1720.440834ms)
+✔ package rejects invalid manifest, missing references, extra files, links and output tampering (2182.515959ms)
+✔ clean sibling consumer preserves guidance, excludes skill/config/secrets, supports all client steps and update (6485.358ms)
+▶ each client role payload applies in a fresh consumer without later-step or search activation
+  ✔ vscode (2601.965375ms)
+  ✔ app (2813.739125ms)
+✔ each client role payload applies in a fresh consumer without later-step or search activation (5416.008125ms)
+✔ exercise validation accepts complete authored routes and rejects invalid scopes, unsafe roles and duplicate consumer skill (10571.292916ms)
+ℹ tests 22
+ℹ suites 0
+ℹ pass 22
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 35267.244083
+
+> copilot-user-search-workshop@1.0.0 verify:assets
+> node scripts/validate-assets.mjs
+
+Release metadata and 10 step mappings valid: examples-v1 df1328a4c1b9de89bdba5854a75f55fc42ba872d. Client runtime is not inferred.
+
+> copilot-user-search-workshop@1.0.0 test:docs
+> node --test tests/docs/*.test.mjs
+
+✔ canonical Markdown has real local links, complete lab routes and plain client headings (8.508417ms)
+✔ toolchain, intentional-red routing and no active complete starter assets are explicit (0.427916ms)
+ℹ tests 2
+ℹ suites 0
+ℹ pass 2
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 48.01075
+
+> copilot-user-search-workshop@1.0.0 docs:build
+> vitepress build docs
+
+
+  vitepress v1.6.4
+
+- building client + server bundles...
+[32m✓[0m building client + server bundles...
+- rendering pages...
+[32m✓[0m rendering pages...
+build complete in 1.62s.

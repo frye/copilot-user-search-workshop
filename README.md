@@ -35,8 +35,12 @@ npm run docs:dev
 # Production subpath rehearsal:
 npm run docs:build
 npm run docs:preview
+# Optional maintainer browser rehearsal after production build:
+npm run browser:install
+npm run test:browser
 ```
 
 - Follow the local address printed by VitePress, including `/copilot-user-search-workshop/`.
 - GitHub Pages serves documentation only, not the API or MCP server.
+- Browser binaries and process scratch stay repository-local; browser tests stop their preview server automatically.
 - Publication runbook is approval-gated; never infer a Pages URL or expose private content without owner approval.

@@ -11,7 +11,7 @@
 1. Inspect task brief, approved contract, `src/api`, `tests`, `standards`, and `workshop/templates`.
 2. Run `npm ci`, `npm run preflight`, and `npm run verify:baseline`.
 3. Run `npm run test:search`; inspect the real expected 501 versus 200/400 failures, not a missing-dependency error.
-4. Record `git rev-parse HEAD`, actual tools, client policy restrictions, and exact outcomes in `.lab-evidence/00-start.md`.
+4. Author `workshop/artifacts/setup-checklist.md` listing the required observations; record `git rev-parse HEAD`, actual tools, client policy restrictions, and exact outcomes privately in `.lab-evidence/00-start.md`.
 5. Run `npm start`, inspect health/list, then stop with Ctrl+C. No API UI is required.
 
 ## Inspect the example

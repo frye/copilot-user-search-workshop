@@ -7,12 +7,17 @@ const clients = [
 export function enhanceTabs(document, window) {
   const root = document.querySelector('.vp-doc');
   if (!root || root.querySelector('[data-client-tabs]')) return;
-  const heading = [...root.querySelectorAll('h2')].find(node => node.textContent.replace(/#$/, '').trim() === 'Client steps');
+  const text = node => {
+    const copy = node.cloneNode(true);
+    copy.querySelectorAll('.header-anchor').forEach(anchor => anchor.remove());
+    return copy.textContent.trim();
+  };
+  const heading = [...root.querySelectorAll('h2')].find(node => text(node) === 'Client steps');
   if (!heading) return;
   const nodes = [];
   for (let node = heading.nextElementSibling; node && node.tagName !== 'H2'; node = node.nextElementSibling) nodes.push(node);
   const starts = nodes.filter(node => node.tagName === 'H3');
-  if (starts.length !== 3 || starts.some((node, i) => node.textContent.replace(/#$/, '').trim() !== clients[i].label)) return;
+  if (starts.length !== 3 || starts.some((node, i) => text(node) !== clients[i].label)) return;
   let selected = new URL(window.location.href).searchParams.get('client');
   if (!clients.some(client => client.key === selected)) {
     try { selected = window.localStorage.getItem('workshop-client'); } catch { selected = null; }

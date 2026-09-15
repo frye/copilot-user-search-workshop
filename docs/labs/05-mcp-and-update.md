@@ -9,7 +9,7 @@
 ## Build it yourself
 
 1. Consumer: inspect `src/standards-mcp`, both fixture JSON files, and exact two-tool allowlist; run `npm run build` and `npm test`.
-2. Configure MCP separately using your client below. Call `get_api_conventions` and `get_validation_commands` with `{}`; retain source/version and returned requirements.
+2. Author an inert reviewable recipe at `client-configs/vscode.mcp.json`, `client-configs/cli-mcp.md`, or `client-configs/app-mcp.md`. Configure MCP separately using your client below. Call `get_api_conventions` and `get_validation_commands` with `{}`; retain source/version and returned requirements.
 3. Author: update skill to use those tools when available; explicitly label local standards-file fallback when unavailable.
 4. Bump manifest to `1.1.0`, update catalog, rebuild immutable package.
 5. Consumer: replace only previous lab registration, reload and prove 1.1.0 is active. Invoke updated procedure; record actual tool use or fallback.
@@ -63,7 +63,7 @@ npm run lab:example -- --step 05-mcp-and-update --workspace consumer --client cl
 
 ## Verify the result
 
-- In each workspace: `npm run verify:exercise -- --step 05-mcp-and-update` (client payload selection also supported by validator).
+- In each workspace: `npm run verify:exercise -- --step 05-mcp-and-update --client cli` (use `vscode` or `app` for that consumer's recipe).
 - Consumer: `npm test`; retain real tool result, source/version, updated package provenance and invocation.
 - Recovery: rebuild before MCP restart; malformed fixture fails closed. Roll back only the lab package to the prior immutable directory if needed.
 - Next: [06 — Roles](06-agent-roles.md).

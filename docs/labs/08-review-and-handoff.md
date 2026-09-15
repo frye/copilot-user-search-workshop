@@ -7,12 +7,12 @@
 
 ## Build it yourself
 
-1. Inspect the prepared `total-after-limit.mjs` defect in the artifact area—not API code.
+1. Author `workshop/artifacts/review/total-after-limit.mjs`: export `faultyWindow(matches, limit)` that slices then incorrectly reports `items.length` as total. Author `probe.mjs` importing it and asserting that three input matches at limit 1 incorrectly produce total 1, not 3. Keep these inert teaching files outside API code.
 2. Run `node workshop/artifacts/review/probe.mjs`. The probe succeeds only when it **detects the intentional defect** (1 returned instead of total 3).
 3. Ask independent reviewer to connect the exact defective line, authoritative requirement, failing anchor and impact.
 4. Distinguish supported finding from speculation; reviewer must not edit the fixture/API.
 5. **Author extension:** improve the canonical checklist from this finding, bump to `1.2.0`, build, then explicitly update consumer registration and re-invoke reviewer.
-6. Fill continuation brief: goal, actual ref, decisions, files, exact commands/exits, installed toolkit version, MCP/fallback, pending work.
+6. Author `workshop/artifacts/review/review-rubric.md` linking requirement/line/reproduction. Fill `continuation-brief.md` in that directory: goal, actual ref, decisions, files, exact commands/exits, installed toolkit version, MCP/fallback, pending work.
 7. Start a new session/client and re-read contract/source/ref rather than paste full chat history.
 
 ## Inspect the example

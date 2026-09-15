@@ -1,0 +1,306 @@
+{
+  "schema": 1,
+  "generatedFrom": "workshop/steps.json + scripts/author/client-matrix.mjs",
+  "matrix": [
+    {
+      "step": "00-start",
+      "client": "vscode",
+      "mode": "documented-native-candidate-not-rehearsed",
+      "observedRuntime": false,
+      "rehearsedBuild": null,
+      "source": "docs/reference/sources.md",
+      "procedure": "docs/labs/00-start.md",
+      "evidenceRequired": "workshop/evaluation-rubric.md"
+    },
+    {
+      "step": "00-start",
+      "client": "cli",
+      "mode": "terminal-equivalent-not-client-rehearsed",
+      "observedRuntime": false,
+      "rehearsedBuild": null,
+      "source": "docs/reference/sources.md",
+      "procedure": "docs/labs/00-start.md",
+      "evidenceRequired": "workshop/evaluation-rubric.md"
+    },
+    {
+      "step": "00-start",
+      "client": "app",
+      "mode": "documented-native-candidate-not-rehearsed",
+      "observedRuntime": false,
+      "rehearsedBuild": null,
+      "source": "docs/reference/sources.md",
+      "procedure": "docs/labs/00-start.md",
+      "evidenceRequired": "workshop/evaluation-rubric.md"
+    },
+    {
+      "step": "01-instructions",
+      "client": "vscode",
+      "mode": "documented-native-candidate-not-rehearsed",
+      "observedRuntime": false,
+      "rehearsedBuild": null,
+      "source": "docs/reference/sources.md",
+      "procedure": "docs/labs/01-instructions.md",
+      "evidenceRequired": "workshop/evaluation-rubric.md"
+    },
+    {
+      "step": "01-instructions",
+      "client": "cli",
+      "mode": "repository-native-scoped-manual-fallback",
+      "observedRuntime": false,
+      "rehearsedBuild": null,
+      "source": "docs/reference/sources.md",
+      "procedure": "docs/labs/01-instructions.md",
+      "evidenceRequired": "workshop/evaluation-rubric.md"
+    },
+    {
+      "step": "01-instructions",
+      "client": "app",
+      "mode": "repository-guidance-scoped-manual-fallback",
+      "observedRuntime": false,
+      "rehearsedBuild": null,
+      "source": "docs/reference/sources.md",
+      "procedure": "docs/labs/01-instructions.md",
+      "evidenceRequired": "workshop/evaluation-rubric.md"
+    },
+    {
+      "step": "02-planning-prompt",
+      "client": "vscode",
+      "mode": "documented-native-candidate-not-rehearsed",
+      "observedRuntime": false,
+      "rehearsedBuild": null,
+      "source": "docs/reference/sources.md",
+      "procedure": "docs/labs/02-planning-prompt.md",
+      "evidenceRequired": "workshop/evaluation-rubric.md"
+    },
+    {
+      "step": "02-planning-prompt",
+      "client": "cli",
+      "mode": "manual-equivalent",
+      "observedRuntime": false,
+      "rehearsedBuild": null,
+      "source": "docs/reference/sources.md",
+      "procedure": "docs/labs/02-planning-prompt.md",
+      "evidenceRequired": "workshop/evaluation-rubric.md"
+    },
+    {
+      "step": "02-planning-prompt",
+      "client": "app",
+      "mode": "manual-unless-native-discovery-observed",
+      "observedRuntime": false,
+      "rehearsedBuild": null,
+      "source": "docs/reference/sources.md",
+      "procedure": "docs/labs/02-planning-prompt.md",
+      "evidenceRequired": "workshop/evaluation-rubric.md"
+    },
+    {
+      "step": "03-skill",
+      "client": "vscode",
+      "mode": "documented-native-candidate-not-rehearsed",
+      "observedRuntime": false,
+      "rehearsedBuild": null,
+      "source": "docs/reference/sources.md",
+      "procedure": "docs/labs/03-skill.md",
+      "evidenceRequired": "workshop/evaluation-rubric.md"
+    },
+    {
+      "step": "03-skill",
+      "client": "cli",
+      "mode": "documented-native-candidate-not-rehearsed",
+      "observedRuntime": false,
+      "rehearsedBuild": null,
+      "source": "docs/reference/sources.md",
+      "procedure": "docs/labs/03-skill.md",
+      "evidenceRequired": "workshop/evaluation-rubric.md"
+    },
+    {
+      "step": "03-skill",
+      "client": "app",
+      "mode": "documented-native-candidate-not-rehearsed",
+      "observedRuntime": false,
+      "rehearsedBuild": null,
+      "source": "docs/reference/sources.md",
+      "procedure": "docs/labs/03-skill.md",
+      "evidenceRequired": "workshop/evaluation-rubric.md"
+    },
+    {
+      "step": "04-plugin",
+      "client": "vscode",
+      "mode": "documented-native-candidate-not-rehearsed",
+      "observedRuntime": false,
+      "rehearsedBuild": null,
+      "source": "docs/reference/sources.md",
+      "procedure": "docs/labs/04-plugin.md",
+      "evidenceRequired": "workshop/evaluation-rubric.md"
+    },
+    {
+      "step": "04-plugin",
+      "client": "cli",
+      "mode": "documented-native-candidate-not-rehearsed",
+      "observedRuntime": false,
+      "rehearsedBuild": null,
+      "source": "docs/reference/sources.md",
+      "procedure": "docs/labs/04-plugin.md",
+      "evidenceRequired": "workshop/evaluation-rubric.md"
+    },
+    {
+      "step": "04-plugin",
+      "client": "app",
+      "mode": "CLI-bridge-walkthrough-until-observed",
+      "observedRuntime": false,
+      "rehearsedBuild": null,
+      "source": "docs/reference/sources.md",
+      "procedure": "docs/labs/04-plugin.md",
+      "evidenceRequired": "workshop/evaluation-rubric.md"
+    },
+    {
+      "step": "05-mcp-and-update",
+      "client": "vscode",
+      "mode": "documented-native-candidate-not-rehearsed",
+      "observedRuntime": false,
+      "rehearsedBuild": null,
+      "source": "docs/reference/sources.md",
+      "procedure": "docs/labs/05-mcp-and-update.md",
+      "evidenceRequired": "workshop/evaluation-rubric.md"
+    },
+    {
+      "step": "05-mcp-and-update",
+      "client": "cli",
+      "mode": "documented-native-candidate-not-rehearsed",
+      "observedRuntime": false,
+      "rehearsedBuild": null,
+      "source": "docs/reference/sources.md",
+      "procedure": "docs/labs/05-mcp-and-update.md",
+      "evidenceRequired": "workshop/evaluation-rubric.md"
+    },
+    {
+      "step": "05-mcp-and-update",
+      "client": "app",
+      "mode": "MCP-native-candidate-plugin-bridge-unverified",
+      "observedRuntime": false,
+      "rehearsedBuild": null,
+      "source": "docs/reference/sources.md",
+      "procedure": "docs/labs/05-mcp-and-update.md",
+      "evidenceRequired": "workshop/evaluation-rubric.md"
+    },
+    {
+      "step": "06-agent-roles",
+      "client": "vscode",
+      "mode": "candidate-inspect-tool-grants",
+      "observedRuntime": false,
+      "rehearsedBuild": null,
+      "source": "docs/reference/sources.md",
+      "procedure": "docs/labs/06-agent-roles.md",
+      "evidenceRequired": "workshop/evaluation-rubric.md"
+    },
+    {
+      "step": "06-agent-roles",
+      "client": "cli",
+      "mode": "candidate-inspect-tool-grants",
+      "observedRuntime": false,
+      "rehearsedBuild": null,
+      "source": "docs/reference/sources.md",
+      "procedure": "docs/labs/06-agent-roles.md",
+      "evidenceRequired": "workshop/evaluation-rubric.md"
+    },
+    {
+      "step": "06-agent-roles",
+      "client": "app",
+      "mode": "advisory-manual-until-permissions-observed",
+      "observedRuntime": false,
+      "rehearsedBuild": null,
+      "source": "docs/reference/sources.md",
+      "procedure": "docs/labs/06-agent-roles.md",
+      "evidenceRequired": "workshop/evaluation-rubric.md"
+    },
+    {
+      "step": "07-use-toolkit",
+      "client": "vscode",
+      "mode": "documented-native-candidate-not-rehearsed",
+      "observedRuntime": false,
+      "rehearsedBuild": null,
+      "source": "docs/reference/sources.md",
+      "procedure": "docs/labs/07-use-toolkit.md",
+      "evidenceRequired": "workshop/evaluation-rubric.md"
+    },
+    {
+      "step": "07-use-toolkit",
+      "client": "cli",
+      "mode": "documented-native-candidate-not-rehearsed",
+      "observedRuntime": false,
+      "rehearsedBuild": null,
+      "source": "docs/reference/sources.md",
+      "procedure": "docs/labs/07-use-toolkit.md",
+      "evidenceRequired": "workshop/evaluation-rubric.md"
+    },
+    {
+      "step": "07-use-toolkit",
+      "client": "app",
+      "mode": "conditional-on-observed-bridge-otherwise-walkthrough",
+      "observedRuntime": false,
+      "rehearsedBuild": null,
+      "source": "docs/reference/sources.md",
+      "procedure": "docs/labs/07-use-toolkit.md",
+      "evidenceRequired": "workshop/evaluation-rubric.md"
+    },
+    {
+      "step": "08-review-and-handoff",
+      "client": "vscode",
+      "mode": "documented-native-candidate-not-rehearsed",
+      "observedRuntime": false,
+      "rehearsedBuild": null,
+      "source": "docs/reference/sources.md",
+      "procedure": "docs/labs/08-review-and-handoff.md",
+      "evidenceRequired": "workshop/evaluation-rubric.md"
+    },
+    {
+      "step": "08-review-and-handoff",
+      "client": "cli",
+      "mode": "documented-native-candidate-not-rehearsed",
+      "observedRuntime": false,
+      "rehearsedBuild": null,
+      "source": "docs/reference/sources.md",
+      "procedure": "docs/labs/08-review-and-handoff.md",
+      "evidenceRequired": "workshop/evaluation-rubric.md"
+    },
+    {
+      "step": "08-review-and-handoff",
+      "client": "app",
+      "mode": "advisory-local-review-bridge-conditional",
+      "observedRuntime": false,
+      "rehearsedBuild": null,
+      "source": "docs/reference/sources.md",
+      "procedure": "docs/labs/08-review-and-handoff.md",
+      "evidenceRequired": "workshop/evaluation-rubric.md"
+    },
+    {
+      "step": "09-spec-kit",
+      "client": "vscode",
+      "mode": "unavailable-not-generated",
+      "observedRuntime": false,
+      "rehearsedBuild": null,
+      "source": "docs/reference/sources.md",
+      "procedure": "docs/labs/09-spec-kit.md",
+      "evidenceRequired": "workshop/evaluation-rubric.md"
+    },
+    {
+      "step": "09-spec-kit",
+      "client": "cli",
+      "mode": "unavailable-not-generated",
+      "observedRuntime": false,
+      "rehearsedBuild": null,
+      "source": "docs/reference/sources.md",
+      "procedure": "docs/labs/09-spec-kit.md",
+      "evidenceRequired": "workshop/evaluation-rubric.md"
+    },
+    {
+      "step": "09-spec-kit",
+      "client": "app",
+      "mode": "unavailable-not-generated",
+      "observedRuntime": false,
+      "rehearsedBuild": null,
+      "source": "docs/reference/sources.md",
+      "procedure": "docs/labs/09-spec-kit.md",
+      "evidenceRequired": "workshop/evaluation-rubric.md"
+    }
+  ]
+}

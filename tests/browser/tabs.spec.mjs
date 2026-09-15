@@ -28,7 +28,7 @@ test('no JavaScript exposes every client instruction, and assets work at reposit
   page.on('response', response => { if (response.status() >= 400) failed.push(response.url()); });
   await page.goto('http://127.0.0.1:4173/copilot-user-search-workshop/labs/04-plugin.html');
   for (const name of ['VS Code', 'Copilot CLI', 'Copilot app']) {
-    await expect(page.locator('.vp-doc').getByRole('heading', { name, exact: true })).toBeVisible();
+    await expect(page.locator('.vp-doc').getByRole('heading', { name: new RegExp(`^${name}`) })).toBeVisible();
   }
   expect(failed).toEqual([]);
   await context.close();

@@ -4,7 +4,8 @@ import { git, run, workspace, failMain } from './lib/safe.mjs';
 import { workspaceKind } from './lib/examples.mjs';
 try {
   const root = workspace(process.cwd());
-  const npm = run(process.platform === 'win32' ? 'npm.cmd' : 'npm', ['--version'], root).trim();
+  if (!process.env.npm_execpath) throw new Error('Run npm run preflight so the exact npm executable is available without shell interpolation.');
+  const npm = run(process.execPath, [process.env.npm_execpath, '--version'], root).trim();
   const result = {
     node: process.version, npm, expected: { node: 'v24.20.0', npm: '11.19.0' },
     toolchainMatches: process.version === 'v24.20.0' && npm === '11.19.0',

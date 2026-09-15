@@ -4,7 +4,8 @@
 
 - `main`: runnable unfinished app, acceptance tests, helpers, guide and minimal safety orientation only.
 - `examples`: browseable inert payloads under `examples/steps/`. Source is pinned to immutable **examples-v1**, exact commit and manifest SHA-256 in `workshop/examples-lock.json`.
-- `starter-v1`: approved consumer base. The consumer helper copies its release locks from author so bootstrap self-reference is not required.
+- `starter-v1.1`: approved consumer base. The consumer helper copies its release locks from author so bootstrap self-reference is not required.
+- Earlier `starter-v1` remains immutable but is superseded: v1.1 fixes browser heading enhancement and branch-independent validation in consumer workspaces.
 - `solution` / **solution-v1**: separate full implementation. Only inspect after an attempt or deliberate walkthrough choice.
 - Actual release SHAs live in presenter release evidence. Tags are append-only release identifiers; never move them.
 - **Do not** pull/merge examples, switch an active learner workspace to examples, reset files, force checkout, or use solution as a hidden starter.
@@ -28,7 +29,9 @@ npm run lab:example -- --step 03-skill --apply
 - Existing participant edits, committed alternative content, untracked/ignored collisions, symlinks/hardlinks, duplicate destinations, and mismatched source are refused.
 - Repeat imports recognize their own exact payload receipts; no force option exists.
 - Apply rechecks hashes before writing, rolls back its writes on caught I/O failures, and explicitly reports incomplete rollback if concurrent content must be preserved.
+- Payload-relative links resolve at their declared imported destination, not inside the inert examples directory.
 - Filesystem operations cannot guarantee recovery from power loss/process termination; use one writer, keep Git checkpoints, and inspect a stopped transaction before retrying.
+- LF checkout policy keeps reviewed text hashes portable. On unexpected line-ending conflicts, stage/compare and inspect local Git attributes rather than forcing replacement.
 - The helper never installs a package, invokes a skill, executes imported content, edits user settings, commits, pushes, or touches search code.
 
 ## If you already changed these files

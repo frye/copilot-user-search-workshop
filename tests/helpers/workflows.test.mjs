@@ -16,13 +16,15 @@ function write(root, path, data) {
 }
 function commit(root, message = 'Checkpoint reviewed example assets') {
   git(root, 'add', '.');
-  git(root, 'commit', '-q', '-m', message, '-m', trailer);
+  git(root, '-c', 'user.name=Workshop test fixture', '-c', 'user.email=fixture@example.invalid', 'commit', '-q', '-m', message, '-m', trailer);
 }
 function fixture(t) {
   mkdirSync('.lab-scratch', { recursive: true });
   const parent = mkdtempSync(resolve('.lab-scratch/helpers with spaces-'));
   const root = resolve(parent, 'author workspace');
-  git(repository, 'clone', '-q', '--no-local', '--branch', 'main', '--', repository, root);
+  git(repository, 'clone', '-q', '--no-local', '--no-checkout', '--', repository, root);
+  git(root, 'switch', '--detach', json(resolve(repository, 'workshop/starter-lock.json')).commit);
+  git(root, 'switch', '-c', 'helper-author');
   git(root, 'remote', 'remove', 'origin');
   for (const path of ['workshop/examples-lock.json', 'workshop/starter-lock.json']) write(root, path, read(repository, path));
   t.after(() => rmSync(parent, { recursive: true }));
@@ -186,6 +188,7 @@ test('clean sibling consumer preserves guidance, excludes skill/config/secrets, 
   write(root, '.env', 'SYNTHETIC_TEST_ONLY=never-copy\n');
   write(root, 'client-configs/private.json', '{"synthetic":true}');
   const v1 = packageToolkit(root);
+  assert.equal(git(root, 'branch', '--show-current').trim(), 'helper-author');
   assert.throws(() => makeConsumer(root, './nested-consumer'), /sibling/);
   assert.throws(() => makeConsumer(root, '.'), /sibling/);
   const result = makeConsumer(root, '../consumer workspace');
@@ -226,4 +229,48 @@ test('clean sibling consumer preserves guidance, excludes skill/config/secrets, 
   assert.ok(!existsSync(resolve(consumer, '.github/skills')));
   assert.match(read(consumer, 'src/api/search.ts'), /NOT_IMPLEMENTED/);
   assert.throws(() => makeConsumer(consumer, '../another'), /author workspace/);
+});
+
+test('each client role payload applies in a fresh consumer without later-step or search activation', async t => {
+  for (const client of ['vscode', 'app']) {
+    await t.test(client, t => {
+      const root = fixture(t);
+      authorReady(root);
+      const consumer = makeConsumer(root, `../consumer-${client}`).destination;
+      importStep(consumer, '05-mcp-and-update', client);
+      importStep(consumer, '06-agent-roles', client);
+      assert.ok(existsSync(resolve(consumer, '.github/agents/workshop-reviewer.agent.md')));
+      assert.ok(!existsSync(resolve(consumer, '.github/skills')));
+      assert.ok(!existsSync(resolve(consumer, 'workshop/artifacts/review')));
+      assert.match(read(consumer, 'src/api/search.ts'), /NOT_IMPLEMENTED/);
+      if (client === 'vscode') {
+        assert.deepEqual(json(resolve(consumer, 'client-configs/vscode.mcp.json')).servers['workshop-standards'].args, ['${workspaceFolder}/dist/src/standards-mcp/main.js']);
+      } else assert.match(read(consumer, '.github/agents/workshop-reviewer.agent.md'), /advisory-only/);
+    });
+  }
+});
+
+test('exercise validation accepts complete authored routes and rejects invalid scopes, unsafe roles and duplicate consumer skill', t => {
+  const root = fixture(t);
+  const validate = (cwd, id, client = 'cli') => run(process.execPath, [
+    resolve(repository, 'scripts/validate-assets.mjs'), '--exercise', '--step', id, '--client', client,
+  ], cwd);
+  for (const id of ['00-start', '01-instructions', '02-planning-prompt', '03-skill', '04-plugin']) {
+    importStep(root, id);
+    assert.match(validate(root, id), /NOT runtime proof/);
+  }
+  write(root, '.github/instructions/api.instructions.md', '---\napplyTo: "**/*"\n---\nToo broad\n');
+  assert.throws(() => validate(root, '01-instructions'), /exact lab scope/);
+  const consumer = makeConsumer(root, '../validated consumer').destination;
+  importStep(root, '05-mcp-and-update');
+  assert.match(validate(root, '05-mcp-and-update'), /NOT runtime proof/);
+  for (const id of ['05-mcp-and-update', '06-agent-roles', '07-use-toolkit', '08-review-and-handoff', '09-spec-kit']) {
+    importStep(consumer, id);
+    assert.match(validate(consumer, id), /NOT runtime proof/);
+  }
+  const reviewer = '.github/agents/workshop-reviewer.agent.md';
+  write(consumer, reviewer, read(consumer, reviewer).replace('["read", "search"]', '["read", "execute"]'));
+  assert.throws(() => validate(consumer, '06-agent-roles'), /must not declare generic/);
+  write(consumer, '.github/skills/api-change-workflow/SKILL.md', 'Duplicate local skill');
+  assert.throws(() => validate(consumer, '07-use-toolkit'), /Duplicate canonical skill/);
 });

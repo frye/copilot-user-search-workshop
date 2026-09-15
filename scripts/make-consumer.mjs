@@ -4,7 +4,7 @@ import { args, failMain, fileState, git, hash, json, safePath, workspace } from 
 import { fileURLToPath } from 'node:url';
 import { workspaceKind, release } from './lib/examples.mjs';
 
-export function makeConsumer(root, target, starter = 'starter-v1') {
+export function makeConsumer(root, target) {
   if (workspaceKind(root) !== 'author') throw new Error('Run consumer:create in the author workspace.');
   release(root);
   const dest = resolve(root, target);
@@ -14,8 +14,10 @@ export function makeConsumer(root, target, starter = 'starter-v1') {
   catch (error) { if (error.code !== 'ENOENT') throw error; }
   if (existsSync(resolve(dirname(root), '.github'))) throw new Error('Parent .github customizations may be inherited. Choose an isolated parent without them.');
   const pinned = json(resolve(root, 'workshop/starter-lock.json'));
+  const starter = pinned.tag;
+  if (!/^starter-v[0-9][a-zA-Z0-9.-]*$/.test(starter) || !/^[a-f0-9]{40}$/.test(pinned.commit)) throw new Error('Consumer starter must be an exact reviewed release pin.');
   const sha = git(root, 'rev-parse', '--verify', `refs/tags/${starter}^{commit}`).trim();
-  if (sha !== pinned.commit || starter !== pinned.tag) throw new Error('Starter ref changed or is not the reviewed consumer base.');
+  if (sha !== pinned.commit) throw new Error('Starter ref changed or is not the reviewed consumer base.');
   const guidance = ['.github/copilot-instructions.md', '.github/instructions/api.instructions.md', '.github/instructions/tests.instructions.md', '.github/prompts/plan-api-change.prompt.md'];
   const copies = guidance.map(path => ({ path, data: fileState(root, path) })).filter(item => item.data !== null);
   const tree = git(root, 'ls-tree', '-r', '--name-only', sha).trim().split('\n');

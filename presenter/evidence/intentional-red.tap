@@ -1,0 +1,182 @@
+TAP version 13
+# Subtest: anchor: search route wins over get-by-id; total is before limit
+not ok 1 - anchor: search route wins over get-by-id; total is before limit
+  ---
+  duration_ms: 13.208208
+  type: 'test'
+  location: '/Users/frye/.copilot/session-state/66c21365-1551-405e-8cc3-73fbfda1f8d6/files/copilot-user-search-workshop/dist/tests/search/search.test.js:8:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Search must return 200; starter deliberately returns 501
+    
+    501 !== 200
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 200
+  actual: 501
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///Users/frye/.copilot/session-state/66c21365-1551-405e-8cc3-73fbfda1f8d6/files/copilot-user-search-workshop/dist/tests/search/search.test.js:11:12)
+    process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    async Test.run (node:internal/test_runner/test:1404:7)
+    async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3)
+  ...
+# Subtest: trimmed case-insensitive substring and empty/default queries
+not ok 2 - trimmed case-insensitive substring and empty/default queries
+  ---
+  duration_ms: 4.596583
+  type: 'test'
+  location: '/Users/frye/.copilot/session-state/66c21365-1551-405e-8cc3-73fbfda1f8d6/files/copilot-user-search-workshop/dist/tests/search/search.test.js:14:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    501 !== 200
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 200
+  actual: 501
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///Users/frye/.copilot/session-state/66c21365-1551-405e-8cc3-73fbfda1f8d6/files/copilot-user-search-workshop/dist/tests/search/search.test.js:22:16)
+    process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    async Test.run (node:internal/test_runner/test:1404:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:969:7)
+  ...
+# Subtest: all valid integer limits including boundaries
+not ok 3 - all valid integer limits including boundaries
+  ---
+  duration_ms: 1.473875
+  type: 'test'
+  location: '/Users/frye/.copilot/session-state/66c21365-1551-405e-8cc3-73fbfda1f8d6/files/copilot-user-search-workshop/dist/tests/search/search.test.js:26:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    501 !== 200
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 200
+  actual: 501
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///Users/frye/.copilot/session-state/66c21365-1551-405e-8cc3-73fbfda1f8d6/files/copilot-user-search-workshop/dist/tests/search/search.test.js:30:16)
+    process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    async Test.run (node:internal/test_runner/test:1404:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:969:7)
+  ...
+# Subtest: reject invalid decimal syntax and repeated parameters with exact envelope
+not ok 4 - reject invalid decimal syntax and repeated parameters with exact envelope
+  ---
+  duration_ms: 2.098583
+  type: 'test'
+  location: '/Users/frye/.copilot/session-state/66c21365-1551-405e-8cc3-73fbfda1f8d6/files/copilot-user-search-workshop/dist/tests/search/search.test.js:34:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    limit=
+    
+    501 !== 400
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 400
+  actual: 501
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///Users/frye/.copilot/session-state/66c21365-1551-405e-8cc3-73fbfda1f8d6/files/copilot-user-search-workshop/dist/tests/search/search.test.js:41:16)
+    process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    async Test.run (node:internal/test_runner/test:1404:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:969:7)
+  ...
+# Subtest: repeatable results never mutate fixture and never log query, names or payloads
+not ok 5 - repeatable results never mutate fixture and never log query, names or payloads
+  ---
+  duration_ms: 8.277583
+  type: 'test'
+  location: '/Users/frye/.copilot/session-state/66c21365-1551-405e-8cc3-73fbfda1f8d6/files/copilot-user-search-workshop/dist/tests/search/search.test.js:45:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly deep-equal:
+    + actual - expected
+    
+      [
+        {
+          route: 'search',
+    +     status: 501
+    -     status: 200
+        },
+        {
+          route: 'search',
+    +     status: 501
+    -     status: 200
+        },
+        {
+          route: 'search',
+    +     status: 501
+    -     status: 200
+        },
+        {
+          route: 'search',
+    +     status: 501
+    -     status: 200
+        },
+        {
+          route: 'search',
+    +     status: 501
+    -     status: 400
+        }
+      ]
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected:
+    0:
+      route: 'search'
+      status: 200
+    1:
+      route: 'search'
+      status: 200
+    2:
+      route: 'search'
+      status: 200
+    3:
+      route: 'search'
+      status: 200
+    4:
+      route: 'search'
+      status: 400
+  actual:
+    0:
+      route: 'search'
+      status: 501
+    1:
+      route: 'search'
+      status: 501
+    2:
+      route: 'search'
+      status: 501
+    3:
+      route: 'search'
+      status: 501
+    4:
+      route: 'search'
+      status: 501
+  operator: 'deepStrictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///Users/frye/.copilot/session-state/66c21365-1551-405e-8cc3-73fbfda1f8d6/files/copilot-user-search-workshop/dist/tests/search/search.test.js:53:12)
+    process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    async Test.run (node:internal/test_runner/test:1404:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:969:7)
+  ...
+1..5
+# tests 5
+# suites 0
+# pass 0
+# fail 5
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 86.089084

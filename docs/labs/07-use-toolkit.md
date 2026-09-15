@@ -7,7 +7,7 @@
 
 ## Build it yourself
 
-1. Verify current ref, package source/version and absence of `.github/skills`.
+1. Author `workshop/artifacts/toolkit-checkpoint.md` with readiness checks; verify current ref, package source/version and absence of `.github/skills`.
 2. Select planner and ask: “Use the installed api-change-workflow for the approved search task. Return a plan and stop for approval.”
 3. Inspect relevant repository/scoped rules and actual MCP conventions/validation lookup (or explicitly labeled file fallback).
 4. Human reviews scope, questions and tests; explicitly approves one implementer.
@@ -64,7 +64,7 @@ npm run lab:example -- --step 07-use-toolkit --apply
 
 ```sh
 git show solution-v1:src/api/search.ts
-git diff starter-v1 solution-v1 -- src/api/search.ts tests/search
+git diff starter-v1.1 solution-v1 -- src/api/search.ts tests/search
 ```
 
 - Read-only local inspection; no merge/checkout/import into main. For full validation create a disposable worktree at `solution-v1`, install dependencies there and run `verify:solution`.

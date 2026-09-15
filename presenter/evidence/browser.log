@@ -1,0 +1,12 @@
+
+> copilot-user-search-workshop@1.0.0 test:browser
+> node scripts/browser-tests.mjs
+
+
+Running 3 tests using 1 worker
+
+  ✓  1 tests/browser/tabs.spec.mjs:3:1 › real tabs select, persist, link directly, navigate by keyboard and print all (474ms)
+  ✓  2 tests/browser/tabs.spec.mjs:24:1 › no JavaScript exposes every client instruction, and assets work at repository subpath (161ms)
+  ✓  3 tests/browser/tabs.spec.mjs:37:1 › SPA navigation enhances the next lab once and links with client anchors work (244ms)
+
+  3 passed (1.7s)
