@@ -36,7 +36,9 @@ function fixture(t) {
     'scripts/bootstrap-lab-09.mjs',
     'scripts/make-consumer.mjs',
   ]) write(root, path, read(repository, path));
-  commit(root, 'Integrate Lab 09 bootstrap source');
+  if (git(root, 'status', '--porcelain=v1', '--untracked-files=all').trim()) {
+    commit(root, 'Integrate Lab 09 bootstrap source');
+  }
   git(root, 'switch', '-c', 'participant-work');
   git(root, 'remote', 'remove', 'origin');
   t.after(() => rmSync(parent, { recursive: true, force: true }));
