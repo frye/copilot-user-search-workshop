@@ -19,6 +19,17 @@ npm run lab:example -- --step 03-skill --stage
 npm run lab:example -- --step 03-skill --apply
 ```
 
+To begin specifically at Lab 03 with the reviewed Lab 01–02 prerequisites:
+
+```sh
+npm run lab:03:bootstrap
+```
+
+- This separate, explicitly invoked shortcut creates one local checkpoint commit containing only the imported Lab 01–02 destinations.
+- It requires a learner branch, configured Git identity, no pre-existing staged changes, and conflict-free reviewed destinations.
+- It does not import Lab 00's blank checklist. Run and record Lab 00's actual readiness checks separately.
+- It does not import the Lab 03 skill, switch/merge branches, install, push, or contact a remote.
+
 - Local refs work without origin/network. Fetch checks the existing tag rather than contacting a remote.
 - Missing tag: obtain an owner-reviewed bundle/release. Future network retrieval requires exact `approvedOrigin` in lock plus `--remote origin --approve-network`; it fetches only that tag and checks its commit/manifest.
 - `--workspace author|consumer` must match actual workspace marker; scope cannot be overridden to write the other workspace.
@@ -32,7 +43,7 @@ npm run lab:example -- --step 03-skill --apply
 - Payload-relative links resolve at their declared imported destination, not inside the inert examples directory.
 - Filesystem operations cannot guarantee recovery from power loss/process termination; use one writer, keep Git checkpoints, and inspect a stopped transaction before retrying.
 - LF checkout policy keeps reviewed text hashes portable. On unexpected line-ending conflicts, stage/compare and inspect local Git attributes rather than forcing replacement.
-- The helper never installs a package, invokes a skill, executes imported content, edits user settings, commits, pushes, or touches search code.
+- The per-step `lab:example` helper never installs a package, invokes a skill, executes imported content, edits user settings, commits, pushes, or touches search code. Only the separate `lab:03:bootstrap` command creates its documented local checkpoint commit.
 
 ## If you already changed these files
 

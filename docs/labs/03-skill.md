@@ -5,6 +5,19 @@
 - **Author**, after 02. Create a reusable procedure before packaging it.
 - Canonical source is `.github/skills/api-change-workflow/`, not a copied package directory.
 
+### Starting here with reviewed prerequisites
+
+If you are deliberately starting at Lab 03, the following opt-in shortcut imports the reviewed Lab 01–02 example assets and creates one local checkpoint commit containing only those files:
+
+```sh
+npm run lab:03:bootstrap
+```
+
+- Run it from a learner branch in the author workspace with no staged changes and a configured Git name/email.
+- It verifies the pinned `examples-v1` release, imports through the same conflict-safe helper, and never switches/merges examples, pushes, installs, or imports the Lab 03 skill.
+- It preserves unrelated unstaged work and refuses learner-owned destination conflicts.
+- This supplies example prerequisites only. You must still run and record the real Lab 00 readiness/baseline checks; importing a blank checklist would not prove them.
+
 ## Build it yourself
 
 1. Create `SKILL.md` with `name: api-change-workflow` and a one-line discovery description.
