@@ -1,0 +1,28 @@
+# Build a portable customization toolkit
+
+- Create → load → use → inspect evidence → improve.
+- Three client views share **one complete Markdown source**. Pages adds selectable tabs; plain repository Markdown, no-JavaScript, and print show all steps.
+- [Start and prerequisites](start.md) · [Client support and limits](clients.md) · [Examples / safe recovery](reference/examples.md).
+- Main search is deliberately unfinished; later examples never silently complete it.
+
+## Progressive route
+
+| Lab | Participant deliverable | Workspace |
+| --- | --- | --- |
+| [00 — Start](labs/00-start.md) | Verified starter and actual client/build | Author |
+| [01 — Instructions](labs/01-instructions.md) | Repository/API/test rules and observed scope | Author |
+| [02 — Planning prompt](labs/02-planning-prompt.md) | Reusable planning-only invocation | Author |
+| [03 — Skill](labs/03-skill.md) | On-demand procedure, checklist, revision | Author |
+| [04 — Plugin](labs/04-plugin.md) | Built package, clean sibling, install evidence | Author → consumer |
+| [05 — MCP and update](labs/05-mcp-and-update.md) | Fixture tool call, version 1.1.0 package | Both, explicitly labeled |
+| [06 — Roles](labs/06-agent-roles.md) | Planner, implementer, independent reviewer | Consumer |
+| [07 — Use toolkit](labs/07-use-toolkit.md) | Approved search change + added acceptance test | Consumer |
+| [08 — Review and handoff](labs/08-review-and-handoff.md) | Supported finding and reproducible continuation | Consumer → author extension |
+| [09 — Spec-Kit (unavailable)](labs/09-spec-kit.md) | Honest optional boundary, no fabricated generation | Reference only |
+
+## Checkpoint entry
+
+- To join at Lab 04: read 00–02, author or explicitly import 01, 02, 03, then 04.
+- To join at Lab 07: complete/import author checkpoint 01–05; build the **1.1.0** package; create consumer; install once; configure MCP; load 06. Import 07's readiness checklist—not search.
+- Follow each dependency's preview/apply separately. Checkpoints never overwrite authored equivalents.
+- Every static-only or manual fallback is useful but must not be reported as native runtime completion.

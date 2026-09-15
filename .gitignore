@@ -1,0 +1,14 @@
+node_modules/
+dist/
+docs/.vitepress/cache/
+docs/.vitepress/dist/
+.lab-references/
+.lab-evidence/
+.lab-scratch/
+.author-work/
+toolkit/dist/
+playwright-report/
+test-results/
+.vscode/
+.env
+.DS_Store

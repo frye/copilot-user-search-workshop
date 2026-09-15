@@ -1,0 +1,18 @@
+{
+  "schema": 1,
+  "preparedAt": "2026-09-15",
+  "toolchain": { "node": "24.20.0", "npm": "11.19.0", "typescript": "5.9.3", "mcpSdk": "1.30.0", "zod": "4.5.4", "vitepress": "1.6.4", "playwright": "1.63.0" },
+  "hostInitiallyObserved": { "node": "26.8.1", "npm": "11.19.0" },
+  "rehearsedClientBuilds": [],
+  "sources": "docs/reference/sources.md",
+  "runtimeEvidence": "presenter/evidence/validation.md",
+  "clients": {
+    "vscode": { "status": "prepared-not-rehearsed", "instructions": "native-candidate", "prompt": "native-candidate", "skill": "native-candidate", "plugin": "workspace-chat.pluginLocations", "mcp": "workspace-.vscode/mcp.json", "roles": "verify-tool-identifiers" },
+    "cli": { "status": "prepared-not-rehearsed", "instructions": "native-repository-scoped-fallback", "prompt": "manual-equivalent", "skill": "project-.github/skills", "plugin": "local-path-install", "mcp": "interactive-/mcp", "roles": "verify-tool-identifiers" },
+    "app": { "status": "prepared-not-rehearsed", "instructions": "repository-scoped-fallback", "prompt": "manual-unless-discovery-observed", "skill": "Customize-Skills", "plugin": "CLI-bridge-unverified-not-app-native", "mcp": "Customize-MCP", "roles": "agent-picker-advisory-until-permissions-observed" },
+    "cloud": { "status": "optional-not-rehearsed", "localPlugin": "unavailable-by-assumption", "localMcp": "unavailable-by-assumption" },
+    "mobile": { "status": "optional-view-handoff-only", "localAuthoring": "unavailable", "localPlugin": "unavailable", "localMcp": "unavailable" }
+  },
+  "specKit": { "status": "unavailable-not-generated", "version": null, "generatedArtifacts": [] },
+  "publication": { "status": "local-only", "owner": null, "visibility": null, "pagesAudience": null, "pagesUrl": null }
+}

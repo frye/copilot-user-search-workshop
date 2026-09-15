@@ -1,0 +1,14 @@
+{
+  "steps": [
+    { "id": "00-start", "workspace": "author", "prerequisites": [] },
+    { "id": "01-instructions", "workspace": "author", "prerequisites": ["00-start"] },
+    { "id": "02-planning-prompt", "workspace": "author", "prerequisites": ["01-instructions"] },
+    { "id": "03-skill", "workspace": "author", "prerequisites": ["02-planning-prompt"] },
+    { "id": "04-plugin", "workspace": "author", "prerequisites": ["03-skill"] },
+    { "id": "05-mcp-and-update", "workspace": "author+consumer", "prerequisites": ["04-plugin"] },
+    { "id": "06-agent-roles", "workspace": "consumer", "prerequisites": ["05-mcp-and-update"] },
+    { "id": "07-use-toolkit", "workspace": "consumer", "prerequisites": ["06-agent-roles"] },
+    { "id": "08-review-and-handoff", "workspace": "consumer", "prerequisites": ["07-use-toolkit"] },
+    { "id": "09-spec-kit", "workspace": "consumer", "prerequisites": [], "status": "optional-unavailable" }
+  ]
+}

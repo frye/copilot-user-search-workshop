@@ -1,0 +1,14 @@
+{
+  "source": "standards/api-conventions.json",
+  "version": "1.0.0",
+  "kind": "synthetic-workshop-fixture",
+  "requirements": [
+    "Authoritative contract: workshop/approved-contract.md",
+    "Keep the four archived users and existing endpoints unchanged.",
+    "Search fullName using a trimmed case-insensitive substring; blank matches all.",
+    "Validate singleton q and limit; limit is a decimal string from 1 to 25 with no leading zeros.",
+    "Sort by ordinal user ID before limiting; total counts matches before limiting.",
+    "Log only bounded route labels and status; never names, queries, URLs or payloads.",
+    "Plan first; wait for human approval before implementation. Never publish automatically."
+  ]
+}

@@ -1,0 +1,229 @@
+import { test } from 'node:test';
+import assert from 'node:assert/strict';
+import { mkdirSync, mkdtempSync, rmSync, readFileSync, writeFileSync, existsSync, symlinkSync, appendFileSync } from 'node:fs';
+import { resolve, dirname } from 'node:path';
+import { apply, planStep, stage, release } from '../../scripts/lib/examples.mjs';
+import { packageToolkit, verifyPackage } from '../../scripts/lib/toolkit.mjs';
+import { makeConsumer } from '../../scripts/make-consumer.mjs';
+import { git, hash, json, run, safePath } from '../../scripts/lib/safe.mjs';
+
+const repository = process.cwd();
+const trailer = 'Co-authored-by: Copilot App <223556219+Copilot@users.noreply.github.com>';
+const read = (root, path) => readFileSync(resolve(root, path), 'utf8');
+function write(root, path, data) {
+  mkdirSync(dirname(resolve(root, path)), { recursive: true });
+  writeFileSync(resolve(root, path), data);
+}
+function commit(root, message = 'Checkpoint reviewed example assets') {
+  git(root, 'add', '.');
+  git(root, 'commit', '-q', '-m', message, '-m', trailer);
+}
+function fixture(t) {
+  mkdirSync('.lab-scratch', { recursive: true });
+  const parent = mkdtempSync(resolve('.lab-scratch/helpers with spaces-'));
+  const root = resolve(parent, 'author workspace');
+  git(repository, 'clone', '-q', '--no-local', '--branch', 'main', '--', repository, root);
+  git(root, 'remote', 'remove', 'origin');
+  for (const path of ['workshop/examples-lock.json', 'workshop/starter-lock.json']) write(root, path, read(repository, path));
+  t.after(() => rmSync(parent, { recursive: true }));
+  return root;
+}
+function importStep(root, id, client = 'cli') {
+  const plan = planStep(root, id, undefined, client);
+  const result = apply(plan);
+  commit(root, `Adopt reviewed ${id} fixture`);
+  return result;
+}
+function authorReady(root) {
+  for (const id of ['01-instructions', '02-planning-prompt', '03-skill', '04-plugin']) importStep(root, id);
+}
+
+test('offline source pin, preview, inert stage, safe apply and exact repeat', t => {
+  const root = fixture(t);
+  assert.equal(git(root, 'remote').trim(), '');
+  assert.match(run(process.execPath, [resolve(repository, 'scripts/fetch-examples.mjs')], root), /Verified local/);
+  const before = git(root, 'status', '--porcelain');
+  const plan = planStep(root, '01-instructions');
+  assert.equal(git(root, 'status', '--porcelain'), before);
+  mkdirSync(resolve(root, '.lab-references'));
+  const staged = stage(plan);
+  assert.ok(existsSync(resolve(root, staged, '.github/instructions/api.instructions.md')));
+  assert.ok(!existsSync(resolve(root, '.github/instructions')));
+  assert.throws(() => stage(plan), /exist/);
+  assert.equal(apply(plan).changed, 3);
+  assert.deepEqual(apply(planStep(root, '01-instructions')), { changed: 0, unchanged: 3 });
+  assert.ok(!existsSync(resolve(root, '.github/skills')));
+  assert.match(read(root, 'src/api/search.ts'), /NOT_IMPLEMENTED/);
+});
+
+test('untracked collision, staged/unstaged edits and committed alternatives reject whole step', async t => {
+  for (const mode of ['untracked', 'unstaged', 'staged', 'committed', 'deleted']) {
+    await t.test(mode, t => {
+      const root = fixture(t);
+      if (mode === 'untracked') write(root, '.github/instructions/api.instructions.md', 'learner-owned\n');
+      else if (mode === 'deleted') rmSync(resolve(root, '.github/copilot-instructions.md'));
+      else {
+        appendFileSync(resolve(root, '.github/copilot-instructions.md'), '\nlearner-owned\n');
+        if (mode === 'staged') git(root, 'add', '.github/copilot-instructions.md');
+        if (mode === 'committed') commit(root, 'Preserve learner-authored alternative');
+      }
+      const before = git(root, 'status', '--porcelain');
+      const plan = planStep(root, '01-instructions');
+      assert.ok(plan.entries.some(entry => entry.conflict));
+      assert.throws(() => apply(plan), /preflight failed/);
+      assert.equal(git(root, 'status', '--porcelain'), before);
+      assert.ok(!existsSync(resolve(root, '.github/instructions/tests.instructions.md')));
+    });
+  }
+});
+
+test('untracked matching source is still a collision without an import receipt', t => {
+  const root = fixture(t);
+  const entry = planStep(root, '01-instructions').entries.find(file => file.destination.includes('api.instructions'));
+  write(root, entry.destination, entry.payload);
+  assert.throws(() => apply(planStep(root, '01-instructions')), /preflight failed/);
+});
+
+test('symlink files, symlink ancestors, dangling links and traversal fail closed', async t => {
+  for (const mode of ['file', 'parent', 'dangling']) {
+    await t.test(mode, t => {
+      const root = fixture(t);
+      const other = resolve(dirname(root), 'outside');
+      mkdirSync(other);
+      writeFileSync(resolve(other, 'untouched.md'), 'outside');
+      if (mode === 'file') {
+        rmSync(resolve(root, '.github/copilot-instructions.md'));
+        symlinkSync(resolve(other, 'untouched.md'), resolve(root, '.github/copilot-instructions.md'));
+      } else symlinkSync(mode === 'parent' ? other : resolve(other, 'missing'), resolve(root, '.github/instructions'));
+      assert.throws(() => apply(planStep(root, '01-instructions')), /preflight failed/);
+      assert.equal(readFileSync(resolve(other, 'untouched.md'), 'utf8'), 'outside');
+    });
+  }
+  for (const path of ['../escape', '/absolute', 'C:\\path', '.git/config', 'workshop/../../escape']) {
+    assert.throws(() => safePath(repository, path), /Unsafe/);
+  }
+});
+
+test('source pin, manifest checksum, missing tag, unknown steps and prerequisites are enforced', t => {
+  const root = fixture(t);
+  assert.throws(() => planStep(root, 'search-solution'), /Unknown step/);
+  assert.throws(() => planStep(root, '06-agent-roles', 'consumer'), /author workspace/);
+  assert.throws(() => apply(planStep(root, '03-skill')), /preflight failed/);
+  const lock = json(resolve(root, 'workshop/examples-lock.json'));
+  write(root, 'workshop/examples-lock.json', JSON.stringify({ ...lock, commit: '0'.repeat(40) }));
+  assert.throws(() => release(root), /Stale or moved/);
+  write(root, 'workshop/examples-lock.json', JSON.stringify({ ...lock, manifestSha256: '0'.repeat(64) }));
+  assert.throws(() => release(root), /manifest hash/);
+  write(root, 'workshop/examples-lock.json', JSON.stringify({ ...lock, tag: 'examples-v999-missing' }));
+  assert.throws(() => release(root), /Missing/);
+  assert.throws(() => run(process.execPath, [resolve(repository, 'scripts/fetch-examples.mjs')], root), /No network attempted/);
+});
+
+test('recheck catches a concurrent edit; injected I/O failure rolls back all earlier writes', t => {
+  const root = fixture(t);
+  const original = read(root, '.github/copilot-instructions.md');
+  const plan = planStep(root, '01-instructions');
+  assert.throws(() => apply(plan, { afterWrite(count) { if (count === 2) throw new Error('Injected I/O failure'); } }), /all written payloads rolled back/);
+  assert.equal(read(root, '.github/copilot-instructions.md'), original);
+  assert.ok(!existsSync(resolve(root, '.github/instructions')));
+  assert.throws(() => apply(planStep(root, '01-instructions'), {
+    beforeWrite() { appendFileSync(resolve(root, '.github/copilot-instructions.md'), '\nconcurrent learner edit'); },
+  }), /changed since preview/);
+  assert.match(read(root, '.github/copilot-instructions.md'), /concurrent learner edit/);
+  assert.ok(!existsSync(resolve(root, '.github/instructions')));
+});
+
+test('all source payload hashes, client groups and generated dependency maps agree', t => {
+  const { manifest, lock } = release(repository);
+  for (const step of manifest.steps) {
+    assert.ok(step.explanation && Array.isArray(step.prerequisiteSteps));
+    assert.ok(step.files.length > 0);
+    for (const file of step.files) {
+      const raw = git(repository, 'show', `${lock.commit}:${file.source}`);
+      assert.equal(hash(raw), file.sha256, file.source);
+      assert.ok(!file.destination.startsWith('src/'));
+      assert.ok(!file.source.includes('/solutions/'));
+    }
+  }
+  const map = json(resolve(repository, 'presenter/checkpoint-map.json'));
+  assert.equal(map.examplesTag, lock.tag);
+  assert.deepEqual(map.checkpoints.at(-1).steps, manifest.steps.filter(step => step.id !== '09-spec-kit').map(step => step.id));
+});
+
+test('canonical packaging has schema, exact provenance, immutable versions and no hidden executable', t => {
+  const root = fixture(t);
+  authorReady(root);
+  const first = packageToolkit(root);
+  assert.equal(first.version, '1.0.0');
+  assert.equal(first.sourceDirty, false);
+  assert.equal(verifyPackage(resolve(root, first.output)).sourceChecksum, first.sourceChecksum);
+  assert.equal(packageToolkit(root).unchanged, true);
+  appendFileSync(resolve(root, '.github/skills/api-change-workflow/references/review-checklist.md'), '\n- Learner improvement.\n');
+  assert.throws(() => packageToolkit(root), /Version already built/);
+  rmSync(resolve(root, '.github/skills/api-change-workflow/references/review-checklist.md'));
+  assert.throws(() => packageToolkit(root), /allowlist/);
+});
+
+test('package rejects invalid manifest, missing references, extra files, links and output tampering', t => {
+  const root = fixture(t);
+  authorReady(root);
+  const manifest = json(resolve(root, 'toolkit/plugin.json'));
+  write(root, 'toolkit/plugin.json', JSON.stringify({ ...manifest, hooks: {} }));
+  assert.throws(() => packageToolkit(root), /schema/);
+  write(root, 'toolkit/plugin.json', JSON.stringify(manifest));
+  write(root, '.github/skills/api-change-workflow/run.sh', 'echo nope');
+  assert.throws(() => packageToolkit(root), /allowlist/);
+  rmSync(resolve(root, '.github/skills/api-change-workflow/run.sh'));
+  const packaged = packageToolkit(root);
+  appendFileSync(resolve(root, packaged.output, 'skills/api-change-workflow/SKILL.md'), '\ntampered');
+  assert.throws(() => packageToolkit(root), /checksum mismatch/);
+});
+
+test('clean sibling consumer preserves guidance, excludes skill/config/secrets, supports all client steps and update', t => {
+  const root = fixture(t);
+  authorReady(root);
+  appendFileSync(resolve(root, '.github/copilot-instructions.md'), '\n- Learner personal rule retained.\n');
+  write(root, '.env', 'SYNTHETIC_TEST_ONLY=never-copy\n');
+  write(root, 'client-configs/private.json', '{"synthetic":true}');
+  const v1 = packageToolkit(root);
+  assert.throws(() => makeConsumer(root, './nested-consumer'), /sibling/);
+  assert.throws(() => makeConsumer(root, '.'), /sibling/);
+  const result = makeConsumer(root, '../consumer workspace');
+  const consumer = result.destination;
+  assert.equal(result.installed, false);
+  assert.ok(result.localSkillAbsent);
+  assert.ok(!existsSync(resolve(consumer, '.github/skills')));
+  assert.ok(!existsSync(resolve(consumer, '.env')));
+  assert.ok(!existsSync(resolve(consumer, 'toolkit/dist')));
+  assert.ok(!existsSync(resolve(consumer, 'client-configs/private.json')));
+  assert.equal(read(consumer, '.github/copilot-instructions.md'), read(root, '.github/copilot-instructions.md'));
+  assert.equal(read(consumer, '.github/prompts/plan-api-change.prompt.md'), read(root, '.github/prompts/plan-api-change.prompt.md'));
+  assert.equal(git(consumer, 'remote').trim(), '');
+  assert.match(read(consumer, 'src/api/search.ts'), /NOT_IMPLEMENTED/);
+  assert.throws(() => makeConsumer(root, '../consumer workspace'), /already exists/);
+  importStep(root, '05-mcp-and-update');
+  const v2 = packageToolkit(root);
+  assert.equal(v2.version, '1.1.0');
+  assert.notEqual(v2.sourceChecksum, v1.sourceChecksum);
+  assert.ok(existsSync(resolve(root, v1.output)));
+  for (const client of ['cli', 'vscode', 'app']) {
+    const plan = planStep(consumer, '05-mcp-and-update', 'consumer', client);
+    assert.equal(plan.entries.length, 1);
+    apply(plan);
+  }
+  commit(consumer);
+  importStep(consumer, '06-agent-roles', 'cli');
+  for (const client of ['vscode', 'app']) {
+    const plan = planStep(consumer, '06-agent-roles', 'consumer', client);
+    assert.equal(plan.entries.length, 3);
+    // Different-client roles cannot overwrite existing reviewed roles.
+    assert.ok(plan.entries.some(entry => entry.conflict));
+  }
+  importStep(consumer, '07-use-toolkit');
+  importStep(consumer, '08-review-and-handoff');
+  importStep(consumer, '09-spec-kit');
+  assert.match(run(process.execPath, ['workshop/artifacts/review/probe.mjs'], consumer), /DELIBERATE DEFECT DETECTED/);
+  assert.ok(!existsSync(resolve(consumer, '.github/skills')));
+  assert.match(read(consumer, 'src/api/search.ts'), /NOT_IMPLEMENTED/);
+  assert.throws(() => makeConsumer(consumer, '../another'), /author workspace/);
+});

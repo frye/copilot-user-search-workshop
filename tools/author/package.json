@@ -1,0 +1,6 @@
+{
+  "name": "workshop-author-runtime",
+  "private": true,
+  "description": "Optional repository-local author validation runtime. Not a participant prerequisite.",
+  "dependencies": { "node": "24.20.0", "npm": "11.19.0" }
+}

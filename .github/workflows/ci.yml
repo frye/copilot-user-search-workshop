@@ -1,0 +1,38 @@
+name: Workshop checks
+on:
+  push:
+    branches: [main, solution]
+  pull_request:
+    branches: [main, solution]
+  workflow_dispatch:
+    inputs:
+      track:
+        description: Explicit completion check (main stays the starter)
+        type: choice
+        options: [baseline, solution]
+        default: baseline
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
+        with:
+          node-version: 24.20.0
+          cache: npm
+      - run: npm install --global npm@11.19.0
+      - run: npm ci
+      - name: Starter check
+        if: ${{ (github.event_name == 'workflow_dispatch' && inputs.track == 'baseline') || (github.event_name != 'workflow_dispatch' && github.ref_name != 'solution' && github.base_ref != 'solution') }}
+        run: npm run verify:baseline
+      - name: Real completion check
+        if: ${{ (github.event_name == 'workflow_dispatch' && inputs.track == 'solution') || (github.event_name != 'workflow_dispatch' && (github.ref_name == 'solution' || github.base_ref == 'solution')) }}
+        run: npm run verify:solution
+      - run: npx playwright install-deps chromium
+      - run: npm run browser:install
+      - run: npm run test:browser

@@ -1,0 +1,12 @@
+[data-client-tabs] { border: 1px solid var(--vp-c-divider); border-radius: 8px; padding: 1rem; margin: 1rem 0; }
+[role="tablist"] { display: flex; flex-wrap: wrap; gap: .4rem; border-bottom: 1px solid var(--vp-c-divider); padding-bottom: .6rem; }
+[role="tab"] { padding: .55rem .9rem; border: 1px solid var(--vp-c-divider); border-radius: .4rem; font-weight: 600; }
+[role="tab"][aria-selected="true"] { color: var(--vp-c-brand-1); border-color: var(--vp-c-brand-1); text-decoration: underline; text-underline-offset: .3em; }
+[role="tab"]:focus-visible, [role="tabpanel"]:focus-visible { outline: 3px solid var(--vp-c-brand-1); outline-offset: 3px; }
+[role="tabpanel"][hidden] { display: none; }
+@media print {
+  [role="tablist"] { display: none !important; }
+  [role="tabpanel"][hidden] { display: block !important; }
+  [data-client-tabs] { border: 0; padding: 0; }
+  .VPNav, .VPSidebar, .VPLocalNav, .VPDocAside { display: none !important; }
+}

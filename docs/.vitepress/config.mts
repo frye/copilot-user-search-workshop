@@ -1,0 +1,49 @@
+import { defineConfig } from 'vitepress';
+
+const base = process.env.WORKSHOP_BASE ?? '/copilot-user-search-workshop/';
+const source = process.env.WORKSHOP_SOURCE_URL;
+if (!base.startsWith('/') || !base.endsWith('/')) throw new Error('WORKSHOP_BASE must start/end with /.');
+if (source && !/^https:\/\/github\.com\/[A-Za-z0-9_.-]+\/[A-Za-z0-9_.-]+$/.test(source)) throw new Error('WORKSHOP_SOURCE_URL must be an approved GitHub repository URL.');
+
+export default defineConfig({
+  title: 'Copilot customization workshop',
+  description: 'Author, test, package, install, update and use a portable API-change toolkit.',
+  base,
+  cleanUrls: false,
+  lastUpdated: false,
+  markdown: {
+    config(md) {
+      md.core.ruler.after('inline', 'repository-example-links', state => {
+        for (const block of state.tokens) {
+          for (const token of block.children ?? []) {
+            if (token.type !== 'link_open') continue;
+            const href = token.attrGet('href');
+            if (href?.startsWith('../../../../tree/examples/')) {
+              token.attrSet('href', source ? `${source}/${href.slice('../../../../'.length)}` : '/reference/examples.html#not-published');
+            }
+          }
+        }
+      });
+    },
+  },
+  themeConfig: {
+    nav: [{ text: 'Start', link: '/start' }, { text: 'Clients', link: '/clients' }, { text: 'Contract', link: '/reference/contract' }],
+    sidebar: [
+      { text: 'Workshop', items: [{ text: 'Overview', link: '/' }, { text: 'Start', link: '/start' }] },
+      { text: 'Labs', items: [
+        ['00 — Start', '00-start'], ['01 — Instructions', '01-instructions'],
+        ['02 — Prompt', '02-planning-prompt'], ['03 — Skill', '03-skill'],
+        ['04 — Plugin', '04-plugin'], ['05 — MCP/update', '05-mcp-and-update'],
+        ['06 — Roles', '06-agent-roles'], ['07 — Capstone', '07-use-toolkit'],
+        ['08 — Review/handoff', '08-review-and-handoff'], ['09 — Optional unavailable', '09-spec-kit'],
+      ].map(([text, slug]) => ({ text, link: `/labs/${slug}` })) },
+      { text: 'Reference', items: [
+        { text: 'Examples / recovery', link: '/reference/examples' },
+        { text: 'Plugin lifecycle', link: '/reference/plugin' },
+        { text: 'MCP', link: '/reference/mcp' },
+        { text: 'Sources', link: '/reference/sources' },
+        { text: 'Publication gates', link: '/reference/publication' },
+      ] },
+    ],
+  },
+});

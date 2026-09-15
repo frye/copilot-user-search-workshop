@@ -1,0 +1,43 @@
+{
+  "name": "copilot-user-search-workshop",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "engines": { "node": "24.20.x", "npm": "11.19.x" },
+  "packageManager": "npm@11.19.0",
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/src/api/main.js",
+    "test": "npm run build && node --test dist/tests/baseline/*.test.js dist/tests/mcp/*.test.js",
+    "test:stub": "node --test dist/tests/starter/*.test.js",
+    "test:search": "npm run build && node --test dist/tests/search/*.test.js",
+    "test:helpers": "node --test tests/helpers/*.test.mjs",
+    "test:docs": "node --test tests/docs/*.test.mjs",
+    "test:browser": "node scripts/browser-tests.mjs",
+    "browser:install": "node scripts/browser-tests.mjs --install",
+    "verify:baseline": "npm test && npm run test:stub && npm run test:helpers && npm run verify:assets && npm run test:docs && npm run docs:build",
+    "verify:solution": "npm test && npm run test:search && npm run test:helpers && npm run verify:assets && npm run test:docs && npm run docs:build",
+    "verify:exercise": "node scripts/validate-assets.mjs --exercise",
+    "verify:assets": "node scripts/validate-assets.mjs",
+    "preflight": "node scripts/preflight.mjs",
+    "mcp": "node dist/src/standards-mcp/main.js",
+    "lab:examples:fetch": "node scripts/fetch-examples.mjs",
+    "lab:example": "node scripts/import-example.mjs",
+    "toolkit:build": "node scripts/package-toolkit.mjs",
+    "consumer:create": "node scripts/make-consumer.mjs",
+    "docs:dev": "vitepress docs --host 127.0.0.1",
+    "docs:build": "vitepress build docs",
+    "docs:preview": "vitepress preview docs --host 127.0.0.1"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "1.30.0",
+    "zod": "4.5.4"
+  },
+  "devDependencies": {
+    "@playwright/test": "1.63.0",
+    "@types/node": "24.13.3",
+    "ajv": "8.17.1",
+    "typescript": "5.9.3",
+    "vitepress": "1.6.4"
+  }
+}

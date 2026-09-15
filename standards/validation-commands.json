@@ -1,0 +1,12 @@
+{
+  "source": "standards/validation-commands.json",
+  "version": "1.0.0",
+  "kind": "synthetic-workshop-fixture",
+  "commands": {
+    "starter": "npm run verify:baseline",
+    "regression": "npm test",
+    "acceptance": "npm run test:search",
+    "solution": "npm run verify:solution",
+    "customizations": "npm run verify:exercise -- --step 03-skill"
+  }
+}

@@ -1,0 +1,69 @@
+# 05 — Connect MCP and update the installed procedure
+
+## Goal and starting workspace
+
+- **Consumer:** unfinished app plus installed 1.0.0 package from 04.
+- **Author:** canonical skill and package source. Do not edit a packaged copy or add local skill to consumer.
+- Demonstrate a real tool result and a changed installed procedure—not just a JSON config.
+
+## Build it yourself
+
+1. Consumer: inspect `src/standards-mcp`, both fixture JSON files, and exact two-tool allowlist; run `npm run build` and `npm test`.
+2. Configure MCP separately using your client below. Call `get_api_conventions` and `get_validation_commands` with `{}`; retain source/version and returned requirements.
+3. Author: update skill to use those tools when available; explicitly label local standards-file fallback when unavailable.
+4. Bump manifest to `1.1.0`, update catalog, rebuild immutable package.
+5. Consumer: replace only previous lab registration, reload and prove 1.1.0 is active. Invoke updated procedure; record actual tool use or fallback.
+
+## Inspect the example
+
+- [Browse examples branch](../../../../tree/examples/examples/steps/05-mcp-and-update/).
+- Two explicit groups: updated skill/checklist/metadata in author, inert client-specific MCP setup in consumer.
+
+## Bring in this step
+
+```sh
+# AUTHOR
+npm run lab:example -- --step 05-mcp-and-update --workspace author --preview
+npm run lab:example -- --step 05-mcp-and-update --workspace author --stage
+npm run lab:example -- --step 05-mcp-and-update --workspace author --apply
+npm run toolkit:build
+# CONSUMER — choose the actual client (cli, vscode, or app)
+npm run lab:example -- --step 05-mcp-and-update --workspace consumer --client cli --preview
+npm run lab:example -- --step 05-mcp-and-update --workspace consumer --client cli --stage
+npm run lab:example -- --step 05-mcp-and-update --workspace consumer --client cli --apply
+```
+
+- Application refuses wrong workspace. Other client groups use exactly `--client vscode` or `--client app`; no undocumented step substitution.
+
+## If you already changed these files
+
+- Commit clean known sample prerequisites before a sample update. Personalized skill/metadata blocks overwrite even when committed.
+- Stage references and merge the tool/fallback behavior into your authored skill; retain your improvements.
+- Existing MCP settings must be merged manually, never replaced. [Recovery](../reference/examples.md).
+
+## Client steps
+
+### VS Code
+
+- Use consumer sample `--client vscode`; inspect `client-configs/vscode.mcp.json`, then merge its `servers.workshop-standards` entry into workspace `.vscode/mcp.json`.
+- Start/trust only this server using native MCP controls; inspect tools and call both.
+- Change workspace plugin registration from 1.0.0 path to 1.1.0 path, reload, inspect source/version, then invoke updated skill. [Exact shapes](../reference/mcp.md).
+
+### Copilot CLI
+
+- Use `--client cli`; inspect `client-configs/cli-mcp.md`. Interactive `/mcp` adds `node` with the absolute consumer server entry path as one argument.
+- Inspect/approve the actual two tools; call them. Never give the fixture server arbitrary execution input.
+- Use the [local-package reinstall route](../reference/plugin.md), then `copilot plugin list --json`, `/skills reload`, `/skills info`, and reinvoke.
+
+### Copilot app
+
+- Use `--client app`; inspect `client-configs/app-mcp.md`. In Customize MCP, configure the same process with an absolute consumer path.
+- Verify tools and actual calls in this app build. If blocked, use CLI/VS Code or clearly label file fallback.
+- Update via the CLI bridge, refresh consumer session, inspect 1.1.0 in app; bridge loading remains unverified until observed.
+
+## Verify the result
+
+- In each workspace: `npm run verify:exercise -- --step 05-mcp-and-update` (client payload selection also supported by validator).
+- Consumer: `npm test`; retain real tool result, source/version, updated package provenance and invocation.
+- Recovery: rebuild before MCP restart; malformed fixture fails closed. Roll back only the lab package to the prior immutable directory if needed.
+- Next: [06 — Roles](06-agent-roles.md).
