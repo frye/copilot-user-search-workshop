@@ -1,0 +1,68 @@
+{
+  "sourceExamples": {
+    "tag": "examples-v1",
+    "commit": "df1328a4c1b9de89bdba5854a75f55fc42ba872d",
+    "manifestSha256": "38126d4cfc6ed3e53eb8cdeec3c3e2962fb92ae7ffdebceef963ee6f8b16e952",
+    "approvedOrigin": null
+  },
+  "versions": [
+    {
+      "output": "toolkit/dist/user-search-toolkit-1.0.0",
+      "schema": 1,
+      "name": "user-search-toolkit",
+      "version": "1.0.0",
+      "sourceCommit": "54c5bba8ca3baf75f8db199bd53ebc6bcb825376",
+      "sourceDirty": false,
+      "sourceChecksum": "dd7f2ec32a6dd1dd614788d33cef6709e4776ba43b97620d730ed51f386f23d7",
+      "files": [
+        {
+          "source": "toolkit/plugin.json",
+          "destination": "plugin.json",
+          "sha256": "1d161f4e8e05dff078fb792314cff389870b5d9c2e8447b33e89ae2a4bbd645d"
+        },
+        {
+          "source": ".github/skills/api-change-workflow/SKILL.md",
+          "destination": "skills/api-change-workflow/SKILL.md",
+          "sha256": "365d9aa7bb9f132a7d962adb61f1b22ccc31027fbf9bf8464476b6e6b9947498"
+        },
+        {
+          "source": ".github/skills/api-change-workflow/references/review-checklist.md",
+          "destination": "skills/api-change-workflow/references/review-checklist.md",
+          "sha256": "19184e68555013e396e4aca1bacf08316a9e2343871a7f8d2fc0085eebc64a5e"
+        }
+      ],
+      "unchanged": false
+    },
+    {
+      "output": "toolkit/dist/user-search-toolkit-1.1.0",
+      "schema": 1,
+      "name": "user-search-toolkit",
+      "version": "1.1.0",
+      "sourceCommit": "96f382d032452a95894e8bbaebdadccb44dabfa6",
+      "sourceDirty": false,
+      "sourceChecksum": "37974aea4448ea9615bdf6ff31bf9be137eca12fbc88e264d4d1b202df8cf52a",
+      "files": [
+        {
+          "source": "toolkit/plugin.json",
+          "destination": "plugin.json",
+          "sha256": "aed1fdf73aa405e4b14cf206bb1343f3cdb4d10f527328370f35899daf47ef34"
+        },
+        {
+          "source": ".github/skills/api-change-workflow/SKILL.md",
+          "destination": "skills/api-change-workflow/SKILL.md",
+          "sha256": "704a1cdc94acc7614c5c8fc3b13f364d76ea3851eedac4d7ce8a9cbd90e61f3b"
+        },
+        {
+          "source": ".github/skills/api-change-workflow/references/review-checklist.md",
+          "destination": "skills/api-change-workflow/references/review-checklist.md",
+          "sha256": "00f29d16e7e4c1c2abdda03b517eff37924e2553d10eb46a493045cbb8a7f2ea"
+        }
+      ],
+      "unchanged": false
+    }
+  ],
+  "consumerLocalSkillAbsent": true,
+  "inheritedGuidancePreserved": true,
+  "installedInCopilot": false,
+  "note": "Built/validated in disposable author/consumer workspaces. Source commits name those local rehearsal checkpoints; exact reproducible bytes are pinned by examples sources and source checksums. No client registration/loading was performed."
+}

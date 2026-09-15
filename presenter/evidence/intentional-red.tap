@@ -2,7 +2,7 @@ TAP version 13
 # Subtest: anchor: search route wins over get-by-id; total is before limit
 not ok 1 - anchor: search route wins over get-by-id; total is before limit
   ---
-  duration_ms: 13.208208
+  duration_ms: 14.464417
   type: 'test'
   location: '/Users/frye/.copilot/session-state/66c21365-1551-405e-8cc3-73fbfda1f8d6/files/copilot-user-search-workshop/dist/tests/search/search.test.js:8:1'
   failureType: 'testCodeFailure'
@@ -25,7 +25,7 @@ not ok 1 - anchor: search route wins over get-by-id; total is before limit
 # Subtest: trimmed case-insensitive substring and empty/default queries
 not ok 2 - trimmed case-insensitive substring and empty/default queries
   ---
-  duration_ms: 4.596583
+  duration_ms: 4.553667
   type: 'test'
   location: '/Users/frye/.copilot/session-state/66c21365-1551-405e-8cc3-73fbfda1f8d6/files/copilot-user-search-workshop/dist/tests/search/search.test.js:14:1'
   failureType: 'testCodeFailure'
@@ -48,7 +48,7 @@ not ok 2 - trimmed case-insensitive substring and empty/default queries
 # Subtest: all valid integer limits including boundaries
 not ok 3 - all valid integer limits including boundaries
   ---
-  duration_ms: 1.473875
+  duration_ms: 1.44375
   type: 'test'
   location: '/Users/frye/.copilot/session-state/66c21365-1551-405e-8cc3-73fbfda1f8d6/files/copilot-user-search-workshop/dist/tests/search/search.test.js:26:1'
   failureType: 'testCodeFailure'
@@ -71,7 +71,7 @@ not ok 3 - all valid integer limits including boundaries
 # Subtest: reject invalid decimal syntax and repeated parameters with exact envelope
 not ok 4 - reject invalid decimal syntax and repeated parameters with exact envelope
   ---
-  duration_ms: 2.098583
+  duration_ms: 1.861417
   type: 'test'
   location: '/Users/frye/.copilot/session-state/66c21365-1551-405e-8cc3-73fbfda1f8d6/files/copilot-user-search-workshop/dist/tests/search/search.test.js:34:1'
   failureType: 'testCodeFailure'
@@ -94,7 +94,7 @@ not ok 4 - reject invalid decimal syntax and repeated parameters with exact enve
 # Subtest: repeatable results never mutate fixture and never log query, names or payloads
 not ok 5 - repeatable results never mutate fixture and never log query, names or payloads
   ---
-  duration_ms: 8.277583
+  duration_ms: 9.087
   type: 'test'
   location: '/Users/frye/.copilot/session-state/66c21365-1551-405e-8cc3-73fbfda1f8d6/files/copilot-user-search-workshop/dist/tests/search/search.test.js:45:1'
   failureType: 'testCodeFailure'
@@ -179,4 +179,4 @@ not ok 5 - repeatable results never mutate fixture and never log query, names or
 # cancelled 0
 # skipped 0
 # todo 0
-# duration_ms 86.089084
+# duration_ms 91.885666

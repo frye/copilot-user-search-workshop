@@ -10,14 +10,14 @@
 > copilot-user-search-workshop@1.0.0 build
 > tsc
 
-✔ health, archived list order and get remain stable (29.963875ms)
-✔ unknown routes and unsupported methods have exact error envelope (8.6145ms)
-✔ fixtures are frozen; logs expose only bounded route and status (2.090083ms)
-✔ real stdio initialize, exact list, both calls, strict inputs and clean close (107.575166ms)
+✔ health, archived list order and get remain stable (36.806875ms)
+✔ unknown routes and unsupported methods have exact error envelope (9.914292ms)
+✔ fixtures are frozen; logs expose only bounded route and status (3.48825ms)
+✔ real stdio initialize, exact list, both calls, strict inputs and clean close (419.351542ms)
 Fixture unavailable or invalid: api-conventions.json
 Fixture unavailable or invalid: api-conventions.json
 Fixture unavailable or invalid: api-conventions.json
-✔ missing and malformed fixtures fail closed, never returned as valid standards (13.724917ms)
+✔ missing and malformed fixtures fail closed, never returned as valid standards (14.995708ms)
 ℹ tests 5
 ℹ suites 0
 ℹ pass 5
@@ -25,12 +25,12 @@ Fixture unavailable or invalid: api-conventions.json
 ℹ cancelled 0
 ℹ skipped 0
 ℹ todo 0
-ℹ duration_ms 1137.849958
+ℹ duration_ms 655.647583
 
 > copilot-user-search-workshop@1.0.0 test:stub
 > node --test dist/tests/starter/*.test.js
 
-✔ starter search is deliberately unimplemented, including invalid queries (16.7995ms)
+✔ starter search is deliberately unimplemented, including invalid queries (24.055792ms)
 ℹ tests 1
 ℹ suites 0
 ℹ pass 1
@@ -38,36 +38,36 @@ Fixture unavailable or invalid: api-conventions.json
 ℹ cancelled 0
 ℹ skipped 0
 ℹ todo 0
-ℹ duration_ms 77.588917
+ℹ duration_ms 128.628375
 
 > copilot-user-search-workshop@1.0.0 test:helpers
 > node --test tests/helpers/*.test.mjs
 
-✔ offline source pin, preview, inert stage, safe apply and exact repeat (1036.342375ms)
+✔ offline source pin, preview, inert stage, safe apply and exact repeat (4456.493291ms)
 ▶ untracked collision, staged/unstaged edits and committed alternatives reject whole step
-  ✔ untracked (398.705916ms)
-  ✔ unstaged (648.451708ms)
-  ✔ staged (1398.269875ms)
-  ✔ committed (582.755917ms)
-  ✔ deleted (927.737542ms)
-✔ untracked collision, staged/unstaged edits and committed alternatives reject whole step (3956.498834ms)
-✔ untracked matching source is still a collision without an import receipt (419.86925ms)
+  ✔ untracked (1399.271417ms)
+  ✔ unstaged (1048.167792ms)
+  ✔ staged (1491.999167ms)
+  ✔ committed (1097.02275ms)
+  ✔ deleted (928.99875ms)
+✔ untracked collision, staged/unstaged edits and committed alternatives reject whole step (5966.126583ms)
+✔ untracked matching source is still a collision without an import receipt (1819.806292ms)
 ▶ symlink files, symlink ancestors, dangling links and traversal fail closed
-  ✔ file (321.875ms)
-  ✔ parent (275.526042ms)
-  ✔ dangling (684.893583ms)
-✔ symlink files, symlink ancestors, dangling links and traversal fail closed (1282.909167ms)
-✔ source pin, manifest checksum, missing tag, unknown steps and prerequisites are enforced (423.327625ms)
-✔ recheck catches a concurrent edit; injected I/O failure rolls back all earlier writes (1402.51775ms)
-✔ all source payload hashes, client groups and generated dependency maps agree (306.446583ms)
-✔ canonical packaging has schema, exact provenance, immutable versions and no hidden executable (1720.440834ms)
-✔ package rejects invalid manifest, missing references, extra files, links and output tampering (2182.515959ms)
-✔ clean sibling consumer preserves guidance, excludes skill/config/secrets, supports all client steps and update (6485.358ms)
+  ✔ file (661.035292ms)
+  ✔ parent (890.968875ms)
+  ✔ dangling (895.9465ms)
+✔ symlink files, symlink ancestors, dangling links and traversal fail closed (2448.497208ms)
+✔ source pin, manifest checksum, missing tag, unknown steps and prerequisites are enforced (1016.156375ms)
+✔ recheck catches a concurrent edit; injected I/O failure rolls back all earlier writes (2047.697541ms)
+✔ all source payload hashes, client groups and generated dependency maps agree (603.543209ms)
+✔ canonical packaging has schema, exact provenance, immutable versions and no hidden executable (6742.201959ms)
+✔ package rejects invalid manifest, missing references, extra files, links and output tampering (4153.971958ms)
+✔ clean sibling consumer preserves guidance, excludes skill/config/secrets, supports all client steps and update (12048.611209ms)
 ▶ each client role payload applies in a fresh consumer without later-step or search activation
-  ✔ vscode (2601.965375ms)
-  ✔ app (2813.739125ms)
-✔ each client role payload applies in a fresh consumer without later-step or search activation (5416.008125ms)
-✔ exercise validation accepts complete authored routes and rejects invalid scopes, unsafe roles and duplicate consumer skill (10571.292916ms)
+  ✔ vscode (5843.76075ms)
+  ✔ app (5757.106625ms)
+✔ each client role payload applies in a fresh consumer without later-step or search activation (11601.187916ms)
+✔ exercise validation accepts complete authored routes and rejects invalid scopes, unsafe roles and duplicate consumer skill (26789.636625ms)
 ℹ tests 22
 ℹ suites 0
 ℹ pass 22
@@ -75,7 +75,7 @@ Fixture unavailable or invalid: api-conventions.json
 ℹ cancelled 0
 ℹ skipped 0
 ℹ todo 0
-ℹ duration_ms 35267.244083
+ℹ duration_ms 79860.401834
 
 > copilot-user-search-workshop@1.0.0 verify:assets
 > node scripts/validate-assets.mjs
@@ -85,8 +85,8 @@ Release metadata and 10 step mappings valid: examples-v1 df1328a4c1b9de89bdba585
 > copilot-user-search-workshop@1.0.0 test:docs
 > node --test tests/docs/*.test.mjs
 
-✔ canonical Markdown has real local links, complete lab routes and plain client headings (8.508417ms)
-✔ toolchain, intentional-red routing and no active complete starter assets are explicit (0.427916ms)
+✔ canonical Markdown has real local links, complete lab routes and plain client headings (11.830208ms)
+✔ toolchain, intentional-red routing and no active complete starter assets are explicit (0.728792ms)
 ℹ tests 2
 ℹ suites 0
 ℹ pass 2
@@ -94,7 +94,7 @@ Release metadata and 10 step mappings valid: examples-v1 df1328a4c1b9de89bdba585
 ℹ cancelled 0
 ℹ skipped 0
 ℹ todo 0
-ℹ duration_ms 48.01075
+ℹ duration_ms 57.663958
 
 > copilot-user-search-workshop@1.0.0 docs:build
 > vitepress build docs
@@ -106,4 +106,4 @@ Release metadata and 10 step mappings valid: examples-v1 df1328a4c1b9de89bdba585
 [32m✓[0m building client + server bundles...
 - rendering pages...
 [32m✓[0m rendering pages...
-build complete in 1.62s.
+build complete in 2.69s.

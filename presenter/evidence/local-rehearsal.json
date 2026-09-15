@@ -1,0 +1,1188 @@
+[
+  {
+    "workspace": "author",
+    "command": [
+      "node24",
+      "npm-cli.js",
+      "ci"
+    ],
+    "exit": 0,
+    "stdout": "\nadded 226 packages in 5s\n",
+    "stderr": "npm warn install-scripts 2 packages have install scripts not yet covered by allowScripts:\nnpm warn install-scripts   esbuild@0.21.5 (postinstall: node install.js)\nnpm warn install-scripts   fsevents@2.3.3 (install: (install scripts present))\nnpm warn install-scripts\nnpm warn install-scripts Run `npm install-scripts ls` to review, or `npm install-scripts approve <pkg>` to allow.\n"
+  },
+  {
+    "workspace": "author",
+    "command": [
+      "node24",
+      "npm-cli.js",
+      "run",
+      "preflight"
+    ],
+    "exit": 0,
+    "stdout": "\n> copilot-user-search-workshop@1.0.0 preflight\n> node scripts/preflight.mjs\n\n{\n  \"node\": \"v24.20.0\",\n  \"npm\": \"11.19.0\",\n  \"expected\": {\n    \"node\": \"v24.20.0\",\n    \"npm\": \"11.19.0\"\n  },\n  \"toolchainMatches\": true,\n  \"workspace\": \"author\",\n  \"ref\": \"70ba7876eb7308aee3eff0813e05ed8e5ba90f4c\",\n  \"branch\": \"workshop-author\",\n  \"localSkillPresent\": false,\n  \"observedClients\": [],\n  \"manualChecks\": [\n    \"Record actual VS Code/CLI/app build and managed-policy restrictions.\",\n    \"Inspect skill/plugin names for user/global conflicts; do not disable unrelated customizations.\",\n    \"Confirm active workspace, discoverability, invocation and source/version in the real client.\",\n    \"Inspect tool permission IDs in this build. Static validation does not prove runtime loading.\",\n    \"Consumer must have no local shared skill or duplicate package registration.\"\n  ]\n}\n",
+    "stderr": ""
+  },
+  {
+    "workspace": "author",
+    "command": [
+      "node24",
+      "npm-cli.js",
+      "run",
+      "lab:examples:fetch"
+    ],
+    "exit": 0,
+    "stdout": "\n> copilot-user-search-workshop@1.0.0 lab:examples:fetch\n> node scripts/fetch-examples.mjs\n\nVerified local examples-v1 df1328a4c1b9de89bdba5854a75f55fc42ba872d. No branch switch, merge, installation or execution.\n",
+    "stderr": ""
+  },
+  {
+    "workspace": "author",
+    "command": [
+      "node24",
+      "npm-cli.js",
+      "run",
+      "lab:example",
+      "--",
+      "--step",
+      "00-start",
+      "--client",
+      "cli",
+      "--preview"
+    ],
+    "exit": 0,
+    "stdout": "\n> copilot-user-search-workshop@1.0.0 lab:example\n> node scripts/import-example.mjs --step 00-start --client cli --preview\n\n{\n  \"source\": {\n    \"tag\": \"examples-v1\",\n    \"commit\": \"df1328a4c1b9de89bdba5854a75f55fc42ba872d\"\n  },\n  \"step\": \"00-start\",\n  \"workspace\": \"author\",\n  \"client\": \"cli\",\n  \"prerequisites\": [],\n  \"prerequisiteSteps\": [],\n  \"files\": [\n    {\n      \"destination\": \"workshop/artifacts/setup-checklist.md\",\n      \"source\": \"examples/steps/00-start/files/setup-checklist.md\",\n      \"sha256\": \"3ea2f979e8a347265e0e8e9946b07e21a5464fd2521fb784e3951b3f1685d03a\",\n      \"state\": \"missing\",\n      \"conflict\": null\n    }\n  ],\n  \"note\": \"Presence is not proof that authored equivalents satisfy prerequisites or that a client loaded an asset.\"\n}\n",
+    "stderr": ""
+  },
+  {
+    "workspace": "author",
+    "command": [
+      "node24",
+      "npm-cli.js",
+      "run",
+      "lab:example",
+      "--",
+      "--step",
+      "00-start",
+      "--client",
+      "cli",
+      "--stage"
+    ],
+    "exit": 0,
+    "stdout": "\n> copilot-user-search-workshop@1.0.0 lab:example\n> node scripts/import-example.mjs --step 00-start --client cli --stage\n\n{\n  \"source\": {\n    \"tag\": \"examples-v1\",\n    \"commit\": \"df1328a4c1b9de89bdba5854a75f55fc42ba872d\"\n  },\n  \"step\": \"00-start\",\n  \"workspace\": \"author\",\n  \"client\": \"cli\",\n  \"prerequisites\": [],\n  \"prerequisiteSteps\": [],\n  \"files\": [\n    {\n      \"destination\": \"workshop/artifacts/setup-checklist.md\",\n      \"source\": \"examples/steps/00-start/files/setup-checklist.md\",\n      \"sha256\": \"3ea2f979e8a347265e0e8e9946b07e21a5464fd2521fb784e3951b3f1685d03a\",\n      \"state\": \"missing\",\n      \"conflict\": null\n    }\n  ],\n  \"note\": \"Presence is not proof that authored equivalents satisfy prerequisites or that a client loaded an asset.\"\n}\nStaged references: .lab-references/00-start-author-cli\n",
+    "stderr": ""
+  },
+  {
+    "workspace": "author",
+    "command": [
+      "node24",
+      "npm-cli.js",
+      "run",
+      "lab:example",
+      "--",
+      "--step",
+      "00-start",
+      "--client",
+      "cli",
+      "--apply"
+    ],
+    "exit": 0,
+    "stdout": "\n> copilot-user-search-workshop@1.0.0 lab:example\n> node scripts/import-example.mjs --step 00-start --client cli --apply\n\n{\n  \"source\": {\n    \"tag\": \"examples-v1\",\n    \"commit\": \"df1328a4c1b9de89bdba5854a75f55fc42ba872d\"\n  },\n  \"step\": \"00-start\",\n  \"workspace\": \"author\",\n  \"client\": \"cli\",\n  \"prerequisites\": [],\n  \"prerequisiteSteps\": [],\n  \"files\": [\n    {\n      \"destination\": \"workshop/artifacts/setup-checklist.md\",\n      \"source\": \"examples/steps/00-start/files/setup-checklist.md\",\n      \"sha256\": \"3ea2f979e8a347265e0e8e9946b07e21a5464fd2521fb784e3951b3f1685d03a\",\n      \"state\": \"missing\",\n      \"conflict\": null\n    }\n  ],\n  \"note\": \"Presence is not proof that authored equivalents satisfy prerequisites or that a client loaded an asset.\"\n}\n{\"changed\":1,\"unchanged\":0}\n",
+    "stderr": ""
+  },
+  {
+    "workspace": "author",
+    "command": [
+      "node24",
+      "npm-cli.js",
+      "run",
+      "verify:exercise",
+      "--",
+      "--step",
+      "00-start",
+      "--client",
+      "cli"
+    ],
+    "exit": 0,
+    "stdout": "\n> copilot-user-search-workshop@1.0.0 verify:exercise\n> node scripts/validate-assets.mjs --exercise --step 00-start --client cli\n\nStatic assets present for 00-start. NOT runtime proof: record actual client discovery/invocation, source/version, approval, and results using workshop/evaluation-rubric.md.\n",
+    "stderr": ""
+  },
+  {
+    "workspace": "author",
+    "command": [
+      "git",
+      "add",
+      "."
+    ],
+    "exit": 0,
+    "stdout": "",
+    "stderr": ""
+  },
+  {
+    "workspace": "author",
+    "command": [
+      "git",
+      "commit",
+      "-q",
+      "-m",
+      "Rehearse 00-start in isolated author/consumer workspace",
+      "-m",
+      "Co-authored-by: Copilot App <223556219+Copilot@users.noreply.github.com>"
+    ],
+    "exit": 0,
+    "stdout": "",
+    "stderr": ""
+  },
+  {
+    "workspace": "author",
+    "command": [
+      "node24",
+      "npm-cli.js",
+      "run",
+      "lab:example",
+      "--",
+      "--step",
+      "01-instructions",
+      "--client",
+      "cli",
+      "--preview"
+    ],
+    "exit": 0,
+    "stdout": "\n> copilot-user-search-workshop@1.0.0 lab:example\n> node scripts/import-example.mjs --step 01-instructions --client cli --preview\n\n{\n  \"source\": {\n    \"tag\": \"examples-v1\",\n    \"commit\": \"df1328a4c1b9de89bdba5854a75f55fc42ba872d\"\n  },\n  \"step\": \"01-instructions\",\n  \"workspace\": \"author\",\n  \"client\": \"cli\",\n  \"prerequisites\": [],\n  \"prerequisiteSteps\": [\n    \"00-start\"\n  ],\n  \"files\": [\n    {\n      \"destination\": \".github/copilot-instructions.md\",\n      \"source\": \"examples/steps/01-instructions/files/copilot-instructions.md\",\n      \"sha256\": \"3c25802a357aad317f59d1d24c82101cc7f75aa17713a4adfac583e2ac7de41d\",\n      \"state\": \"known prerequisite\",\n      \"conflict\": null\n    },\n    {\n      \"destination\": \".github/instructions/api.instructions.md\",\n      \"source\": \"examples/steps/01-instructions/files/api.instructions.md\",\n      \"sha256\": \"fbb885da29881641d5e49eaab4e87b828e9a2bf6a7d4e04555622eb801a8fd05\",\n      \"state\": \"missing\",\n      \"conflict\": null\n    },\n    {\n      \"destination\": \".github/instructions/tests.instructions.md\",\n      \"source\": \"examples/steps/01-instructions/files/tests.instructions.md\",\n      \"sha256\": \"b420795296577f0cbeb2eca89c8644c0ea38a1518849f7578f37bdf2c46218f6\",\n      \"state\": \"missing\",\n      \"conflict\": null\n    }\n  ],\n  \"note\": \"Presence is not proof that authored equivalents satisfy prerequisites or that a client loaded an asset.\"\n}\n",
+    "stderr": ""
+  },
+  {
+    "workspace": "author",
+    "command": [
+      "node24",
+      "npm-cli.js",
+      "run",
+      "lab:example",
+      "--",
+      "--step",
+      "01-instructions",
+      "--client",
+      "cli",
+      "--stage"
+    ],
+    "exit": 0,
+    "stdout": "\n> copilot-user-search-workshop@1.0.0 lab:example\n> node scripts/import-example.mjs --step 01-instructions --client cli --stage\n\n{\n  \"source\": {\n    \"tag\": \"examples-v1\",\n    \"commit\": \"df1328a4c1b9de89bdba5854a75f55fc42ba872d\"\n  },\n  \"step\": \"01-instructions\",\n  \"workspace\": \"author\",\n  \"client\": \"cli\",\n  \"prerequisites\": [],\n  \"prerequisiteSteps\": [\n    \"00-start\"\n  ],\n  \"files\": [\n    {\n      \"destination\": \".github/copilot-instructions.md\",\n      \"source\": \"examples/steps/01-instructions/files/copilot-instructions.md\",\n      \"sha256\": \"3c25802a357aad317f59d1d24c82101cc7f75aa17713a4adfac583e2ac7de41d\",\n      \"state\": \"known prerequisite\",\n      \"conflict\": null\n    },\n    {\n      \"destination\": \".github/instructions/api.instructions.md\",\n      \"source\": \"examples/steps/01-instructions/files/api.instructions.md\",\n      \"sha256\": \"fbb885da29881641d5e49eaab4e87b828e9a2bf6a7d4e04555622eb801a8fd05\",\n      \"state\": \"missing\",\n      \"conflict\": null\n    },\n    {\n      \"destination\": \".github/instructions/tests.instructions.md\",\n      \"source\": \"examples/steps/01-instructions/files/tests.instructions.md\",\n      \"sha256\": \"b420795296577f0cbeb2eca89c8644c0ea38a1518849f7578f37bdf2c46218f6\",\n      \"state\": \"missing\",\n      \"conflict\": null\n    }\n  ],\n  \"note\": \"Presence is not proof that authored equivalents satisfy prerequisites or that a client loaded an asset.\"\n}\nStaged references: .lab-references/01-instructions-author-cli\n",
+    "stderr": ""
+  },
+  {
+    "workspace": "author",
+    "command": [
+      "node24",
+      "npm-cli.js",
+      "run",
+      "lab:example",
+      "--",
+      "--step",
+      "01-instructions",
+      "--client",
+      "cli",
+      "--apply"
+    ],
+    "exit": 0,
+    "stdout": "\n> copilot-user-search-workshop@1.0.0 lab:example\n> node scripts/import-example.mjs --step 01-instructions --client cli --apply\n\n{\n  \"source\": {\n    \"tag\": \"examples-v1\",\n    \"commit\": \"df1328a4c1b9de89bdba5854a75f55fc42ba872d\"\n  },\n  \"step\": \"01-instructions\",\n  \"workspace\": \"author\",\n  \"client\": \"cli\",\n  \"prerequisites\": [],\n  \"prerequisiteSteps\": [\n    \"00-start\"\n  ],\n  \"files\": [\n    {\n      \"destination\": \".github/copilot-instructions.md\",\n      \"source\": \"examples/steps/01-instructions/files/copilot-instructions.md\",\n      \"sha256\": \"3c25802a357aad317f59d1d24c82101cc7f75aa17713a4adfac583e2ac7de41d\",\n      \"state\": \"known prerequisite\",\n      \"conflict\": null\n    },\n    {\n      \"destination\": \".github/instructions/api.instructions.md\",\n      \"source\": \"examples/steps/01-instructions/files/api.instructions.md\",\n      \"sha256\": \"fbb885da29881641d5e49eaab4e87b828e9a2bf6a7d4e04555622eb801a8fd05\",\n      \"state\": \"missing\",\n      \"conflict\": null\n    },\n    {\n      \"destination\": \".github/instructions/tests.instructions.md\",\n      \"source\": \"examples/steps/01-instructions/files/tests.instructions.md\",\n      \"sha256\": \"b420795296577f0cbeb2eca89c8644c0ea38a1518849f7578f37bdf2c46218f6\",\n      \"state\": \"missing\",\n      \"conflict\": null\n    }\n  ],\n  \"note\": \"Presence is not proof that authored equivalents satisfy prerequisites or that a client loaded an asset.\"\n}\n{\"changed\":3,\"unchanged\":0}\n",
+    "stderr": ""
+  },
+  {
+    "workspace": "author",
+    "command": [
+      "node24",
+      "npm-cli.js",
+      "run",
+      "verify:exercise",
+      "--",
+      "--step",
+      "01-instructions",
+      "--client",
+      "cli"
+    ],
+    "exit": 0,
+    "stdout": "\n> copilot-user-search-workshop@1.0.0 verify:exercise\n> node scripts/validate-assets.mjs --exercise --step 01-instructions --client cli\n\nStatic assets present for 01-instructions. NOT runtime proof: record actual client discovery/invocation, source/version, approval, and results using workshop/evaluation-rubric.md.\n",
+    "stderr": ""
+  },
+  {
+    "workspace": "author",
+    "command": [
+      "git",
+      "add",
+      "."
+    ],
+    "exit": 0,
+    "stdout": "",
+    "stderr": ""
+  },
+  {
+    "workspace": "author",
+    "command": [
+      "git",
+      "commit",
+      "-q",
+      "-m",
+      "Rehearse 01-instructions in isolated author/consumer workspace",
+      "-m",
+      "Co-authored-by: Copilot App <223556219+Copilot@users.noreply.github.com>"
+    ],
+    "exit": 0,
+    "stdout": "",
+    "stderr": ""
+  },
+  {
+    "workspace": "author",
+    "command": [
+      "node24",
+      "npm-cli.js",
+      "run",
+      "lab:example",
+      "--",
+      "--step",
+      "02-planning-prompt",
+      "--client",
+      "cli",
+      "--preview"
+    ],
+    "exit": 0,
+    "stdout": "\n> copilot-user-search-workshop@1.0.0 lab:example\n> node scripts/import-example.mjs --step 02-planning-prompt --client cli --preview\n\n{\n  \"source\": {\n    \"tag\": \"examples-v1\",\n    \"commit\": \"df1328a4c1b9de89bdba5854a75f55fc42ba872d\"\n  },\n  \"step\": \"02-planning-prompt\",\n  \"workspace\": \"author\",\n  \"client\": \"cli\",\n  \"prerequisites\": [\n    {\n      \"path\": \".github/instructions/api.instructions.md\",\n      \"present\": true\n    },\n    {\n      \"path\": \".github/instructions/tests.instructions.md\",\n      \"present\": true\n    }\n  ],\n  \"prerequisiteSteps\": [\n    \"01-instructions\"\n  ],\n  \"files\": [\n    {\n      \"destination\": \".github/prompts/plan-api-change.prompt.md\",\n      \"source\": \"examples/steps/02-planning-prompt/files/plan-api-change.prompt.md\",\n      \"sha256\": \"d4f437920a1def28370e380213e997c6df3ec10892ccb525c95f784ce6f795fc\",\n      \"state\": \"missing\",\n      \"conflict\": null\n    }\n  ],\n  \"note\": \"Presence is not proof that authored equivalents satisfy prerequisites or that a client loaded an asset.\"\n}\n",
+    "stderr": ""
+  },
+  {
+    "workspace": "author",
+    "command": [
+      "node24",
+      "npm-cli.js",
+      "run",
+      "lab:example",
+      "--",
+      "--step",
+      "02-planning-prompt",
+      "--client",
+      "cli",
+      "--stage"
+    ],
+    "exit": 0,
+    "stdout": "\n> copilot-user-search-workshop@1.0.0 lab:example\n> node scripts/import-example.mjs --step 02-planning-prompt --client cli --stage\n\n{\n  \"source\": {\n    \"tag\": \"examples-v1\",\n    \"commit\": \"df1328a4c1b9de89bdba5854a75f55fc42ba872d\"\n  },\n  \"step\": \"02-planning-prompt\",\n  \"workspace\": \"author\",\n  \"client\": \"cli\",\n  \"prerequisites\": [\n    {\n      \"path\": \".github/instructions/api.instructions.md\",\n      \"present\": true\n    },\n    {\n      \"path\": \".github/instructions/tests.instructions.md\",\n      \"present\": true\n    }\n  ],\n  \"prerequisiteSteps\": [\n    \"01-instructions\"\n  ],\n  \"files\": [\n    {\n      \"destination\": \".github/prompts/plan-api-change.prompt.md\",\n      \"source\": \"examples/steps/02-planning-prompt/files/plan-api-change.prompt.md\",\n      \"sha256\": \"d4f437920a1def28370e380213e997c6df3ec10892ccb525c95f784ce6f795fc\",\n      \"state\": \"missing\",\n      \"conflict\": null\n    }\n  ],\n  \"note\": \"Presence is not proof that authored equivalents satisfy prerequisites or that a client loaded an asset.\"\n}\nStaged references: .lab-references/02-planning-prompt-author-cli\n",
+    "stderr": ""
+  },
+  {
+    "workspace": "author",
+    "command": [
+      "node24",
+      "npm-cli.js",
+      "run",
+      "lab:example",
+      "--",
+      "--step",
+      "02-planning-prompt",
+      "--client",
+      "cli",
+      "--apply"
+    ],
+    "exit": 0,
+    "stdout": "\n> copilot-user-search-workshop@1.0.0 lab:example\n> node scripts/import-example.mjs --step 02-planning-prompt --client cli --apply\n\n{\n  \"source\": {\n    \"tag\": \"examples-v1\",\n    \"commit\": \"df1328a4c1b9de89bdba5854a75f55fc42ba872d\"\n  },\n  \"step\": \"02-planning-prompt\",\n  \"workspace\": \"author\",\n  \"client\": \"cli\",\n  \"prerequisites\": [\n    {\n      \"path\": \".github/instructions/api.instructions.md\",\n      \"present\": true\n    },\n    {\n      \"path\": \".github/instructions/tests.instructions.md\",\n      \"present\": true\n    }\n  ],\n  \"prerequisiteSteps\": [\n    \"01-instructions\"\n  ],\n  \"files\": [\n    {\n      \"destination\": \".github/prompts/plan-api-change.prompt.md\",\n      \"source\": \"examples/steps/02-planning-prompt/files/plan-api-change.prompt.md\",\n      \"sha256\": \"d4f437920a1def28370e380213e997c6df3ec10892ccb525c95f784ce6f795fc\",\n      \"state\": \"missing\",\n      \"conflict\": null\n    }\n  ],\n  \"note\": \"Presence is not proof that authored equivalents satisfy prerequisites or that a client loaded an asset.\"\n}\n{\"changed\":1,\"unchanged\":0}\n",
+    "stderr": ""
+  },
+  {
+    "workspace": "author",
+    "command": [
+      "node24",
+      "npm-cli.js",
+      "run",
+      "verify:exercise",
+      "--",
+      "--step",
+      "02-planning-prompt",
+      "--client",
+      "cli"
+    ],
+    "exit": 0,
+    "stdout": "\n> copilot-user-search-workshop@1.0.0 verify:exercise\n> node scripts/validate-assets.mjs --exercise --step 02-planning-prompt --client cli\n\nStatic assets present for 02-planning-prompt. NOT runtime proof: record actual client discovery/invocation, source/version, approval, and results using workshop/evaluation-rubric.md.\n",
+    "stderr": ""
+  },
+  {
+    "workspace": "author",
+    "command": [
+      "git",
+      "add",
+      "."
+    ],
+    "exit": 0,
+    "stdout": "",
+    "stderr": ""
+  },
+  {
+    "workspace": "author",
+    "command": [
+      "git",
+      "commit",
+      "-q",
+      "-m",
+      "Rehearse 02-planning-prompt in isolated author/consumer workspace",
+      "-m",
+      "Co-authored-by: Copilot App <223556219+Copilot@users.noreply.github.com>"
+    ],
+    "exit": 0,
+    "stdout": "",
+    "stderr": ""
+  },
+  {
+    "workspace": "author",
+    "command": [
+      "node24",
+      "npm-cli.js",
+      "run",
+      "lab:example",
+      "--",
+      "--step",
+      "03-skill",
+      "--client",
+      "cli",
+      "--preview"
+    ],
+    "exit": 0,
+    "stdout": "\n> copilot-user-search-workshop@1.0.0 lab:example\n> node scripts/import-example.mjs --step 03-skill --client cli --preview\n\n{\n  \"source\": {\n    \"tag\": \"examples-v1\",\n    \"commit\": \"df1328a4c1b9de89bdba5854a75f55fc42ba872d\"\n  },\n  \"step\": \"03-skill\",\n  \"workspace\": \"author\",\n  \"client\": \"cli\",\n  \"prerequisites\": [\n    {\n      \"path\": \".github/prompts/plan-api-change.prompt.md\",\n      \"present\": true\n    }\n  ],\n  \"prerequisiteSteps\": [\n    \"02-planning-prompt\"\n  ],\n  \"files\": [\n    {\n      \"destination\": \".github/skills/api-change-workflow/SKILL.md\",\n      \"source\": \"examples/steps/03-skill/files/SKILL.md\",\n      \"sha256\": \"365d9aa7bb9f132a7d962adb61f1b22ccc31027fbf9bf8464476b6e6b9947498\",\n      \"state\": \"missing\",\n      \"conflict\": null\n    },\n    {\n      \"destination\": \".github/skills/api-change-workflow/references/review-checklist.md\",\n      \"source\": \"examples/steps/03-skill/files/review-checklist.md\",\n      \"sha256\": \"19184e68555013e396e4aca1bacf08316a9e2343871a7f8d2fc0085eebc64a5e\",\n      \"state\": \"missing\",\n      \"conflict\": null\n    }\n  ],\n  \"note\": \"Presence is not proof that authored equivalents satisfy prerequisites or that a client loaded an asset.\"\n}\n",
+    "stderr": ""
+  },
+  {
+    "workspace": "author",
+    "command": [
+      "node24",
+      "npm-cli.js",
+      "run",
+      "lab:example",
+      "--",
+      "--step",
+      "03-skill",
+      "--client",
+      "cli",
+      "--stage"
+    ],
+    "exit": 0,
+    "stdout": "\n> copilot-user-search-workshop@1.0.0 lab:example\n> node scripts/import-example.mjs --step 03-skill --client cli --stage\n\n{\n  \"source\": {\n    \"tag\": \"examples-v1\",\n    \"commit\": \"df1328a4c1b9de89bdba5854a75f55fc42ba872d\"\n  },\n  \"step\": \"03-skill\",\n  \"workspace\": \"author\",\n  \"client\": \"cli\",\n  \"prerequisites\": [\n    {\n      \"path\": \".github/prompts/plan-api-change.prompt.md\",\n      \"present\": true\n    }\n  ],\n  \"prerequisiteSteps\": [\n    \"02-planning-prompt\"\n  ],\n  \"files\": [\n    {\n      \"destination\": \".github/skills/api-change-workflow/SKILL.md\",\n      \"source\": \"examples/steps/03-skill/files/SKILL.md\",\n      \"sha256\": \"365d9aa7bb9f132a7d962adb61f1b22ccc31027fbf9bf8464476b6e6b9947498\",\n      \"state\": \"missing\",\n      \"conflict\": null\n    },\n    {\n      \"destination\": \".github/skills/api-change-workflow/references/review-checklist.md\",\n      \"source\": \"examples/steps/03-skill/files/review-checklist.md\",\n      \"sha256\": \"19184e68555013e396e4aca1bacf08316a9e2343871a7f8d2fc0085eebc64a5e\",\n      \"state\": \"missing\",\n      \"conflict\": null\n    }\n  ],\n  \"note\": \"Presence is not proof that authored equivalents satisfy prerequisites or that a client loaded an asset.\"\n}\nStaged references: .lab-references/03-skill-author-cli\n",
+    "stderr": ""
+  },
+  {
+    "workspace": "author",
+    "command": [
+      "node24",
+      "npm-cli.js",
+      "run",
+      "lab:example",
+      "--",
+      "--step",
+      "03-skill",
+      "--client",
+      "cli",
+      "--apply"
+    ],
+    "exit": 0,
+    "stdout": "\n> copilot-user-search-workshop@1.0.0 lab:example\n> node scripts/import-example.mjs --step 03-skill --client cli --apply\n\n{\n  \"source\": {\n    \"tag\": \"examples-v1\",\n    \"commit\": \"df1328a4c1b9de89bdba5854a75f55fc42ba872d\"\n  },\n  \"step\": \"03-skill\",\n  \"workspace\": \"author\",\n  \"client\": \"cli\",\n  \"prerequisites\": [\n    {\n      \"path\": \".github/prompts/plan-api-change.prompt.md\",\n      \"present\": true\n    }\n  ],\n  \"prerequisiteSteps\": [\n    \"02-planning-prompt\"\n  ],\n  \"files\": [\n    {\n      \"destination\": \".github/skills/api-change-workflow/SKILL.md\",\n      \"source\": \"examples/steps/03-skill/files/SKILL.md\",\n      \"sha256\": \"365d9aa7bb9f132a7d962adb61f1b22ccc31027fbf9bf8464476b6e6b9947498\",\n      \"state\": \"missing\",\n      \"conflict\": null\n    },\n    {\n      \"destination\": \".github/skills/api-change-workflow/references/review-checklist.md\",\n      \"source\": \"examples/steps/03-skill/files/review-checklist.md\",\n      \"sha256\": \"19184e68555013e396e4aca1bacf08316a9e2343871a7f8d2fc0085eebc64a5e\",\n      \"state\": \"missing\",\n      \"conflict\": null\n    }\n  ],\n  \"note\": \"Presence is not proof that authored equivalents satisfy prerequisites or that a client loaded an asset.\"\n}\n{\"changed\":2,\"unchanged\":0}\n",
+    "stderr": ""
+  },
+  {
+    "workspace": "author",
+    "command": [
+      "node24",
+      "npm-cli.js",
+      "run",
+      "verify:exercise",
+      "--",
+      "--step",
+      "03-skill",
+      "--client",
+      "cli"
+    ],
+    "exit": 0,
+    "stdout": "\n> copilot-user-search-workshop@1.0.0 verify:exercise\n> node scripts/validate-assets.mjs --exercise --step 03-skill --client cli\n\nStatic assets present for 03-skill. NOT runtime proof: record actual client discovery/invocation, source/version, approval, and results using workshop/evaluation-rubric.md.\n",
+    "stderr": ""
+  },
+  {
+    "workspace": "author",
+    "command": [
+      "git",
+      "add",
+      "."
+    ],
+    "exit": 0,
+    "stdout": "",
+    "stderr": ""
+  },
+  {
+    "workspace": "author",
+    "command": [
+      "git",
+      "commit",
+      "-q",
+      "-m",
+      "Rehearse 03-skill in isolated author/consumer workspace",
+      "-m",
+      "Co-authored-by: Copilot App <223556219+Copilot@users.noreply.github.com>"
+    ],
+    "exit": 0,
+    "stdout": "",
+    "stderr": ""
+  },
+  {
+    "workspace": "author",
+    "command": [
+      "node24",
+      "npm-cli.js",
+      "run",
+      "lab:example",
+      "--",
+      "--step",
+      "04-plugin",
+      "--client",
+      "cli",
+      "--preview"
+    ],
+    "exit": 0,
+    "stdout": "\n> copilot-user-search-workshop@1.0.0 lab:example\n> node scripts/import-example.mjs --step 04-plugin --client cli --preview\n\n{\n  \"source\": {\n    \"tag\": \"examples-v1\",\n    \"commit\": \"df1328a4c1b9de89bdba5854a75f55fc42ba872d\"\n  },\n  \"step\": \"04-plugin\",\n  \"workspace\": \"author\",\n  \"client\": \"cli\",\n  \"prerequisites\": [\n    {\n      \"path\": \".github/skills/api-change-workflow/SKILL.md\",\n      \"present\": true\n    },\n    {\n      \"path\": \".github/skills/api-change-workflow/references/review-checklist.md\",\n      \"present\": true\n    }\n  ],\n  \"prerequisiteSteps\": [\n    \"03-skill\"\n  ],\n  \"files\": [\n    {\n      \"destination\": \"toolkit/plugin.json\",\n      \"source\": \"examples/steps/04-plugin/files/plugin.json\",\n      \"sha256\": \"1d161f4e8e05dff078fb792314cff389870b5d9c2e8447b33e89ae2a4bbd645d\",\n      \"state\": \"missing\",\n      \"conflict\": null\n    },\n    {\n      \"destination\": \"toolkit/catalog.md\",\n      \"source\": \"examples/steps/04-plugin/files/catalog.md\",\n      \"sha256\": \"cfa930425346e154b78952859d97e81de30bf9dbaabb13c82ca75ff58c2b6305\",\n      \"state\": \"missing\",\n      \"conflict\": null\n    }\n  ],\n  \"note\": \"Presence is not proof that authored equivalents satisfy prerequisites or that a client loaded an asset.\"\n}\n",
+    "stderr": ""
+  },
+  {
+    "workspace": "author",
+    "command": [
+      "node24",
+      "npm-cli.js",
+      "run",
+      "lab:example",
+      "--",
+      "--step",
+      "04-plugin",
+      "--client",
+      "cli",
+      "--stage"
+    ],
+    "exit": 0,
+    "stdout": "\n> copilot-user-search-workshop@1.0.0 lab:example\n> node scripts/import-example.mjs --step 04-plugin --client cli --stage\n\n{\n  \"source\": {\n    \"tag\": \"examples-v1\",\n    \"commit\": \"df1328a4c1b9de89bdba5854a75f55fc42ba872d\"\n  },\n  \"step\": \"04-plugin\",\n  \"workspace\": \"author\",\n  \"client\": \"cli\",\n  \"prerequisites\": [\n    {\n      \"path\": \".github/skills/api-change-workflow/SKILL.md\",\n      \"present\": true\n    },\n    {\n      \"path\": \".github/skills/api-change-workflow/references/review-checklist.md\",\n      \"present\": true\n    }\n  ],\n  \"prerequisiteSteps\": [\n    \"03-skill\"\n  ],\n  \"files\": [\n    {\n      \"destination\": \"toolkit/plugin.json\",\n      \"source\": \"examples/steps/04-plugin/files/plugin.json\",\n      \"sha256\": \"1d161f4e8e05dff078fb792314cff389870b5d9c2e8447b33e89ae2a4bbd645d\",\n      \"state\": \"missing\",\n      \"conflict\": null\n    },\n    {\n      \"destination\": \"toolkit/catalog.md\",\n      \"source\": \"examples/steps/04-plugin/files/catalog.md\",\n      \"sha256\": \"cfa930425346e154b78952859d97e81de30bf9dbaabb13c82ca75ff58c2b6305\",\n      \"state\": \"missing\",\n      \"conflict\": null\n    }\n  ],\n  \"note\": \"Presence is not proof that authored equivalents satisfy prerequisites or that a client loaded an asset.\"\n}\nStaged references: .lab-references/04-plugin-author-cli\n",
+    "stderr": ""
+  },
+  {
+    "workspace": "author",
+    "command": [
+      "node24",
+      "npm-cli.js",
+      "run",
+      "lab:example",
+      "--",
+      "--step",
+      "04-plugin",
+      "--client",
+      "cli",
+      "--apply"
+    ],
+    "exit": 0,
+    "stdout": "\n> copilot-user-search-workshop@1.0.0 lab:example\n> node scripts/import-example.mjs --step 04-plugin --client cli --apply\n\n{\n  \"source\": {\n    \"tag\": \"examples-v1\",\n    \"commit\": \"df1328a4c1b9de89bdba5854a75f55fc42ba872d\"\n  },\n  \"step\": \"04-plugin\",\n  \"workspace\": \"author\",\n  \"client\": \"cli\",\n  \"prerequisites\": [\n    {\n      \"path\": \".github/skills/api-change-workflow/SKILL.md\",\n      \"present\": true\n    },\n    {\n      \"path\": \".github/skills/api-change-workflow/references/review-checklist.md\",\n      \"present\": true\n    }\n  ],\n  \"prerequisiteSteps\": [\n    \"03-skill\"\n  ],\n  \"files\": [\n    {\n      \"destination\": \"toolkit/plugin.json\",\n      \"source\": \"examples/steps/04-plugin/files/plugin.json\",\n      \"sha256\": \"1d161f4e8e05dff078fb792314cff389870b5d9c2e8447b33e89ae2a4bbd645d\",\n      \"state\": \"missing\",\n      \"conflict\": null\n    },\n    {\n      \"destination\": \"toolkit/catalog.md\",\n      \"source\": \"examples/steps/04-plugin/files/catalog.md\",\n      \"sha256\": \"cfa930425346e154b78952859d97e81de30bf9dbaabb13c82ca75ff58c2b6305\",\n      \"state\": \"missing\",\n      \"conflict\": null\n    }\n  ],\n  \"note\": \"Presence is not proof that authored equivalents satisfy prerequisites or that a client loaded an asset.\"\n}\n{\"changed\":2,\"unchanged\":0}\n",
+    "stderr": ""
+  },
+  {
+    "workspace": "author",
+    "command": [
+      "node24",
+      "npm-cli.js",
+      "run",
+      "verify:exercise",
+      "--",
+      "--step",
+      "04-plugin",
+      "--client",
+      "cli"
+    ],
+    "exit": 0,
+    "stdout": "\n> copilot-user-search-workshop@1.0.0 verify:exercise\n> node scripts/validate-assets.mjs --exercise --step 04-plugin --client cli\n\nStatic assets present for 04-plugin. NOT runtime proof: record actual client discovery/invocation, source/version, approval, and results using workshop/evaluation-rubric.md.\n",
+    "stderr": ""
+  },
+  {
+    "workspace": "author",
+    "command": [
+      "git",
+      "add",
+      "."
+    ],
+    "exit": 0,
+    "stdout": "",
+    "stderr": ""
+  },
+  {
+    "workspace": "author",
+    "command": [
+      "git",
+      "commit",
+      "-q",
+      "-m",
+      "Rehearse 04-plugin in isolated author/consumer workspace",
+      "-m",
+      "Co-authored-by: Copilot App <223556219+Copilot@users.noreply.github.com>"
+    ],
+    "exit": 0,
+    "stdout": "",
+    "stderr": ""
+  },
+  {
+    "workspace": "author",
+    "command": [
+      "node24",
+      "npm-cli.js",
+      "run",
+      "toolkit:build"
+    ],
+    "exit": 0,
+    "stdout": "\n> copilot-user-search-workshop@1.0.0 toolkit:build\n> node scripts/package-toolkit.mjs\n\n{\n  \"output\": \"toolkit/dist/user-search-toolkit-1.0.0\",\n  \"schema\": 1,\n  \"name\": \"user-search-toolkit\",\n  \"version\": \"1.0.0\",\n  \"sourceCommit\": \"54c5bba8ca3baf75f8db199bd53ebc6bcb825376\",\n  \"sourceDirty\": false,\n  \"sourceChecksum\": \"dd7f2ec32a6dd1dd614788d33cef6709e4776ba43b97620d730ed51f386f23d7\",\n  \"files\": [\n    {\n      \"source\": \"toolkit/plugin.json\",\n      \"destination\": \"plugin.json\",\n      \"sha256\": \"1d161f4e8e05dff078fb792314cff389870b5d9c2e8447b33e89ae2a4bbd645d\"\n    },\n    {\n      \"source\": \".github/skills/api-change-workflow/SKILL.md\",\n      \"destination\": \"skills/api-change-workflow/SKILL.md\",\n      \"sha256\": \"365d9aa7bb9f132a7d962adb61f1b22ccc31027fbf9bf8464476b6e6b9947498\"\n    },\n    {\n      \"source\": \".github/skills/api-change-workflow/references/review-checklist.md\",\n      \"destination\": \"skills/api-change-workflow/references/review-checklist.md\",\n      \"sha256\": \"19184e68555013e396e4aca1bacf08316a9e2343871a7f8d2fc0085eebc64a5e\"\n    }\n  ],\n  \"unchanged\": false\n}\n",
+    "stderr": ""
+  },
+  {
+    "workspace": "author",
+    "command": [
+      "node24",
+      "npm-cli.js",
+      "run",
+      "consumer:create",
+      "--",
+      "--destination",
+      "../consumer"
+    ],
+    "exit": 0,
+    "stdout": "\n> copilot-user-search-workshop@1.0.0 consumer:create\n> node scripts/make-consumer.mjs --destination ../consumer\n\n{\n  \"destination\": \"/Users/frye/.copilot/session-state/66c21365-1551-405e-8cc3-73fbfda1f8d6/files/copilot-user-search-workshop/.author-work/rehearsal/consumer\",\n  \"starter\": \"1afbf9be347343dc15bb390f4ac843dca44ce034\",\n  \"copied\": [\n    \".github/copilot-instructions.md\",\n    \".github/instructions/api.instructions.md\",\n    \".github/instructions/tests.instructions.md\",\n    \".github/prompts/plan-api-change.prompt.md\"\n  ],\n  \"localSkillAbsent\": true,\n  \"installed\": false\n}\n",
+    "stderr": ""
+  },
+  {
+    "workspace": "consumer",
+    "command": [
+      "node24",
+      "npm-cli.js",
+      "ci"
+    ],
+    "exit": 0,
+    "stdout": "\nadded 226 packages in 5s\n",
+    "stderr": "npm warn install-scripts 2 packages have install scripts not yet covered by allowScripts:\nnpm warn install-scripts   esbuild@0.21.5 (postinstall: node install.js)\nnpm warn install-scripts   fsevents@2.3.3 (install: (install scripts present))\nnpm warn install-scripts\nnpm warn install-scripts Run `npm install-scripts ls` to review, or `npm install-scripts approve <pkg>` to allow.\n"
+  },
+  {
+    "workspace": "consumer",
+    "command": [
+      "node24",
+      "npm-cli.js",
+      "run",
+      "preflight"
+    ],
+    "exit": 0,
+    "stdout": "\n> copilot-user-search-workshop@1.0.0 preflight\n> node scripts/preflight.mjs\n\n{\n  \"node\": \"v24.20.0\",\n  \"npm\": \"11.19.0\",\n  \"expected\": {\n    \"node\": \"v24.20.0\",\n    \"npm\": \"11.19.0\"\n  },\n  \"toolchainMatches\": true,\n  \"workspace\": \"consumer\",\n  \"ref\": \"1afbf9be347343dc15bb390f4ac843dca44ce034\",\n  \"branch\": \"workshop-consumer\",\n  \"localSkillPresent\": false,\n  \"observedClients\": [],\n  \"manualChecks\": [\n    \"Record actual VS Code/CLI/app build and managed-policy restrictions.\",\n    \"Inspect skill/plugin names for user/global conflicts; do not disable unrelated customizations.\",\n    \"Confirm active workspace, discoverability, invocation and source/version in the real client.\",\n    \"Inspect tool permission IDs in this build. Static validation does not prove runtime loading.\",\n    \"Consumer must have no local shared skill or duplicate package registration.\"\n  ]\n}\n",
+    "stderr": ""
+  },
+  {
+    "workspace": "consumer",
+    "command": [
+      "node24",
+      "npm-cli.js",
+      "run",
+      "verify:baseline"
+    ],
+    "exit": 0,
+    "stdout": "\n> copilot-user-search-workshop@1.0.0 verify:baseline\n> npm test && npm run test:stub && npm run test:helpers && npm run verify:assets && npm run test:docs && npm run docs:build\n\n\n> copilot-user-search-workshop@1.0.0 test\n> npm run build && node --test dist/tests/baseline/*.test.js dist/tests/mcp/*.test.js\n\n\n> copilot-user-search-workshop@1.0.0 build\n> tsc\n\n✔ health, archived list order and get remain stable (29.5665ms)\n✔ unknown routes and unsupported methods have exact error envelope (8.486625ms)\n✔ fixtures are frozen; logs expose only bounded route and status (2.904083ms)\n✔ real stdio initialize, exact list, both calls, strict inputs and clean close (147.463833ms)\nFixture unavailable or invalid: api-conventions.json\nFixture unavailable or invalid: api-conventions.json\nFixture unavailable or invalid: api-conventions.json\n✔ missing and malformed fixtures fail closed, never returned as valid standards (27.218542ms)\nℹ tests 5\nℹ suites 0\nℹ pass 5\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 3809.99525\n\n> copilot-user-search-workshop@1.0.0 test:stub\n> node --test dist/tests/starter/*.test.js\n\n✔ starter search is deliberately unimplemented, including invalid queries (16.62225ms)\nℹ tests 1\nℹ suites 0\nℹ pass 1\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 101.944042\n\n> copilot-user-search-workshop@1.0.0 test:helpers\n> node --test tests/helpers/*.test.mjs\n\n✔ offline source pin, preview, inert stage, safe apply and exact repeat (3808.393834ms)\n▶ untracked collision, staged/unstaged edits and committed alternatives reject whole step\n  ✔ untracked (1285.289375ms)\n  ✔ unstaged (1019.44675ms)\n  ✔ staged (983.507459ms)\n  ✔ committed (1039.466084ms)\n  ✔ deleted (1149.603167ms)\n✔ untracked collision, staged/unstaged edits and committed alternatives reject whole step (5477.964833ms)\n✔ untracked matching source is still a collision without an import receipt (1286.71175ms)\n▶ symlink files, symlink ancestors, dangling links and traversal fail closed\n  ✔ file (714.765083ms)\n  ✔ parent (586.114042ms)\n  ✔ dangling (682.028917ms)\n✔ symlink files, symlink ancestors, dangling links and traversal fail closed (1983.488584ms)\n✔ source pin, manifest checksum, missing tag, unknown steps and prerequisites are enforced (1045.320292ms)\n✔ recheck catches a concurrent edit; injected I/O failure rolls back all earlier writes (1878.579833ms)\n✔ all source payload hashes, client groups and generated dependency maps agree (523.826625ms)\n✔ canonical packaging has schema, exact provenance, immutable versions and no hidden executable (3536.455041ms)\n✔ package rejects invalid manifest, missing references, extra files, links and output tampering (3206.806083ms)\n✔ clean sibling consumer preserves guidance, excludes skill/config/secrets, supports all client steps and update (15213.937708ms)\n▶ each client role payload applies in a fresh consumer without later-step or search activation\n  ✔ vscode (7251.811833ms)\n  ✔ app (6854.911125ms)\n✔ each client role payload applies in a fresh consumer without later-step or search activation (14107.124875ms)\n✔ exercise validation accepts complete authored routes and rejects invalid scopes, unsafe roles and duplicate consumer skill (14417.272125ms)\nℹ tests 22\nℹ suites 0\nℹ pass 22\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 66746.096083\n\n> copilot-user-search-workshop@1.0.0 verify:assets\n> node scripts/validate-assets.mjs\n\nRelease metadata and 10 step mappings valid: examples-v1 df1328a4c1b9de89bdba5854a75f55fc42ba872d. Client runtime is not inferred.\n\n> copilot-user-search-workshop@1.0.0 test:docs\n> node --test tests/docs/*.test.mjs\n\n✔ canonical Markdown has real local links, complete lab routes and plain client headings (23.9785ms)\n✔ toolchain, intentional-red routing and no active complete starter assets are explicit (0.61925ms)\nℹ tests 2\nℹ suites 0\nℹ pass 2\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 62.374292\n\n> copilot-user-search-workshop@1.0.0 docs:build\n> vitepress build docs\n\n\n  vitepress v1.6.4\n\nbuild complete in 2.77s.\n",
+    "stderr": "- building client + server bundles...\n\u001b[32m✓\u001b[0m building client + server bundles...\n- rendering pages...\n\u001b[32m✓\u001b[0m rendering pages...\n"
+  },
+  {
+    "workspace": "author",
+    "command": [
+      "node24",
+      "npm-cli.js",
+      "run",
+      "lab:example",
+      "--",
+      "--step",
+      "05-mcp-and-update",
+      "--client",
+      "cli",
+      "--preview"
+    ],
+    "exit": 0,
+    "stdout": "\n> copilot-user-search-workshop@1.0.0 lab:example\n> node scripts/import-example.mjs --step 05-mcp-and-update --client cli --preview\n\n{\n  \"source\": {\n    \"tag\": \"examples-v1\",\n    \"commit\": \"df1328a4c1b9de89bdba5854a75f55fc42ba872d\"\n  },\n  \"step\": \"05-mcp-and-update\",\n  \"workspace\": \"author\",\n  \"client\": \"cli\",\n  \"prerequisites\": [\n    {\n      \"path\": \".github/skills/api-change-workflow/SKILL.md\",\n      \"present\": true\n    },\n    {\n      \"path\": \"toolkit/plugin.json\",\n      \"present\": true\n    }\n  ],\n  \"prerequisiteSteps\": [\n    \"04-plugin\"\n  ],\n  \"files\": [\n    {\n      \"destination\": \".github/skills/api-change-workflow/SKILL.md\",\n      \"source\": \"examples/steps/05-mcp-and-update/author/SKILL.md\",\n      \"sha256\": \"704a1cdc94acc7614c5c8fc3b13f364d76ea3851eedac4d7ce8a9cbd90e61f3b\",\n      \"state\": \"known prerequisite\",\n      \"conflict\": null\n    },\n    {\n      \"destination\": \".github/skills/api-change-workflow/references/review-checklist.md\",\n      \"source\": \"examples/steps/05-mcp-and-update/author/review-checklist.md\",\n      \"sha256\": \"00f29d16e7e4c1c2abdda03b517eff37924e2553d10eb46a493045cbb8a7f2ea\",\n      \"state\": \"known prerequisite\",\n      \"conflict\": null\n    },\n    {\n      \"destination\": \"toolkit/plugin.json\",\n      \"source\": \"examples/steps/05-mcp-and-update/author/plugin.json\",\n      \"sha256\": \"aed1fdf73aa405e4b14cf206bb1343f3cdb4d10f527328370f35899daf47ef34\",\n      \"state\": \"known prerequisite\",\n      \"conflict\": null\n    },\n    {\n      \"destination\": \"toolkit/catalog.md\",\n      \"source\": \"examples/steps/05-mcp-and-update/author/catalog.md\",\n      \"sha256\": \"ddc6d3c8921966950fdae75256dae75496e1f1f61e494f4c7a52271f56bd130b\",\n      \"state\": \"known prerequisite\",\n      \"conflict\": null\n    }\n  ],\n  \"note\": \"Presence is not proof that authored equivalents satisfy prerequisites or that a client loaded an asset.\"\n}\n",
+    "stderr": ""
+  },
+  {
+    "workspace": "author",
+    "command": [
+      "node24",
+      "npm-cli.js",
+      "run",
+      "lab:example",
+      "--",
+      "--step",
+      "05-mcp-and-update",
+      "--client",
+      "cli",
+      "--stage"
+    ],
+    "exit": 0,
+    "stdout": "\n> copilot-user-search-workshop@1.0.0 lab:example\n> node scripts/import-example.mjs --step 05-mcp-and-update --client cli --stage\n\n{\n  \"source\": {\n    \"tag\": \"examples-v1\",\n    \"commit\": \"df1328a4c1b9de89bdba5854a75f55fc42ba872d\"\n  },\n  \"step\": \"05-mcp-and-update\",\n  \"workspace\": \"author\",\n  \"client\": \"cli\",\n  \"prerequisites\": [\n    {\n      \"path\": \".github/skills/api-change-workflow/SKILL.md\",\n      \"present\": true\n    },\n    {\n      \"path\": \"toolkit/plugin.json\",\n      \"present\": true\n    }\n  ],\n  \"prerequisiteSteps\": [\n    \"04-plugin\"\n  ],\n  \"files\": [\n    {\n      \"destination\": \".github/skills/api-change-workflow/SKILL.md\",\n      \"source\": \"examples/steps/05-mcp-and-update/author/SKILL.md\",\n      \"sha256\": \"704a1cdc94acc7614c5c8fc3b13f364d76ea3851eedac4d7ce8a9cbd90e61f3b\",\n      \"state\": \"known prerequisite\",\n      \"conflict\": null\n    },\n    {\n      \"destination\": \".github/skills/api-change-workflow/references/review-checklist.md\",\n      \"source\": \"examples/steps/05-mcp-and-update/author/review-checklist.md\",\n      \"sha256\": \"00f29d16e7e4c1c2abdda03b517eff37924e2553d10eb46a493045cbb8a7f2ea\",\n      \"state\": \"known prerequisite\",\n      \"conflict\": null\n    },\n    {\n      \"destination\": \"toolkit/plugin.json\",\n      \"source\": \"examples/steps/05-mcp-and-update/author/plugin.json\",\n      \"sha256\": \"aed1fdf73aa405e4b14cf206bb1343f3cdb4d10f527328370f35899daf47ef34\",\n      \"state\": \"known prerequisite\",\n      \"conflict\": null\n    },\n    {\n      \"destination\": \"toolkit/catalog.md\",\n      \"source\": \"examples/steps/05-mcp-and-update/author/catalog.md\",\n      \"sha256\": \"ddc6d3c8921966950fdae75256dae75496e1f1f61e494f4c7a52271f56bd130b\",\n      \"state\": \"known prerequisite\",\n      \"conflict\": null\n    }\n  ],\n  \"note\": \"Presence is not proof that authored equivalents satisfy prerequisites or that a client loaded an asset.\"\n}\nStaged references: .lab-references/05-mcp-and-update-author-cli\n",
+    "stderr": ""
+  },
+  {
+    "workspace": "author",
+    "command": [
+      "node24",
+      "npm-cli.js",
+      "run",
+      "lab:example",
+      "--",
+      "--step",
+      "05-mcp-and-update",
+      "--client",
+      "cli",
+      "--apply"
+    ],
+    "exit": 0,
+    "stdout": "\n> copilot-user-search-workshop@1.0.0 lab:example\n> node scripts/import-example.mjs --step 05-mcp-and-update --client cli --apply\n\n{\n  \"source\": {\n    \"tag\": \"examples-v1\",\n    \"commit\": \"df1328a4c1b9de89bdba5854a75f55fc42ba872d\"\n  },\n  \"step\": \"05-mcp-and-update\",\n  \"workspace\": \"author\",\n  \"client\": \"cli\",\n  \"prerequisites\": [\n    {\n      \"path\": \".github/skills/api-change-workflow/SKILL.md\",\n      \"present\": true\n    },\n    {\n      \"path\": \"toolkit/plugin.json\",\n      \"present\": true\n    }\n  ],\n  \"prerequisiteSteps\": [\n    \"04-plugin\"\n  ],\n  \"files\": [\n    {\n      \"destination\": \".github/skills/api-change-workflow/SKILL.md\",\n      \"source\": \"examples/steps/05-mcp-and-update/author/SKILL.md\",\n      \"sha256\": \"704a1cdc94acc7614c5c8fc3b13f364d76ea3851eedac4d7ce8a9cbd90e61f3b\",\n      \"state\": \"known prerequisite\",\n      \"conflict\": null\n    },\n    {\n      \"destination\": \".github/skills/api-change-workflow/references/review-checklist.md\",\n      \"source\": \"examples/steps/05-mcp-and-update/author/review-checklist.md\",\n      \"sha256\": \"00f29d16e7e4c1c2abdda03b517eff37924e2553d10eb46a493045cbb8a7f2ea\",\n      \"state\": \"known prerequisite\",\n      \"conflict\": null\n    },\n    {\n      \"destination\": \"toolkit/plugin.json\",\n      \"source\": \"examples/steps/05-mcp-and-update/author/plugin.json\",\n      \"sha256\": \"aed1fdf73aa405e4b14cf206bb1343f3cdb4d10f527328370f35899daf47ef34\",\n      \"state\": \"known prerequisite\",\n      \"conflict\": null\n    },\n    {\n      \"destination\": \"toolkit/catalog.md\",\n      \"source\": \"examples/steps/05-mcp-and-update/author/catalog.md\",\n      \"sha256\": \"ddc6d3c8921966950fdae75256dae75496e1f1f61e494f4c7a52271f56bd130b\",\n      \"state\": \"known prerequisite\",\n      \"conflict\": null\n    }\n  ],\n  \"note\": \"Presence is not proof that authored equivalents satisfy prerequisites or that a client loaded an asset.\"\n}\n{\"changed\":4,\"unchanged\":0}\n",
+    "stderr": ""
+  },
+  {
+    "workspace": "author",
+    "command": [
+      "node24",
+      "npm-cli.js",
+      "run",
+      "verify:exercise",
+      "--",
+      "--step",
+      "05-mcp-and-update",
+      "--client",
+      "cli"
+    ],
+    "exit": 0,
+    "stdout": "\n> copilot-user-search-workshop@1.0.0 verify:exercise\n> node scripts/validate-assets.mjs --exercise --step 05-mcp-and-update --client cli\n\nStatic assets present for 05-mcp-and-update. NOT runtime proof: record actual client discovery/invocation, source/version, approval, and results using workshop/evaluation-rubric.md.\n",
+    "stderr": ""
+  },
+  {
+    "workspace": "author",
+    "command": [
+      "git",
+      "add",
+      "."
+    ],
+    "exit": 0,
+    "stdout": "",
+    "stderr": ""
+  },
+  {
+    "workspace": "author",
+    "command": [
+      "git",
+      "commit",
+      "-q",
+      "-m",
+      "Rehearse 05-mcp-and-update in isolated author/consumer workspace",
+      "-m",
+      "Co-authored-by: Copilot App <223556219+Copilot@users.noreply.github.com>"
+    ],
+    "exit": 0,
+    "stdout": "",
+    "stderr": ""
+  },
+  {
+    "workspace": "author",
+    "command": [
+      "node24",
+      "npm-cli.js",
+      "run",
+      "toolkit:build"
+    ],
+    "exit": 0,
+    "stdout": "\n> copilot-user-search-workshop@1.0.0 toolkit:build\n> node scripts/package-toolkit.mjs\n\n{\n  \"output\": \"toolkit/dist/user-search-toolkit-1.1.0\",\n  \"schema\": 1,\n  \"name\": \"user-search-toolkit\",\n  \"version\": \"1.1.0\",\n  \"sourceCommit\": \"96f382d032452a95894e8bbaebdadccb44dabfa6\",\n  \"sourceDirty\": false,\n  \"sourceChecksum\": \"37974aea4448ea9615bdf6ff31bf9be137eca12fbc88e264d4d1b202df8cf52a\",\n  \"files\": [\n    {\n      \"source\": \"toolkit/plugin.json\",\n      \"destination\": \"plugin.json\",\n      \"sha256\": \"aed1fdf73aa405e4b14cf206bb1343f3cdb4d10f527328370f35899daf47ef34\"\n    },\n    {\n      \"source\": \".github/skills/api-change-workflow/SKILL.md\",\n      \"destination\": \"skills/api-change-workflow/SKILL.md\",\n      \"sha256\": \"704a1cdc94acc7614c5c8fc3b13f364d76ea3851eedac4d7ce8a9cbd90e61f3b\"\n    },\n    {\n      \"source\": \".github/skills/api-change-workflow/references/review-checklist.md\",\n      \"destination\": \"skills/api-change-workflow/references/review-checklist.md\",\n      \"sha256\": \"00f29d16e7e4c1c2abdda03b517eff37924e2553d10eb46a493045cbb8a7f2ea\"\n    }\n  ],\n  \"unchanged\": false\n}\n",
+    "stderr": ""
+  },
+  {
+    "workspace": "consumer",
+    "command": [
+      "node24",
+      "npm-cli.js",
+      "run",
+      "lab:example",
+      "--",
+      "--step",
+      "05-mcp-and-update",
+      "--client",
+      "cli",
+      "--preview"
+    ],
+    "exit": 0,
+    "stdout": "\n> copilot-user-search-workshop@1.0.0 lab:example\n> node scripts/import-example.mjs --step 05-mcp-and-update --client cli --preview\n\n{\n  \"source\": {\n    \"tag\": \"examples-v1\",\n    \"commit\": \"df1328a4c1b9de89bdba5854a75f55fc42ba872d\"\n  },\n  \"step\": \"05-mcp-and-update\",\n  \"workspace\": \"consumer\",\n  \"client\": \"cli\",\n  \"prerequisites\": [\n    {\n      \"path\": \".github/prompts/plan-api-change.prompt.md\",\n      \"present\": true\n    }\n  ],\n  \"prerequisiteSteps\": [\n    \"04-plugin\"\n  ],\n  \"files\": [\n    {\n      \"destination\": \"client-configs/cli-mcp.md\",\n      \"source\": \"examples/steps/05-mcp-and-update/consumer/cli-mcp.md\",\n      \"sha256\": \"7c04ba4504d5eb89580908b15affdb83f9859289b0105d78ea56104e68274e3c\",\n      \"state\": \"missing\",\n      \"conflict\": null\n    }\n  ],\n  \"note\": \"Presence is not proof that authored equivalents satisfy prerequisites or that a client loaded an asset.\"\n}\n",
+    "stderr": ""
+  },
+  {
+    "workspace": "consumer",
+    "command": [
+      "node24",
+      "npm-cli.js",
+      "run",
+      "lab:example",
+      "--",
+      "--step",
+      "05-mcp-and-update",
+      "--client",
+      "cli",
+      "--stage"
+    ],
+    "exit": 0,
+    "stdout": "\n> copilot-user-search-workshop@1.0.0 lab:example\n> node scripts/import-example.mjs --step 05-mcp-and-update --client cli --stage\n\n{\n  \"source\": {\n    \"tag\": \"examples-v1\",\n    \"commit\": \"df1328a4c1b9de89bdba5854a75f55fc42ba872d\"\n  },\n  \"step\": \"05-mcp-and-update\",\n  \"workspace\": \"consumer\",\n  \"client\": \"cli\",\n  \"prerequisites\": [\n    {\n      \"path\": \".github/prompts/plan-api-change.prompt.md\",\n      \"present\": true\n    }\n  ],\n  \"prerequisiteSteps\": [\n    \"04-plugin\"\n  ],\n  \"files\": [\n    {\n      \"destination\": \"client-configs/cli-mcp.md\",\n      \"source\": \"examples/steps/05-mcp-and-update/consumer/cli-mcp.md\",\n      \"sha256\": \"7c04ba4504d5eb89580908b15affdb83f9859289b0105d78ea56104e68274e3c\",\n      \"state\": \"missing\",\n      \"conflict\": null\n    }\n  ],\n  \"note\": \"Presence is not proof that authored equivalents satisfy prerequisites or that a client loaded an asset.\"\n}\nStaged references: .lab-references/05-mcp-and-update-consumer-cli\n",
+    "stderr": ""
+  },
+  {
+    "workspace": "consumer",
+    "command": [
+      "node24",
+      "npm-cli.js",
+      "run",
+      "lab:example",
+      "--",
+      "--step",
+      "05-mcp-and-update",
+      "--client",
+      "cli",
+      "--apply"
+    ],
+    "exit": 0,
+    "stdout": "\n> copilot-user-search-workshop@1.0.0 lab:example\n> node scripts/import-example.mjs --step 05-mcp-and-update --client cli --apply\n\n{\n  \"source\": {\n    \"tag\": \"examples-v1\",\n    \"commit\": \"df1328a4c1b9de89bdba5854a75f55fc42ba872d\"\n  },\n  \"step\": \"05-mcp-and-update\",\n  \"workspace\": \"consumer\",\n  \"client\": \"cli\",\n  \"prerequisites\": [\n    {\n      \"path\": \".github/prompts/plan-api-change.prompt.md\",\n      \"present\": true\n    }\n  ],\n  \"prerequisiteSteps\": [\n    \"04-plugin\"\n  ],\n  \"files\": [\n    {\n      \"destination\": \"client-configs/cli-mcp.md\",\n      \"source\": \"examples/steps/05-mcp-and-update/consumer/cli-mcp.md\",\n      \"sha256\": \"7c04ba4504d5eb89580908b15affdb83f9859289b0105d78ea56104e68274e3c\",\n      \"state\": \"missing\",\n      \"conflict\": null\n    }\n  ],\n  \"note\": \"Presence is not proof that authored equivalents satisfy prerequisites or that a client loaded an asset.\"\n}\n{\"changed\":1,\"unchanged\":0}\n",
+    "stderr": ""
+  },
+  {
+    "workspace": "consumer",
+    "command": [
+      "node24",
+      "npm-cli.js",
+      "run",
+      "verify:exercise",
+      "--",
+      "--step",
+      "05-mcp-and-update",
+      "--client",
+      "cli"
+    ],
+    "exit": 0,
+    "stdout": "\n> copilot-user-search-workshop@1.0.0 verify:exercise\n> node scripts/validate-assets.mjs --exercise --step 05-mcp-and-update --client cli\n\nStatic assets present for 05-mcp-and-update. NOT runtime proof: record actual client discovery/invocation, source/version, approval, and results using workshop/evaluation-rubric.md.\n",
+    "stderr": ""
+  },
+  {
+    "workspace": "consumer",
+    "command": [
+      "git",
+      "add",
+      "."
+    ],
+    "exit": 0,
+    "stdout": "",
+    "stderr": ""
+  },
+  {
+    "workspace": "consumer",
+    "command": [
+      "git",
+      "commit",
+      "-q",
+      "-m",
+      "Rehearse 05-mcp-and-update in isolated author/consumer workspace",
+      "-m",
+      "Co-authored-by: Copilot App <223556219+Copilot@users.noreply.github.com>"
+    ],
+    "exit": 0,
+    "stdout": "",
+    "stderr": ""
+  },
+  {
+    "workspace": "consumer",
+    "command": [
+      "node24",
+      "npm-cli.js",
+      "run",
+      "lab:example",
+      "--",
+      "--step",
+      "06-agent-roles",
+      "--client",
+      "cli",
+      "--preview"
+    ],
+    "exit": 0,
+    "stdout": "\n> copilot-user-search-workshop@1.0.0 lab:example\n> node scripts/import-example.mjs --step 06-agent-roles --client cli --preview\n\n{\n  \"source\": {\n    \"tag\": \"examples-v1\",\n    \"commit\": \"df1328a4c1b9de89bdba5854a75f55fc42ba872d\"\n  },\n  \"step\": \"06-agent-roles\",\n  \"workspace\": \"consumer\",\n  \"client\": \"cli\",\n  \"prerequisites\": [\n    {\n      \"path\": \".github/prompts/plan-api-change.prompt.md\",\n      \"present\": true\n    }\n  ],\n  \"prerequisiteSteps\": [\n    \"05-mcp-and-update\"\n  ],\n  \"files\": [\n    {\n      \"destination\": \".github/agents/workshop-planner.agent.md\",\n      \"source\": \"examples/steps/06-agent-roles/clients/cli/workshop-planner.agent.md\",\n      \"sha256\": \"b396bed805c25a31d0ade84bd4e767e60a0e99ab31f11f621f707d59dd244411\",\n      \"state\": \"missing\",\n      \"conflict\": null\n    },\n    {\n      \"destination\": \".github/agents/workshop-implementer.agent.md\",\n      \"source\": \"examples/steps/06-agent-roles/clients/cli/workshop-implementer.agent.md\",\n      \"sha256\": \"79fa4937b2e2f2128e49218224e0eb53c3778b5c76f18a3609612dab5747f492\",\n      \"state\": \"missing\",\n      \"conflict\": null\n    },\n    {\n      \"destination\": \".github/agents/workshop-reviewer.agent.md\",\n      \"source\": \"examples/steps/06-agent-roles/clients/cli/workshop-reviewer.agent.md\",\n      \"sha256\": \"cedb4ca14612e3959ac8e37343c60f4bc85b1947169315126841754c3956e1df\",\n      \"state\": \"missing\",\n      \"conflict\": null\n    }\n  ],\n  \"note\": \"Presence is not proof that authored equivalents satisfy prerequisites or that a client loaded an asset.\"\n}\n",
+    "stderr": ""
+  },
+  {
+    "workspace": "consumer",
+    "command": [
+      "node24",
+      "npm-cli.js",
+      "run",
+      "lab:example",
+      "--",
+      "--step",
+      "06-agent-roles",
+      "--client",
+      "cli",
+      "--stage"
+    ],
+    "exit": 0,
+    "stdout": "\n> copilot-user-search-workshop@1.0.0 lab:example\n> node scripts/import-example.mjs --step 06-agent-roles --client cli --stage\n\n{\n  \"source\": {\n    \"tag\": \"examples-v1\",\n    \"commit\": \"df1328a4c1b9de89bdba5854a75f55fc42ba872d\"\n  },\n  \"step\": \"06-agent-roles\",\n  \"workspace\": \"consumer\",\n  \"client\": \"cli\",\n  \"prerequisites\": [\n    {\n      \"path\": \".github/prompts/plan-api-change.prompt.md\",\n      \"present\": true\n    }\n  ],\n  \"prerequisiteSteps\": [\n    \"05-mcp-and-update\"\n  ],\n  \"files\": [\n    {\n      \"destination\": \".github/agents/workshop-planner.agent.md\",\n      \"source\": \"examples/steps/06-agent-roles/clients/cli/workshop-planner.agent.md\",\n      \"sha256\": \"b396bed805c25a31d0ade84bd4e767e60a0e99ab31f11f621f707d59dd244411\",\n      \"state\": \"missing\",\n      \"conflict\": null\n    },\n    {\n      \"destination\": \".github/agents/workshop-implementer.agent.md\",\n      \"source\": \"examples/steps/06-agent-roles/clients/cli/workshop-implementer.agent.md\",\n      \"sha256\": \"79fa4937b2e2f2128e49218224e0eb53c3778b5c76f18a3609612dab5747f492\",\n      \"state\": \"missing\",\n      \"conflict\": null\n    },\n    {\n      \"destination\": \".github/agents/workshop-reviewer.agent.md\",\n      \"source\": \"examples/steps/06-agent-roles/clients/cli/workshop-reviewer.agent.md\",\n      \"sha256\": \"cedb4ca14612e3959ac8e37343c60f4bc85b1947169315126841754c3956e1df\",\n      \"state\": \"missing\",\n      \"conflict\": null\n    }\n  ],\n  \"note\": \"Presence is not proof that authored equivalents satisfy prerequisites or that a client loaded an asset.\"\n}\nStaged references: .lab-references/06-agent-roles-consumer-cli\n",
+    "stderr": ""
+  },
+  {
+    "workspace": "consumer",
+    "command": [
+      "node24",
+      "npm-cli.js",
+      "run",
+      "lab:example",
+      "--",
+      "--step",
+      "06-agent-roles",
+      "--client",
+      "cli",
+      "--apply"
+    ],
+    "exit": 0,
+    "stdout": "\n> copilot-user-search-workshop@1.0.0 lab:example\n> node scripts/import-example.mjs --step 06-agent-roles --client cli --apply\n\n{\n  \"source\": {\n    \"tag\": \"examples-v1\",\n    \"commit\": \"df1328a4c1b9de89bdba5854a75f55fc42ba872d\"\n  },\n  \"step\": \"06-agent-roles\",\n  \"workspace\": \"consumer\",\n  \"client\": \"cli\",\n  \"prerequisites\": [\n    {\n      \"path\": \".github/prompts/plan-api-change.prompt.md\",\n      \"present\": true\n    }\n  ],\n  \"prerequisiteSteps\": [\n    \"05-mcp-and-update\"\n  ],\n  \"files\": [\n    {\n      \"destination\": \".github/agents/workshop-planner.agent.md\",\n      \"source\": \"examples/steps/06-agent-roles/clients/cli/workshop-planner.agent.md\",\n      \"sha256\": \"b396bed805c25a31d0ade84bd4e767e60a0e99ab31f11f621f707d59dd244411\",\n      \"state\": \"missing\",\n      \"conflict\": null\n    },\n    {\n      \"destination\": \".github/agents/workshop-implementer.agent.md\",\n      \"source\": \"examples/steps/06-agent-roles/clients/cli/workshop-implementer.agent.md\",\n      \"sha256\": \"79fa4937b2e2f2128e49218224e0eb53c3778b5c76f18a3609612dab5747f492\",\n      \"state\": \"missing\",\n      \"conflict\": null\n    },\n    {\n      \"destination\": \".github/agents/workshop-reviewer.agent.md\",\n      \"source\": \"examples/steps/06-agent-roles/clients/cli/workshop-reviewer.agent.md\",\n      \"sha256\": \"cedb4ca14612e3959ac8e37343c60f4bc85b1947169315126841754c3956e1df\",\n      \"state\": \"missing\",\n      \"conflict\": null\n    }\n  ],\n  \"note\": \"Presence is not proof that authored equivalents satisfy prerequisites or that a client loaded an asset.\"\n}\n{\"changed\":3,\"unchanged\":0}\n",
+    "stderr": ""
+  },
+  {
+    "workspace": "consumer",
+    "command": [
+      "node24",
+      "npm-cli.js",
+      "run",
+      "verify:exercise",
+      "--",
+      "--step",
+      "06-agent-roles",
+      "--client",
+      "cli"
+    ],
+    "exit": 0,
+    "stdout": "\n> copilot-user-search-workshop@1.0.0 verify:exercise\n> node scripts/validate-assets.mjs --exercise --step 06-agent-roles --client cli\n\nStatic assets present for 06-agent-roles. NOT runtime proof: record actual client discovery/invocation, source/version, approval, and results using workshop/evaluation-rubric.md.\n",
+    "stderr": ""
+  },
+  {
+    "workspace": "consumer",
+    "command": [
+      "git",
+      "add",
+      "."
+    ],
+    "exit": 0,
+    "stdout": "",
+    "stderr": ""
+  },
+  {
+    "workspace": "consumer",
+    "command": [
+      "git",
+      "commit",
+      "-q",
+      "-m",
+      "Rehearse 06-agent-roles in isolated author/consumer workspace",
+      "-m",
+      "Co-authored-by: Copilot App <223556219+Copilot@users.noreply.github.com>"
+    ],
+    "exit": 0,
+    "stdout": "",
+    "stderr": ""
+  },
+  {
+    "workspace": "consumer",
+    "command": [
+      "node24",
+      "npm-cli.js",
+      "run",
+      "lab:example",
+      "--",
+      "--step",
+      "07-use-toolkit",
+      "--client",
+      "cli",
+      "--preview"
+    ],
+    "exit": 0,
+    "stdout": "\n> copilot-user-search-workshop@1.0.0 lab:example\n> node scripts/import-example.mjs --step 07-use-toolkit --client cli --preview\n\n{\n  \"source\": {\n    \"tag\": \"examples-v1\",\n    \"commit\": \"df1328a4c1b9de89bdba5854a75f55fc42ba872d\"\n  },\n  \"step\": \"07-use-toolkit\",\n  \"workspace\": \"consumer\",\n  \"client\": \"cli\",\n  \"prerequisites\": [\n    {\n      \"path\": \".github/agents/workshop-planner.agent.md\",\n      \"present\": true\n    },\n    {\n      \"path\": \".github/agents/workshop-implementer.agent.md\",\n      \"present\": true\n    },\n    {\n      \"path\": \".github/agents/workshop-reviewer.agent.md\",\n      \"present\": true\n    }\n  ],\n  \"prerequisiteSteps\": [\n    \"06-agent-roles\"\n  ],\n  \"files\": [\n    {\n      \"destination\": \"workshop/artifacts/toolkit-checkpoint.md\",\n      \"source\": \"examples/steps/07-use-toolkit/files/toolkit-checkpoint.md\",\n      \"sha256\": \"d222432d3bf3320f29efb2617c2176cb55a04842643dde568899d592ee4961a1\",\n      \"state\": \"missing\",\n      \"conflict\": null\n    }\n  ],\n  \"note\": \"Presence is not proof that authored equivalents satisfy prerequisites or that a client loaded an asset.\"\n}\n",
+    "stderr": ""
+  },
+  {
+    "workspace": "consumer",
+    "command": [
+      "node24",
+      "npm-cli.js",
+      "run",
+      "lab:example",
+      "--",
+      "--step",
+      "07-use-toolkit",
+      "--client",
+      "cli",
+      "--stage"
+    ],
+    "exit": 0,
+    "stdout": "\n> copilot-user-search-workshop@1.0.0 lab:example\n> node scripts/import-example.mjs --step 07-use-toolkit --client cli --stage\n\n{\n  \"source\": {\n    \"tag\": \"examples-v1\",\n    \"commit\": \"df1328a4c1b9de89bdba5854a75f55fc42ba872d\"\n  },\n  \"step\": \"07-use-toolkit\",\n  \"workspace\": \"consumer\",\n  \"client\": \"cli\",\n  \"prerequisites\": [\n    {\n      \"path\": \".github/agents/workshop-planner.agent.md\",\n      \"present\": true\n    },\n    {\n      \"path\": \".github/agents/workshop-implementer.agent.md\",\n      \"present\": true\n    },\n    {\n      \"path\": \".github/agents/workshop-reviewer.agent.md\",\n      \"present\": true\n    }\n  ],\n  \"prerequisiteSteps\": [\n    \"06-agent-roles\"\n  ],\n  \"files\": [\n    {\n      \"destination\": \"workshop/artifacts/toolkit-checkpoint.md\",\n      \"source\": \"examples/steps/07-use-toolkit/files/toolkit-checkpoint.md\",\n      \"sha256\": \"d222432d3bf3320f29efb2617c2176cb55a04842643dde568899d592ee4961a1\",\n      \"state\": \"missing\",\n      \"conflict\": null\n    }\n  ],\n  \"note\": \"Presence is not proof that authored equivalents satisfy prerequisites or that a client loaded an asset.\"\n}\nStaged references: .lab-references/07-use-toolkit-consumer-cli\n",
+    "stderr": ""
+  },
+  {
+    "workspace": "consumer",
+    "command": [
+      "node24",
+      "npm-cli.js",
+      "run",
+      "lab:example",
+      "--",
+      "--step",
+      "07-use-toolkit",
+      "--client",
+      "cli",
+      "--apply"
+    ],
+    "exit": 0,
+    "stdout": "\n> copilot-user-search-workshop@1.0.0 lab:example\n> node scripts/import-example.mjs --step 07-use-toolkit --client cli --apply\n\n{\n  \"source\": {\n    \"tag\": \"examples-v1\",\n    \"commit\": \"df1328a4c1b9de89bdba5854a75f55fc42ba872d\"\n  },\n  \"step\": \"07-use-toolkit\",\n  \"workspace\": \"consumer\",\n  \"client\": \"cli\",\n  \"prerequisites\": [\n    {\n      \"path\": \".github/agents/workshop-planner.agent.md\",\n      \"present\": true\n    },\n    {\n      \"path\": \".github/agents/workshop-implementer.agent.md\",\n      \"present\": true\n    },\n    {\n      \"path\": \".github/agents/workshop-reviewer.agent.md\",\n      \"present\": true\n    }\n  ],\n  \"prerequisiteSteps\": [\n    \"06-agent-roles\"\n  ],\n  \"files\": [\n    {\n      \"destination\": \"workshop/artifacts/toolkit-checkpoint.md\",\n      \"source\": \"examples/steps/07-use-toolkit/files/toolkit-checkpoint.md\",\n      \"sha256\": \"d222432d3bf3320f29efb2617c2176cb55a04842643dde568899d592ee4961a1\",\n      \"state\": \"missing\",\n      \"conflict\": null\n    }\n  ],\n  \"note\": \"Presence is not proof that authored equivalents satisfy prerequisites or that a client loaded an asset.\"\n}\n{\"changed\":1,\"unchanged\":0}\n",
+    "stderr": ""
+  },
+  {
+    "workspace": "consumer",
+    "command": [
+      "node24",
+      "npm-cli.js",
+      "run",
+      "verify:exercise",
+      "--",
+      "--step",
+      "07-use-toolkit",
+      "--client",
+      "cli"
+    ],
+    "exit": 0,
+    "stdout": "\n> copilot-user-search-workshop@1.0.0 verify:exercise\n> node scripts/validate-assets.mjs --exercise --step 07-use-toolkit --client cli\n\nStatic assets present for 07-use-toolkit. NOT runtime proof: record actual client discovery/invocation, source/version, approval, and results using workshop/evaluation-rubric.md.\n",
+    "stderr": ""
+  },
+  {
+    "workspace": "consumer",
+    "command": [
+      "git",
+      "add",
+      "."
+    ],
+    "exit": 0,
+    "stdout": "",
+    "stderr": ""
+  },
+  {
+    "workspace": "consumer",
+    "command": [
+      "git",
+      "commit",
+      "-q",
+      "-m",
+      "Rehearse 07-use-toolkit in isolated author/consumer workspace",
+      "-m",
+      "Co-authored-by: Copilot App <223556219+Copilot@users.noreply.github.com>"
+    ],
+    "exit": 0,
+    "stdout": "",
+    "stderr": ""
+  },
+  {
+    "workspace": "consumer",
+    "command": [
+      "node24",
+      "npm-cli.js",
+      "run",
+      "lab:example",
+      "--",
+      "--step",
+      "08-review-and-handoff",
+      "--client",
+      "cli",
+      "--preview"
+    ],
+    "exit": 0,
+    "stdout": "\n> copilot-user-search-workshop@1.0.0 lab:example\n> node scripts/import-example.mjs --step 08-review-and-handoff --client cli --preview\n\n{\n  \"source\": {\n    \"tag\": \"examples-v1\",\n    \"commit\": \"df1328a4c1b9de89bdba5854a75f55fc42ba872d\"\n  },\n  \"step\": \"08-review-and-handoff\",\n  \"workspace\": \"consumer\",\n  \"client\": \"cli\",\n  \"prerequisites\": [\n    {\n      \"path\": \".github/agents/workshop-reviewer.agent.md\",\n      \"present\": true\n    }\n  ],\n  \"prerequisiteSteps\": [\n    \"07-use-toolkit\"\n  ],\n  \"files\": [\n    {\n      \"destination\": \"workshop/artifacts/review/total-after-limit.mjs\",\n      \"source\": \"examples/steps/08-review-and-handoff/files/total-after-limit.mjs\",\n      \"sha256\": \"79ceef4c20966ae4e09bfaa040c09086161f5355bfce2645693f6d7e203e27d3\",\n      \"state\": \"missing\",\n      \"conflict\": null\n    },\n    {\n      \"destination\": \"workshop/artifacts/review/probe.mjs\",\n      \"source\": \"examples/steps/08-review-and-handoff/files/probe.mjs\",\n      \"sha256\": \"72dc9dd86e60e5cb419f553542840bf36f5be490df77c688710e0607f5a8f730\",\n      \"state\": \"missing\",\n      \"conflict\": null\n    },\n    {\n      \"destination\": \"workshop/artifacts/review/review-rubric.md\",\n      \"source\": \"examples/steps/08-review-and-handoff/files/review-rubric.md\",\n      \"sha256\": \"832066b4b5fcff6d0eaa17608b84bcfccc8f44170f6efb53348fc8b10729d5d4\",\n      \"state\": \"missing\",\n      \"conflict\": null\n    },\n    {\n      \"destination\": \"workshop/artifacts/review/continuation-brief.md\",\n      \"source\": \"examples/steps/08-review-and-handoff/files/continuation-brief.md\",\n      \"sha256\": \"ea3d494bc8273b3a3c14b386145c02a43f3f7031272a0e3ded24ef623ec3f50f\",\n      \"state\": \"missing\",\n      \"conflict\": null\n    }\n  ],\n  \"note\": \"Presence is not proof that authored equivalents satisfy prerequisites or that a client loaded an asset.\"\n}\n",
+    "stderr": ""
+  },
+  {
+    "workspace": "consumer",
+    "command": [
+      "node24",
+      "npm-cli.js",
+      "run",
+      "lab:example",
+      "--",
+      "--step",
+      "08-review-and-handoff",
+      "--client",
+      "cli",
+      "--stage"
+    ],
+    "exit": 0,
+    "stdout": "\n> copilot-user-search-workshop@1.0.0 lab:example\n> node scripts/import-example.mjs --step 08-review-and-handoff --client cli --stage\n\n{\n  \"source\": {\n    \"tag\": \"examples-v1\",\n    \"commit\": \"df1328a4c1b9de89bdba5854a75f55fc42ba872d\"\n  },\n  \"step\": \"08-review-and-handoff\",\n  \"workspace\": \"consumer\",\n  \"client\": \"cli\",\n  \"prerequisites\": [\n    {\n      \"path\": \".github/agents/workshop-reviewer.agent.md\",\n      \"present\": true\n    }\n  ],\n  \"prerequisiteSteps\": [\n    \"07-use-toolkit\"\n  ],\n  \"files\": [\n    {\n      \"destination\": \"workshop/artifacts/review/total-after-limit.mjs\",\n      \"source\": \"examples/steps/08-review-and-handoff/files/total-after-limit.mjs\",\n      \"sha256\": \"79ceef4c20966ae4e09bfaa040c09086161f5355bfce2645693f6d7e203e27d3\",\n      \"state\": \"missing\",\n      \"conflict\": null\n    },\n    {\n      \"destination\": \"workshop/artifacts/review/probe.mjs\",\n      \"source\": \"examples/steps/08-review-and-handoff/files/probe.mjs\",\n      \"sha256\": \"72dc9dd86e60e5cb419f553542840bf36f5be490df77c688710e0607f5a8f730\",\n      \"state\": \"missing\",\n      \"conflict\": null\n    },\n    {\n      \"destination\": \"workshop/artifacts/review/review-rubric.md\",\n      \"source\": \"examples/steps/08-review-and-handoff/files/review-rubric.md\",\n      \"sha256\": \"832066b4b5fcff6d0eaa17608b84bcfccc8f44170f6efb53348fc8b10729d5d4\",\n      \"state\": \"missing\",\n      \"conflict\": null\n    },\n    {\n      \"destination\": \"workshop/artifacts/review/continuation-brief.md\",\n      \"source\": \"examples/steps/08-review-and-handoff/files/continuation-brief.md\",\n      \"sha256\": \"ea3d494bc8273b3a3c14b386145c02a43f3f7031272a0e3ded24ef623ec3f50f\",\n      \"state\": \"missing\",\n      \"conflict\": null\n    }\n  ],\n  \"note\": \"Presence is not proof that authored equivalents satisfy prerequisites or that a client loaded an asset.\"\n}\nStaged references: .lab-references/08-review-and-handoff-consumer-cli\n",
+    "stderr": ""
+  },
+  {
+    "workspace": "consumer",
+    "command": [
+      "node24",
+      "npm-cli.js",
+      "run",
+      "lab:example",
+      "--",
+      "--step",
+      "08-review-and-handoff",
+      "--client",
+      "cli",
+      "--apply"
+    ],
+    "exit": 0,
+    "stdout": "\n> copilot-user-search-workshop@1.0.0 lab:example\n> node scripts/import-example.mjs --step 08-review-and-handoff --client cli --apply\n\n{\n  \"source\": {\n    \"tag\": \"examples-v1\",\n    \"commit\": \"df1328a4c1b9de89bdba5854a75f55fc42ba872d\"\n  },\n  \"step\": \"08-review-and-handoff\",\n  \"workspace\": \"consumer\",\n  \"client\": \"cli\",\n  \"prerequisites\": [\n    {\n      \"path\": \".github/agents/workshop-reviewer.agent.md\",\n      \"present\": true\n    }\n  ],\n  \"prerequisiteSteps\": [\n    \"07-use-toolkit\"\n  ],\n  \"files\": [\n    {\n      \"destination\": \"workshop/artifacts/review/total-after-limit.mjs\",\n      \"source\": \"examples/steps/08-review-and-handoff/files/total-after-limit.mjs\",\n      \"sha256\": \"79ceef4c20966ae4e09bfaa040c09086161f5355bfce2645693f6d7e203e27d3\",\n      \"state\": \"missing\",\n      \"conflict\": null\n    },\n    {\n      \"destination\": \"workshop/artifacts/review/probe.mjs\",\n      \"source\": \"examples/steps/08-review-and-handoff/files/probe.mjs\",\n      \"sha256\": \"72dc9dd86e60e5cb419f553542840bf36f5be490df77c688710e0607f5a8f730\",\n      \"state\": \"missing\",\n      \"conflict\": null\n    },\n    {\n      \"destination\": \"workshop/artifacts/review/review-rubric.md\",\n      \"source\": \"examples/steps/08-review-and-handoff/files/review-rubric.md\",\n      \"sha256\": \"832066b4b5fcff6d0eaa17608b84bcfccc8f44170f6efb53348fc8b10729d5d4\",\n      \"state\": \"missing\",\n      \"conflict\": null\n    },\n    {\n      \"destination\": \"workshop/artifacts/review/continuation-brief.md\",\n      \"source\": \"examples/steps/08-review-and-handoff/files/continuation-brief.md\",\n      \"sha256\": \"ea3d494bc8273b3a3c14b386145c02a43f3f7031272a0e3ded24ef623ec3f50f\",\n      \"state\": \"missing\",\n      \"conflict\": null\n    }\n  ],\n  \"note\": \"Presence is not proof that authored equivalents satisfy prerequisites or that a client loaded an asset.\"\n}\n{\"changed\":4,\"unchanged\":0}\n",
+    "stderr": ""
+  },
+  {
+    "workspace": "consumer",
+    "command": [
+      "node24",
+      "npm-cli.js",
+      "run",
+      "verify:exercise",
+      "--",
+      "--step",
+      "08-review-and-handoff",
+      "--client",
+      "cli"
+    ],
+    "exit": 0,
+    "stdout": "\n> copilot-user-search-workshop@1.0.0 verify:exercise\n> node scripts/validate-assets.mjs --exercise --step 08-review-and-handoff --client cli\n\nStatic assets present for 08-review-and-handoff. NOT runtime proof: record actual client discovery/invocation, source/version, approval, and results using workshop/evaluation-rubric.md.\n",
+    "stderr": ""
+  },
+  {
+    "workspace": "consumer",
+    "command": [
+      "git",
+      "add",
+      "."
+    ],
+    "exit": 0,
+    "stdout": "",
+    "stderr": ""
+  },
+  {
+    "workspace": "consumer",
+    "command": [
+      "git",
+      "commit",
+      "-q",
+      "-m",
+      "Rehearse 08-review-and-handoff in isolated author/consumer workspace",
+      "-m",
+      "Co-authored-by: Copilot App <223556219+Copilot@users.noreply.github.com>"
+    ],
+    "exit": 0,
+    "stdout": "",
+    "stderr": ""
+  },
+  {
+    "workspace": "consumer",
+    "command": [
+      "node24",
+      "npm-cli.js",
+      "run",
+      "lab:example",
+      "--",
+      "--step",
+      "09-spec-kit",
+      "--client",
+      "cli",
+      "--preview"
+    ],
+    "exit": 0,
+    "stdout": "\n> copilot-user-search-workshop@1.0.0 lab:example\n> node scripts/import-example.mjs --step 09-spec-kit --client cli --preview\n\n{\n  \"source\": {\n    \"tag\": \"examples-v1\",\n    \"commit\": \"df1328a4c1b9de89bdba5854a75f55fc42ba872d\"\n  },\n  \"step\": \"09-spec-kit\",\n  \"workspace\": \"consumer\",\n  \"client\": \"cli\",\n  \"prerequisites\": [],\n  \"prerequisiteSteps\": [],\n  \"files\": [\n    {\n      \"destination\": \"workshop/artifacts/optional-spec-kit/unavailable.md\",\n      \"source\": \"examples/steps/09-spec-kit/files/unavailable.md\",\n      \"sha256\": \"000c0ad9bf7135ff7a950bf2e7165c43a9384fcc86f4a2c1ee4a0f90f8eb4681\",\n      \"state\": \"missing\",\n      \"conflict\": null\n    }\n  ],\n  \"note\": \"Presence is not proof that authored equivalents satisfy prerequisites or that a client loaded an asset.\"\n}\n",
+    "stderr": ""
+  },
+  {
+    "workspace": "consumer",
+    "command": [
+      "node24",
+      "npm-cli.js",
+      "run",
+      "lab:example",
+      "--",
+      "--step",
+      "09-spec-kit",
+      "--client",
+      "cli",
+      "--stage"
+    ],
+    "exit": 0,
+    "stdout": "\n> copilot-user-search-workshop@1.0.0 lab:example\n> node scripts/import-example.mjs --step 09-spec-kit --client cli --stage\n\n{\n  \"source\": {\n    \"tag\": \"examples-v1\",\n    \"commit\": \"df1328a4c1b9de89bdba5854a75f55fc42ba872d\"\n  },\n  \"step\": \"09-spec-kit\",\n  \"workspace\": \"consumer\",\n  \"client\": \"cli\",\n  \"prerequisites\": [],\n  \"prerequisiteSteps\": [],\n  \"files\": [\n    {\n      \"destination\": \"workshop/artifacts/optional-spec-kit/unavailable.md\",\n      \"source\": \"examples/steps/09-spec-kit/files/unavailable.md\",\n      \"sha256\": \"000c0ad9bf7135ff7a950bf2e7165c43a9384fcc86f4a2c1ee4a0f90f8eb4681\",\n      \"state\": \"missing\",\n      \"conflict\": null\n    }\n  ],\n  \"note\": \"Presence is not proof that authored equivalents satisfy prerequisites or that a client loaded an asset.\"\n}\nStaged references: .lab-references/09-spec-kit-consumer-cli\n",
+    "stderr": ""
+  },
+  {
+    "workspace": "consumer",
+    "command": [
+      "node24",
+      "npm-cli.js",
+      "run",
+      "lab:example",
+      "--",
+      "--step",
+      "09-spec-kit",
+      "--client",
+      "cli",
+      "--apply"
+    ],
+    "exit": 0,
+    "stdout": "\n> copilot-user-search-workshop@1.0.0 lab:example\n> node scripts/import-example.mjs --step 09-spec-kit --client cli --apply\n\n{\n  \"source\": {\n    \"tag\": \"examples-v1\",\n    \"commit\": \"df1328a4c1b9de89bdba5854a75f55fc42ba872d\"\n  },\n  \"step\": \"09-spec-kit\",\n  \"workspace\": \"consumer\",\n  \"client\": \"cli\",\n  \"prerequisites\": [],\n  \"prerequisiteSteps\": [],\n  \"files\": [\n    {\n      \"destination\": \"workshop/artifacts/optional-spec-kit/unavailable.md\",\n      \"source\": \"examples/steps/09-spec-kit/files/unavailable.md\",\n      \"sha256\": \"000c0ad9bf7135ff7a950bf2e7165c43a9384fcc86f4a2c1ee4a0f90f8eb4681\",\n      \"state\": \"missing\",\n      \"conflict\": null\n    }\n  ],\n  \"note\": \"Presence is not proof that authored equivalents satisfy prerequisites or that a client loaded an asset.\"\n}\n{\"changed\":1,\"unchanged\":0}\n",
+    "stderr": ""
+  },
+  {
+    "workspace": "consumer",
+    "command": [
+      "node24",
+      "npm-cli.js",
+      "run",
+      "verify:exercise",
+      "--",
+      "--step",
+      "09-spec-kit",
+      "--client",
+      "cli"
+    ],
+    "exit": 0,
+    "stdout": "\n> copilot-user-search-workshop@1.0.0 verify:exercise\n> node scripts/validate-assets.mjs --exercise --step 09-spec-kit --client cli\n\nStatic assets present for 09-spec-kit. NOT runtime proof: record actual client discovery/invocation, source/version, approval, and results using workshop/evaluation-rubric.md.\n",
+    "stderr": ""
+  },
+  {
+    "workspace": "consumer",
+    "command": [
+      "git",
+      "add",
+      "."
+    ],
+    "exit": 0,
+    "stdout": "",
+    "stderr": ""
+  },
+  {
+    "workspace": "consumer",
+    "command": [
+      "git",
+      "commit",
+      "-q",
+      "-m",
+      "Rehearse 09-spec-kit in isolated author/consumer workspace",
+      "-m",
+      "Co-authored-by: Copilot App <223556219+Copilot@users.noreply.github.com>"
+    ],
+    "exit": 0,
+    "stdout": "",
+    "stderr": ""
+  },
+  {
+    "workspace": "consumer",
+    "command": [
+      "node24",
+      "workshop/artifacts/review/probe.mjs"
+    ],
+    "exit": 0,
+    "stdout": "DELIBERATE DEFECT DETECTED: total is 1 after limiting; approved contract requires 3. This probe is not API acceptance.\n",
+    "stderr": ""
+  }
+]

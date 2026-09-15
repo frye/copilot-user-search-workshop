@@ -1,0 +1,67 @@
+{
+  "checkedAt": "2026-09-15T04:28:37.165Z",
+  "node": "v24.20.0",
+  "platform": "darwin",
+  "arch": "arm64",
+  "schema": 1,
+  "mainValidatedSourceCommit": "70ba7876eb7308aee3eff0813e05ed8e5ba90f4c",
+  "starter": {
+    "tag": "starter-v2",
+    "commit": "1afbf9be347343dc15bb390f4ac843dca44ce034"
+  },
+  "examples": {
+    "tag": "examples-v1",
+    "commit": "df1328a4c1b9de89bdba5854a75f55fc42ba872d",
+    "branch": "examples",
+    "manifestSha256": "38126d4cfc6ed3e53eb8cdeec3c3e2962fb92ae7ffdebceef963ee6f8b16e952"
+  },
+  "solution": {
+    "tag": "solution-v2",
+    "commit": "02cc4ba9f3df0e0b338bfd4f06f0d4e1edde15ed",
+    "branch": "solution"
+  },
+  "supersededPreparationTags": [
+    "starter-v1",
+    "starter-v1.1",
+    "starter-v1.2",
+    "solution-v1"
+  ],
+  "publication": "local-only-no-origin",
+  "note": "Main advances with evidence-only commits. Immutable release refs are never moved.",
+  "observations": [
+    {
+      "state": "main",
+      "status": 501,
+      "body": {
+        "error": {
+          "code": "NOT_IMPLEMENTED",
+          "message": "Search is the workshop exercise."
+        }
+      }
+    },
+    {
+      "state": "solution",
+      "status": 200,
+      "body": {
+        "items": [
+          {
+            "id": "u-001",
+            "fullName": "Avery Lee",
+            "team": "platform"
+          }
+        ],
+        "total": 3
+      }
+    }
+  ],
+  "intentionalRed": {
+    "exit": 1,
+    "groups": 5,
+    "expectedStubReasonConfirmed": true
+  },
+  "actualLocalRehearsalCommands": 76,
+  "allLocalCommandExitsZero": true,
+  "activeCompletedCustomizationsOnMain": false,
+  "solutionMergedIntoMain": false,
+  "previewAndApiServersClosed": true
+}

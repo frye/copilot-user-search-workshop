@@ -5,9 +5,9 @@
 
 Running 4 tests using 1 worker
 
-  ✓  1 tests/browser/tabs.spec.mjs:3:1 › real tabs select, persist, link directly, navigate by keyboard and print all (391ms)
-  ✓  2 tests/browser/tabs.spec.mjs:24:1 › no JavaScript exposes every client instruction, and assets work at repository subpath (161ms)
-  ✓  3 tests/browser/tabs.spec.mjs:37:1 › SPA navigation enhances the next lab once and links with client anchors work (235ms)
-  ✓  4 tests/browser/tabs.spec.mjs:45:1 › changing an anchor-selected client yields a reloadable direct link (276ms)
+  ✓  1 tests/browser/tabs.spec.mjs:3:1 › real tabs select, persist, link directly, navigate by keyboard and print all (546ms)
+  ✓  2 tests/browser/tabs.spec.mjs:24:1 › no JavaScript exposes every client instruction, and assets work at repository subpath (206ms)
+  ✓  3 tests/browser/tabs.spec.mjs:37:1 › SPA navigation enhances the next lab once and links with client anchors work (316ms)
+  ✓  4 tests/browser/tabs.spec.mjs:45:1 › changing an anchor-selected client yields a reloadable direct link (369ms)
 
-  4 passed (2.7s)
+  4 passed (2.9s)
