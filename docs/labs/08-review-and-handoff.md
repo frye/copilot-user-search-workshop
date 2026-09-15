@@ -60,4 +60,4 @@ npm run lab:example -- --step 08-review-and-handoff --apply
 - If feature complete: `npm run verify:solution`; otherwise retain exact failing outcome and remaining work.
 - Evidence includes a supported finding, improved canonical asset and observed updated invocation, plus continuation from a fresh context.
 - Recovery: remove only lab package/MCP registrations after use; preserve authored artifacts. Stop local processes.
-- Optional: [09 — Spec-Kit status](09-spec-kit.md).
+- Optional: [09 — Spec Kit](09-spec-kit.md).

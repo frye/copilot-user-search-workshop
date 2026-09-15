@@ -275,7 +275,7 @@
     {
       "step": "09-spec-kit",
       "client": "vscode",
-      "mode": "unavailable-not-generated",
+      "mode": "artifact-first-live-skills-candidate",
       "observedRuntime": false,
       "rehearsedBuild": null,
       "source": "docs/reference/sources.md",
@@ -285,7 +285,7 @@
     {
       "step": "09-spec-kit",
       "client": "cli",
-      "mode": "unavailable-not-generated",
+      "mode": "artifact-first-live-skills-candidate",
       "observedRuntime": false,
       "rehearsedBuild": null,
       "source": "docs/reference/sources.md",
@@ -295,7 +295,7 @@
     {
       "step": "09-spec-kit",
       "client": "app",
-      "mode": "unavailable-not-generated",
+      "mode": "artifact-first-live-skills-candidate",
       "observedRuntime": false,
       "rehearsedBuild": null,
       "source": "docs/reference/sources.md",

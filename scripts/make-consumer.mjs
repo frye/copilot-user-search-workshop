@@ -1,8 +1,22 @@
-import { existsSync, mkdirSync, writeFileSync, realpathSync, lstatSync } from 'node:fs';
+import { existsSync, mkdirSync, writeFileSync, realpathSync, lstatSync, readdirSync } from 'node:fs';
 import { dirname, resolve, basename } from 'node:path';
 import { args, failMain, fileState, git, hash, json, safePath, workspace } from './lib/safe.mjs';
 import { fileURLToPath } from 'node:url';
 import { workspaceKind, release } from './lib/examples.mjs';
+
+function filesUnder(root, directory) {
+  const start = dirname(safePath(root, `${directory}/.walk`));
+  const visit = (absolute, relative = directory) => readdirSync(absolute, { withFileTypes: true }).flatMap(entry => {
+    const path = resolve(absolute, entry.name);
+    const target = `${relative}/${entry.name}`;
+    const stat = lstatSync(path);
+    if (stat.isSymbolicLink() || stat.nlink > 1 && stat.isFile()) throw new Error(`Links are not allowed: ${target}`);
+    if (entry.isDirectory()) return visit(path, target);
+    if (!entry.isFile()) throw new Error(`Only regular files are allowed: ${target}`);
+    return [target];
+  });
+  return visit(start);
+}
 
 export function makeConsumer(root, target) {
   if (workspaceKind(root) !== 'author') throw new Error('Run consumer:create in the author workspace.');
@@ -19,7 +33,15 @@ export function makeConsumer(root, target) {
   const sha = git(root, 'rev-parse', '--verify', `refs/tags/${starter}^{commit}`).trim();
   if (sha !== pinned.commit) throw new Error('Starter ref changed or is not the reviewed consumer base.');
   const guidance = ['.github/copilot-instructions.md', '.github/instructions/api.instructions.md', '.github/instructions/tests.instructions.md', '.github/prompts/plan-api-change.prompt.md'];
-  const copies = guidance.map(path => ({ path, data: fileState(root, path) })).filter(item => item.data !== null);
+  const lab09 = [
+    'package.json',
+    'scripts/spec-kit-reference.mjs',
+    ...filesUnder(root, 'tests/team-filter'),
+    ...filesUnder(root, 'workshop/spec-kit-reference'),
+  ];
+  const copies = [...new Set([...guidance, ...lab09])]
+    .map(path => ({ path, data: fileState(root, path) }))
+    .filter(item => item.data !== null);
   const tree = git(root, 'ls-tree', '-r', '--name-only', sha).trim().split('\n');
   if (tree.some(path => path.startsWith('.github/skills/') || path.startsWith('.github/agents/'))) throw new Error('Starter has active completed customizations.');
   git(root, 'clone', '--no-local', '--no-hardlinks', '--no-checkout', '--', root, dest);

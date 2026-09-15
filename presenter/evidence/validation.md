@@ -15,7 +15,9 @@
 - No app-native local installation claim; CLI bridge remains unverified.
 - No cloud task, hosted review, Mobile execution, remote repository, push, upload or Pages deployment.
 - No global client settings, user plugin registrations, account notes or other repository changed.
-- No Spec-Kit generation; optional extension unavailable.
+- No Copilot-client Spec Kit invocation. A local ignored-scratch preparation used `specify-cli` 1.0.6
+  with the Copilot/sh integration to produce the reviewed Lab 09 reference packet; this is generator
+  provenance, not learner or client runtime evidence.
 
 ## Final observed gates — 2026-09-15 UTC
 
@@ -28,6 +30,7 @@
 | Actual local helper commands | 76 commands, all exit 0; per-step preview/stage/apply, static exercise validation, package builds, fresh consumer baseline and review probe | [local-rehearsal.json](local-rehearsal.json) |
 | Canonical package 1.0.0 → 1.1.0 | PASS: exact files/schema/checksums, immutable output versions, preserved consumer guidance, no local duplicate skill | [package-rehearsal.json](package-rehearsal.json) |
 | Real stdio fixture calls | PASS: SDK initialize/list/both calls/close; source/version and stderr retained | [mcp-observed.json](mcp-observed.json) |
+| Lab 09 Spec Kit packet | PASS: ignored-scratch initialization and template workflow, complete reviewed artifacts/provenance, artifact importer safety, intentional starter red, focused green against isolated completed search | `workshop/spec-kit-reference/` and local validation output |
 | Release refs | Main starter; examples/solution separate; tags immutable, no origin | [releases.json](releases.json) |
 
 ## Rehearsal coverage
@@ -49,4 +52,6 @@
 - App local plugin consumption remains an **unverified CLI bridge**, not an app-native claim.
 - Linux/Windows runtime and hosted CI execution were not performed locally; workflows are prepared, not observed remote runs. Node 26 was the initial host, not the validated workshop target.
 - Optional hosted review/cloud/Mobile routes require separate access and genuine evidence.
+- Live Spec Kit skill discovery/invocation in VS Code, CLI, and app remains unobserved; the default Lab
+  09 route is accurately labeled artifact-guided.
 - No remaining failing implementation test is being treated as a release pass. Named main search failures are the documented teaching boundary.

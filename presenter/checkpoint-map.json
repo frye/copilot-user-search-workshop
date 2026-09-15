@@ -71,6 +71,39 @@
         "08-review-and-handoff"
       ],
       "installationRequired": true
+    },
+    {
+      "entry": "09-spec-kit",
+      "authorSteps": [
+        "00-start",
+        "01-instructions",
+        "02-planning-prompt",
+        "03-skill",
+        "04-plugin",
+        "05-mcp-and-update"
+      ],
+      "consumerSteps": [
+        "05-mcp-and-update",
+        "06-agent-roles",
+        "07-use-toolkit",
+        "08-review-and-handoff",
+        "09-spec-kit"
+      ],
+      "steps": [
+        "00-start",
+        "01-instructions",
+        "02-planning-prompt",
+        "03-skill",
+        "04-plugin",
+        "05-mcp-and-update",
+        "06-agent-roles",
+        "07-use-toolkit",
+        "08-review-and-handoff",
+        "09-spec-kit"
+      ],
+      "installationRequired": true,
+      "specKitInstallationRequired": false,
+      "referencePacketBundled": true
     }
   ]
 }

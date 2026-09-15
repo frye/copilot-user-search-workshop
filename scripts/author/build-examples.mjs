@@ -58,6 +58,7 @@ const checkpoint = { examplesTag: 'examples-v1', source: 'examples/manifest.json
   { entry: '04-plugin', authorSteps: steps.slice(0, 4).map(step => step.id), consumerSteps: [], steps: steps.slice(0, 4).map(step => step.id) },
   { entry: '07-use-toolkit', authorSteps: steps.slice(0, 6).map(step => step.id), consumerSteps: ['05-mcp-and-update', '06-agent-roles'], steps: steps.slice(0, 7).map(step => step.id), installationRequired: true },
   { entry: '08-review-and-handoff', authorSteps: steps.slice(0, 6).map(step => step.id), consumerSteps: steps.slice(5, 9).map(step => step.id), steps: steps.slice(0, 9).map(step => step.id), installationRequired: true },
+  { entry: '09-spec-kit', authorSteps: steps.slice(0, 6).map(step => step.id), consumerSteps: steps.slice(5, 10).map(step => step.id), steps: steps.map(step => step.id), installationRequired: true, specKitInstallationRequired: false, referencePacketBundled: true },
 ] };
 mkdirSync('presenter', { recursive: true });
 writeFileSync('presenter/checkpoint-map.json', JSON.stringify(checkpoint, null, 2) + '\n');

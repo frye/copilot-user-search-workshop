@@ -4,7 +4,7 @@
 - Learn to **author, test, package, install, update, and use** instructions, prompts, skills, plugins, MCP, and bounded roles—not just generate API code.
 - **Primary guide:** GitHub Pages is prepared but **not published**. There is no live guide URL yet; owner, visibility, and Pages audience await approval.
 - Preview the same guide locally with `npm run docs:dev`; complete [plain Markdown start guide](docs/start.md) works without Pages or JavaScript.
-- [Labs 00–08](docs/index.md) · [Client routes](docs/clients.md) · [Contract](docs/reference/contract.md) · [Examples and checkpoints](docs/reference/examples.md).
+- [Labs 00–09](docs/index.md) · [Client routes](docs/clients.md) · [Contract](docs/reference/contract.md) · [Examples and checkpoints](docs/reference/examples.md).
 - [Presenter runbook](presenter/runbook.md) · [Observed validation](presenter/evidence/validation.md) · [Compatibility metadata](workshop/compatibility.json).
 
 ## Start
@@ -27,6 +27,8 @@ npm start
 - `examples` / `examples-v1`: inert per-step assets. `solution` / `solution-v2`: explicit opt-in complete API reference. `starter-v2` is the pinned consumer base. Do not merge examples or solution into main.
 - No remote repository, deployment, cloud task, PR, personal client setting, or plugin installation was created by preparing this workshop.
 - Optional author-only runtime: `npm ci --prefix tools/author`, then prepend `tools/author/node_modules/node/bin` and `tools/author/node_modules/.bin` to PATH for that shell only.
+- Optional Lab 09 Spec Kit generation uses the latest learner-approved `specify-cli`; the lab also
+  ships a reviewed artifact packet and does not require Python or `uv`.
 
 ## Documentation preview
 
