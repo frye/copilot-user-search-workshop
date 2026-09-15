@@ -11,7 +11,7 @@ const routes = {
   '06-agent-roles': ['candidate-inspect-tool-grants', 'candidate-inspect-tool-grants', 'advisory-manual-until-permissions-observed'],
   '07-use-toolkit': [native, native, 'conditional-on-observed-bridge-otherwise-walkthrough'],
   '08-review-and-handoff': [native, native, 'advisory-local-review-bridge-conditional'],
-  '09-spec-kit': ['unavailable-not-generated', 'unavailable-not-generated', 'unavailable-not-generated'],
+  '09-spec-kit': ['artifact-first-live-skills-candidate', 'artifact-first-live-skills-candidate', 'artifact-first-live-skills-candidate'],
 };
 const matrix = steps.flatMap(step => ['vscode', 'cli', 'app'].map((client, index) => ({
   step: step.id, client, mode: routes[step.id][index],

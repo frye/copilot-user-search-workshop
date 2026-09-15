@@ -1,0 +1,39 @@
+{
+  "schema": 1,
+  "generatedOn": "2026-09-15",
+  "tool": "GitHub Spec Kit",
+  "distribution": "specify-cli",
+  "observedVersion": "1.0.6",
+  "installationMode": "uvx --from specify-cli",
+  "integration": "copilot",
+  "scriptType": "sh",
+  "scratchPath": ".lab-scratch/spec-kit-generation",
+  "featureDirectory": "specs/001-team-filter",
+  "commands": [
+    "uvx --from specify-cli specify version",
+    "uvx --from specify-cli specify init --here --force --non-interactive --integration copilot --script sh",
+    ".specify/scripts/bash/create-new-feature.sh --json --short-name team-filter <feature-description>",
+    ".specify/scripts/bash/setup-plan.sh --json",
+    ".specify/scripts/bash/setup-tasks.sh --json"
+  ],
+  "workflowArtifacts": [
+    ".specify/memory/constitution.md",
+    "spec.md",
+    "plan.md",
+    "research.md",
+    "data-model.md",
+    "contracts/user-search.md",
+    "quickstart.md",
+    "tasks.md",
+    "checklists/requirements.md",
+    "checklists/api.md",
+    "analysis.md"
+  ],
+  "reviewStatus": "Curated and reviewed against the generated v1.0.6 templates and command skills.",
+  "learnerEvidence": false,
+  "notes": [
+    "The workshop installation instructions intentionally do not pin a version.",
+    "The observed version records how this reference snapshot was prepared.",
+    "Generated Copilot skills and .specify infrastructure remain only in ignored scratch space."
+  ]
+}

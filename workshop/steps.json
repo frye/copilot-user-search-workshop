@@ -9,6 +9,6 @@
     { "id": "06-agent-roles", "workspace": "consumer", "prerequisites": ["05-mcp-and-update"] },
     { "id": "07-use-toolkit", "workspace": "consumer", "prerequisites": ["06-agent-roles"] },
     { "id": "08-review-and-handoff", "workspace": "consumer", "prerequisites": ["07-use-toolkit"] },
-    { "id": "09-spec-kit", "workspace": "consumer", "prerequisites": [], "status": "optional-unavailable" }
+    { "id": "09-spec-kit", "workspace": "consumer", "prerequisites": ["07-use-toolkit"], "status": "optional-artifact-supported" }
   ]
 }

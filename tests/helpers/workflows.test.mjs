@@ -1,6 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { mkdirSync, mkdtempSync, rmSync, readFileSync, writeFileSync, existsSync, symlinkSync, appendFileSync } from 'node:fs';
+import { mkdirSync, mkdtempSync, rmSync, readFileSync, writeFileSync, existsSync, symlinkSync, appendFileSync, readdirSync } from 'node:fs';
 import { resolve, dirname } from 'node:path';
 import { apply, planStep, stage, release } from '../../scripts/lib/examples.mjs';
 import { packageToolkit, verifyPackage } from '../../scripts/lib/toolkit.mjs';
@@ -14,6 +14,13 @@ function write(root, path, data) {
   mkdirSync(dirname(resolve(root, path)), { recursive: true });
   writeFileSync(resolve(root, path), data);
 }
+function copyTree(sourceRoot, targetRoot, directory) {
+  for (const entry of readdirSync(resolve(sourceRoot, directory), { withFileTypes: true })) {
+    const path = `${directory}/${entry.name}`;
+    if (entry.isDirectory()) copyTree(sourceRoot, targetRoot, path);
+    else write(targetRoot, path, read(sourceRoot, path));
+  }
+}
 function commit(root, message = 'Checkpoint reviewed example assets') {
   git(root, 'add', '.');
   git(root, '-c', 'user.name=Workshop test fixture', '-c', 'user.email=fixture@example.invalid', 'commit', '-q', '-m', message, '-m', trailer);
@@ -26,7 +33,14 @@ function fixture(t) {
   git(root, 'switch', '--detach', json(resolve(repository, 'workshop/starter-lock.json')).commit);
   git(root, 'switch', '-c', 'helper-author');
   git(root, 'remote', 'remove', 'origin');
-  for (const path of ['workshop/examples-lock.json', 'workshop/starter-lock.json']) write(root, path, read(repository, path));
+  for (const path of [
+    'package.json',
+    'scripts/spec-kit-reference.mjs',
+    'tests/team-filter/team-filter.test.ts',
+    'workshop/examples-lock.json',
+    'workshop/starter-lock.json',
+  ]) write(root, path, read(repository, path));
+  copyTree(repository, root, 'workshop/spec-kit-reference');
   t.after(() => rmSync(parent, { recursive: true }));
   return root;
 }
@@ -149,7 +163,8 @@ test('all source payload hashes, client groups and generated dependency maps agr
   }
   const map = json(resolve(repository, 'presenter/checkpoint-map.json'));
   assert.equal(map.examplesTag, lock.tag);
-  assert.deepEqual(map.checkpoints.at(-1).steps, manifest.steps.filter(step => step.id !== '09-spec-kit').map(step => step.id));
+  assert.deepEqual(map.checkpoints.at(-1).steps, manifest.steps.map(step => step.id));
+  assert.equal(map.checkpoints.at(-1).specKitInstallationRequired, false);
 });
 
 test('canonical packaging has schema, exact provenance, immutable versions and no hidden executable', t => {
@@ -199,6 +214,9 @@ test('clean sibling consumer preserves guidance, excludes skill/config/secrets, 
   assert.ok(!existsSync(resolve(consumer, '.env')));
   assert.ok(!existsSync(resolve(consumer, 'toolkit/dist')));
   assert.ok(!existsSync(resolve(consumer, 'client-configs/private.json')));
+  assert.ok(existsSync(resolve(consumer, 'workshop/spec-kit-reference/001-team-filter/spec.md')));
+  assert.ok(existsSync(resolve(consumer, 'tests/team-filter/team-filter.test.ts')));
+  assert.ok(existsSync(resolve(consumer, 'scripts/spec-kit-reference.mjs')));
   assert.equal(read(consumer, '.github/copilot-instructions.md'), read(root, '.github/copilot-instructions.md'));
   assert.equal(read(consumer, '.github/prompts/plan-api-change.prompt.md'), read(root, '.github/prompts/plan-api-change.prompt.md'));
   assert.equal(git(consumer, 'remote').trim(), '');
@@ -225,6 +243,12 @@ test('clean sibling consumer preserves guidance, excludes skill/config/secrets, 
   importStep(consumer, '07-use-toolkit');
   importStep(consumer, '08-review-and-handoff');
   importStep(consumer, '09-spec-kit');
+  assert.match(run(process.execPath, ['scripts/spec-kit-reference.mjs', '--preview'], consumer), /learner ran Spec Kit/);
+  assert.match(run(process.execPath, ['scripts/spec-kit-reference.mjs', '--stage'], consumer), /Staged/);
+  assert.ok(existsSync(resolve(consumer, '.lab-references/09-spec-kit-reference/001-team-filter/spec.md')));
+  assert.match(run(process.execPath, ['scripts/spec-kit-reference.mjs', '--apply'], consumer), /Applied/);
+  assert.ok(existsSync(resolve(consumer, 'workshop/artifacts/spec-kit-reference/001-team-filter/tasks.md')));
+  assert.throws(() => run(process.execPath, ['scripts/spec-kit-reference.mjs', '--apply'], consumer), /collision/);
   assert.match(run(process.execPath, ['workshop/artifacts/review/probe.mjs'], consumer), /DELIBERATE DEFECT DETECTED/);
   assert.ok(!existsSync(resolve(consumer, '.github/skills')));
   assert.match(read(consumer, 'src/api/search.ts'), /NOT_IMPLEMENTED/);
@@ -264,10 +288,12 @@ test('exercise validation accepts complete authored routes and rejects invalid s
   const consumer = makeConsumer(root, '../validated consumer').destination;
   importStep(root, '05-mcp-and-update');
   assert.match(validate(root, '05-mcp-and-update'), /NOT runtime proof/);
-  for (const id of ['05-mcp-and-update', '06-agent-roles', '07-use-toolkit', '08-review-and-handoff', '09-spec-kit']) {
+  for (const id of ['05-mcp-and-update', '06-agent-roles', '07-use-toolkit', '08-review-and-handoff']) {
     importStep(consumer, id);
     assert.match(validate(consumer, id), /NOT runtime proof/);
   }
+  run(process.execPath, ['scripts/spec-kit-reference.mjs', '--apply'], consumer);
+  assert.match(validate(consumer, '09-spec-kit'), /NOT runtime proof/);
   const reviewer = '.github/agents/workshop-reviewer.agent.md';
   const boundedReviewer = read(consumer, reviewer);
   write(consumer, reviewer, boundedReviewer.replace('["read", "search"]', '["read", "search", "fixture/get_api_conventions", "fixture/get_validation_commands"]'));

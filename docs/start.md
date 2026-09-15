@@ -3,7 +3,9 @@
 ## Scope and prerequisites
 
 - Local Git, approved Node 24.20.0/npm 11.19.0, package-registry access for `npm ci`, and an entitled supported client for runtime activities.
-- No database, frontend, Docker, Python, cloud account, personal fork, or public repository is required.
+- No database, frontend, Docker, Python, cloud account, personal fork, or public repository is
+  required. Optional live Spec Kit generation in Lab 09 requires Python 3.11+ and `uv`; its bundled
+  artifact route does not.
 - This release is local only. Obtain the prepared repository including local release tags; future distribution requires an approved readable clone or Git bundle.
 - Owner/name/visibility and Pages audience remain undecided. [Publication boundaries](reference/publication.md).
 - Never work in an account-notes repository. Confirm `git rev-parse --show-toplevel` before any edit.
@@ -50,6 +52,8 @@ npm run lab:examples:fetch
 - Inspect Customize Skills/MCP/Plugins and record actual app build. This guide does not assume precise button labels or local install parity.
 - Consumer gets its own project/session. The local plugin path uses a **CLI-assisted bridge, unverified in app** until an actual rehearsal.
 - If the bridge cannot be observed, continue in CLI/VS Code or record a package walkthrough; do not call it app-native completion.
+- Lab 09's live Spec Kit skill discovery is also build-dependent. The artifact-first path remains
+  available when generated skills are not discovered.
 
 ## Next
 

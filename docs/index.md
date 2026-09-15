@@ -18,11 +18,13 @@
 | [06 — Roles](labs/06-agent-roles.md) | Planner, implementer, independent reviewer | Consumer |
 | [07 — Use toolkit](labs/07-use-toolkit.md) | Approved search change + added acceptance test | Consumer |
 | [08 — Review and handoff](labs/08-review-and-handoff.md) | Supported finding and reproducible continuation | Consumer → author extension |
-| [09 — Spec-Kit (unavailable)](labs/09-spec-kit.md) | Honest optional boundary, no fabricated generation | Reference only |
+| [09 — Spec Kit](labs/09-spec-kit.md) | Artifact-first SDD extension: optional team filter | Consumer, optional |
 
 ## Checkpoint entry
 
 - To join at Lab 04: read 00–02, author or explicitly import 01, 02, 03, then 04.
 - To join at Lab 07: complete/import author checkpoint 01–05; build the **1.1.0** package; create consumer; install once; configure MCP; load 06. Import 07's readiness checklist—not search.
+- To join at Lab 09: start from a consumer where Lab 07 passes. Spec Kit installation is optional;
+  the reviewed reference packet supports an artifact-guided route.
 - Follow each dependency's preview/apply separately. Checkpoints never overwrite authored equivalents.
 - Every static-only or manual fallback is useful but must not be reported as native runtime completion.

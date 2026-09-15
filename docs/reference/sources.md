@@ -9,11 +9,21 @@
 - [Agent Plugins 1.0 schema](https://agent-plugins.org/schemas/1.0.0/plugin.schema.json): `workshop/plugin.schema.json` preserves validation constraints; descriptions omitted, no added manifest properties.
 - [VitePress deployment guide](https://vitepress.dev/guide/deploy): static build, base subpath, GitHub Pages workflow.
 - [MCP TypeScript SDK](https://github.com/modelcontextprotocol/typescript-sdk): pinned **1.30.0** plus **zod 4.5.4**, real stdio server/client tests.
+- [Spec Kit quickstart](https://github.com/github/spec-kit/blob/main/docs/quickstart.md): current
+  specify/clarify/plan/checklist/tasks/analyze/implement/converge workflow and invocation variants.
+- [Spec Kit installation](https://github.com/github/spec-kit/blob/main/docs/installation.md): latest
+  published `specify-cli`, Python/uv prerequisites, version check, and upgrade commands.
+- [Adopting Spec Kit in an existing project](https://github.com/github/spec-kit/blob/main/docs/guides/existing-projects.md):
+  in-place initialization, generated-file review, bounded first change, and artifact lifecycle.
+- [Spec Kit integrations](https://github.com/github/spec-kit/blob/main/docs/reference/integrations.md):
+  Copilot skills layout and integration behavior.
 
 ## Observed versus prepared
 
 - Observed locally: exact Node/npm toolchain, strict build, native HTTP assertions, real SDK MCP protocol, importer/package/consumer filesystem tests, docs production build, targeted browser tabs.
 - Prepared, not observed: VS Code/CLI/app discovery and permissions; all real plugin installation/update/invocation; app bridge behavior.
 - Not performed: cloud tasks, hosted Copilot Code Review, Mobile execution, publishing, Pages deployment, global configuration changes.
-- Optional Spec-Kit unavailable: no generation/version artifact exists. Do not claim it shipped.
+- Spec Kit reference generation observed locally in ignored scratch with `specify-cli` **1.0.6** and
+  the Copilot/sh integration. The tracked packet records provenance; no client invocation or learner
+  execution is inferred.
 - Exact executed results and revisions are in presenter evidence; do not copy them as learner results.

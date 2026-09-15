@@ -34,5 +34,20 @@ test('toolchain, intentional-red routing and no active complete starter assets a
   assert.ok(!pkg.scripts.test.includes('search') && !pkg.scripts.test.includes('stub'));
   assert.ok(pkg.scripts['verify:baseline'].includes('test:stub'));
   assert.ok(pkg.scripts['verify:solution'].includes('test:search') && !pkg.scripts['verify:solution'].includes('stub'));
+  assert.ok(pkg.scripts['verify:speckit-solution'].includes('verify:solution'));
+  assert.ok(pkg.scripts['verify:speckit-solution'].includes('test:team-filter'));
   assert.match(readFileSync('README.md', 'utf8'), /not published/);
+});
+
+test('Lab 09 provides artifact-first Spec Kit guidance and a separate built-in workflow comparison', () => {
+  const lab = readFileSync('docs/labs/09-spec-kit.md', 'utf8');
+  assert.doesNotMatch(lab, /unavailable in this release/i);
+  assert.match(lab, /requires no Spec Kit installation/i);
+  assert.match(lab, /uv tool install specify-cli/);
+  assert.match(lab, /specify init --here --force --non-interactive --integration copilot --script sh/);
+  for (const command of ['speckit-constitution', 'speckit-specify', 'speckit-clarify', 'speckit-plan', 'speckit-checklist', 'speckit-tasks', 'speckit-analyze', 'speckit-implement', 'speckit-converge']) {
+    assert.match(lab, new RegExp(command));
+  }
+  assert.match(lab, /spec-kit-vs-built-in/);
+  assert.ok(existsSync('workshop/spec-kit-reference/001-team-filter/provenance.json'));
 });

@@ -12,6 +12,9 @@
 - Rehearse user-facing client discovery/install/update and actual tool invocation on approved builds before describing runtime as observed.
 - Keep two named siblings and one writer. Author updates canonical skill/package; consumer configures MCP/roles and implements.
 - Actual installation is an explicit presenter/participant action, never part of scripted preparation.
+- Lab 09 defaults to the bundled Spec Kit reference packet. If demonstrating live generation, record
+  the actual latest `specify` version, review every generated path, and keep `.specify/` and generated
+  skills trackable rather than broadly ignored.
 
 ## Release refs
 

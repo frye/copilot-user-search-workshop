@@ -14,6 +14,20 @@
     "cloud": { "status": "optional-not-rehearsed", "localPlugin": "unavailable-by-assumption", "localMcp": "unavailable-by-assumption" },
     "mobile": { "status": "optional-view-handoff-only", "localAuthoring": "unavailable", "localPlugin": "unavailable", "localMcp": "unavailable" }
   },
-  "specKit": { "status": "unavailable-not-generated", "version": null, "generatedArtifacts": [] },
+  "specKit": {
+    "status": "artifact-supported-live-optional",
+    "referenceVersion": "1.0.6",
+    "installationInstructions": "latest-unpinned",
+    "liveClientInvocationObserved": false,
+    "generatedArtifacts": [
+      "workshop/spec-kit-reference/constitution.md",
+      "workshop/spec-kit-reference/001-team-filter/spec.md",
+      "workshop/spec-kit-reference/001-team-filter/plan.md",
+      "workshop/spec-kit-reference/001-team-filter/tasks.md",
+      "workshop/spec-kit-reference/001-team-filter/checklists/requirements.md",
+      "workshop/spec-kit-reference/001-team-filter/checklists/api.md",
+      "workshop/spec-kit-reference/001-team-filter/provenance.json"
+    ]
+  },
   "publication": { "status": "local-only", "owner": null, "visibility": null, "pagesAudience": null, "pagesUrl": null }
 }

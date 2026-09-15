@@ -55,4 +55,6 @@ npm run lab:example -- --step 03-skill --apply
 - `presenter/checkpoint-map.json` is generated from the same manifest.
 - Each upstream step requires its own preview and explicit application or reviewed authored equivalent.
 - 07 imports only a toolkit-readiness checklist. Configure and **install** the author-built package in consumer separately; ordinary imports cannot bring in the search solution.
-- 09 is explicitly unavailable because no real Spec-Kit generation/version artifacts were produced.
+- 09 uses a repository-bundled, reviewed Spec Kit reference packet rather than the immutable
+  `examples-v1` payload. The packet records its actual preparation version, but it is never learner
+  execution evidence.
