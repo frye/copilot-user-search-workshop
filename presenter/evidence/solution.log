@@ -10,14 +10,14 @@
 > copilot-user-search-workshop@1.0.0 build
 > tsc
 
-✔ health, archived list order and get remain stable (23.619333ms)
-✔ unknown routes and unsupported methods have exact error envelope (6.325333ms)
-✔ fixtures are frozen; logs expose only bounded route and status (2.179375ms)
-✔ real stdio initialize, exact list, both calls, strict inputs and clean close (92.671834ms)
+✔ health, archived list order and get remain stable (35.261959ms)
+✔ unknown routes and unsupported methods have exact error envelope (14.728042ms)
+✔ fixtures are frozen; logs expose only bounded route and status (5.189458ms)
+✔ real stdio initialize, exact list, both calls, strict inputs and clean close (355.573291ms)
 Fixture unavailable or invalid: api-conventions.json
 Fixture unavailable or invalid: api-conventions.json
 Fixture unavailable or invalid: api-conventions.json
-✔ missing and malformed fixtures fail closed, never returned as valid standards (27.351875ms)
+✔ missing and malformed fixtures fail closed, never returned as valid standards (41.808125ms)
 ℹ tests 5
 ℹ suites 0
 ℹ pass 5
@@ -25,7 +25,7 @@ Fixture unavailable or invalid: api-conventions.json
 ℹ cancelled 0
 ℹ skipped 0
 ℹ todo 0
-ℹ duration_ms 315.447292
+ℹ duration_ms 658.068
 
 > copilot-user-search-workshop@1.0.0 test:search
 > npm run build && node --test dist/tests/search/*.test.js
@@ -34,12 +34,12 @@ Fixture unavailable or invalid: api-conventions.json
 > copilot-user-search-workshop@1.0.0 build
 > tsc
 
-✔ anchor: search route wins over get-by-id; total is before limit (14.763375ms)
-✔ trimmed case-insensitive substring and empty/default queries (16.056666ms)
-✔ all valid integer limits including boundaries (35.92575ms)
-✔ reject invalid decimal syntax and repeated parameters with exact envelope (34.040542ms)
-✔ repeatable results never mutate fixture and never log query, names or payloads (8.229625ms)
-✔ unknown query keys do not alter singleton parsing, matching or total (0.985792ms)
+✔ anchor: search route wins over get-by-id; total is before limit (25.714584ms)
+✔ trimmed case-insensitive substring and empty/default queries (31.072625ms)
+✔ all valid integer limits including boundaries (47.997583ms)
+✔ reject invalid decimal syntax and repeated parameters with exact envelope (36.130208ms)
+✔ repeatable results never mutate fixture and never log query, names or payloads (15.820583ms)
+✔ unknown query keys do not alter singleton parsing, matching or total (1.389208ms)
 ℹ tests 6
 ℹ suites 0
 ℹ pass 6
@@ -47,36 +47,36 @@ Fixture unavailable or invalid: api-conventions.json
 ℹ cancelled 0
 ℹ skipped 0
 ℹ todo 0
-ℹ duration_ms 159.621833
+ℹ duration_ms 401.066125
 
 > copilot-user-search-workshop@1.0.0 test:helpers
 > node --test tests/helpers/*.test.mjs
 
-✔ offline source pin, preview, inert stage, safe apply and exact repeat (1233.098916ms)
+✔ offline source pin, preview, inert stage, safe apply and exact repeat (3130.146125ms)
 ▶ untracked collision, staged/unstaged edits and committed alternatives reject whole step
-  ✔ untracked (390.156584ms)
-  ✔ unstaged (759.192625ms)
-  ✔ staged (415.680542ms)
-  ✔ committed (444.483625ms)
-  ✔ deleted (483.314667ms)
-✔ untracked collision, staged/unstaged edits and committed alternatives reject whole step (2493.570459ms)
-✔ untracked matching source is still a collision without an import receipt (582.346416ms)
+  ✔ untracked (1387.774209ms)
+  ✔ unstaged (1205.821208ms)
+  ✔ staged (1347.63325ms)
+  ✔ committed (946.892041ms)
+  ✔ deleted (882.639334ms)
+✔ untracked collision, staged/unstaged edits and committed alternatives reject whole step (5771.478917ms)
+✔ untracked matching source is still a collision without an import receipt (1621.085292ms)
 ▶ symlink files, symlink ancestors, dangling links and traversal fail closed
-  ✔ file (448.518208ms)
-  ✔ parent (544.42ms)
-  ✔ dangling (573.779833ms)
-✔ symlink files, symlink ancestors, dangling links and traversal fail closed (1567.304ms)
-✔ source pin, manifest checksum, missing tag, unknown steps and prerequisites are enforced (541.765625ms)
-✔ recheck catches a concurrent edit; injected I/O failure rolls back all earlier writes (1544.023ms)
-✔ all source payload hashes, client groups and generated dependency maps agree (363.975708ms)
-✔ canonical packaging has schema, exact provenance, immutable versions and no hidden executable (2366.278584ms)
-✔ package rejects invalid manifest, missing references, extra files, links and output tampering (2983.5025ms)
-✔ clean sibling consumer preserves guidance, excludes skill/config/secrets, supports all client steps and update (7428.322792ms)
+  ✔ file (673.827583ms)
+  ✔ parent (1038.879334ms)
+  ✔ dangling (824.261458ms)
+✔ symlink files, symlink ancestors, dangling links and traversal fail closed (2537.475416ms)
+✔ source pin, manifest checksum, missing tag, unknown steps and prerequisites are enforced (1014.274792ms)
+✔ recheck catches a concurrent edit; injected I/O failure rolls back all earlier writes (2226.875958ms)
+✔ all source payload hashes, client groups and generated dependency maps agree (497.949958ms)
+✔ canonical packaging has schema, exact provenance, immutable versions and no hidden executable (6551.467708ms)
+✔ package rejects invalid manifest, missing references, extra files, links and output tampering (4197.831959ms)
+✔ clean sibling consumer preserves guidance, excludes skill/config/secrets, supports all client steps and update (12034.777791ms)
 ▶ each client role payload applies in a fresh consumer without later-step or search activation
-  ✔ vscode (3804.602666ms)
-  ✔ app (3723.814584ms)
-✔ each client role payload applies in a fresh consumer without later-step or search activation (7528.725958ms)
-✔ exercise validation accepts complete authored routes and rejects invalid scopes, unsafe roles and duplicate consumer skill (16084.167916ms)
+  ✔ vscode (5851.156459ms)
+  ✔ app (5708.514333ms)
+✔ each client role payload applies in a fresh consumer without later-step or search activation (11560.009041ms)
+✔ exercise validation accepts complete authored routes and rejects invalid scopes, unsafe roles and duplicate consumer skill (26941.270459ms)
 ℹ tests 22
 ℹ suites 0
 ℹ pass 22
@@ -84,7 +84,7 @@ Fixture unavailable or invalid: api-conventions.json
 ℹ cancelled 0
 ℹ skipped 0
 ℹ todo 0
-ℹ duration_ms 44794.799291
+ℹ duration_ms 78229.181208
 
 > copilot-user-search-workshop@1.0.0 verify:assets
 > node scripts/validate-assets.mjs
@@ -94,8 +94,8 @@ Release metadata and 10 step mappings valid: examples-v1 df1328a4c1b9de89bdba585
 > copilot-user-search-workshop@1.0.0 test:docs
 > node --test tests/docs/*.test.mjs
 
-✔ canonical Markdown has real local links, complete lab routes and plain client headings (7.050958ms)
-✔ toolchain, intentional-red routing and no active complete starter assets are explicit (0.8585ms)
+✔ canonical Markdown has real local links, complete lab routes and plain client headings (11.697791ms)
+✔ toolchain, intentional-red routing and no active complete starter assets are explicit (0.539833ms)
 ℹ tests 2
 ℹ suites 0
 ℹ pass 2
@@ -103,7 +103,7 @@ Release metadata and 10 step mappings valid: examples-v1 df1328a4c1b9de89bdba585
 ℹ cancelled 0
 ℹ skipped 0
 ℹ todo 0
-ℹ duration_ms 46.411959
+ℹ duration_ms 58.076209
 
 > copilot-user-search-workshop@1.0.0 docs:build
 > vitepress build docs
@@ -115,4 +115,4 @@ Release metadata and 10 step mappings valid: examples-v1 df1328a4c1b9de89bdba585
 [32m✓[0m building client + server bundles...
 - rendering pages...
 [32m✓[0m rendering pages...
-build complete in 1.84s.
+build complete in 2.67s.
