@@ -20,8 +20,13 @@ function fixture(t) {
   const root = resolve(parent, 'author workspace');
   const source = git(repository, 'rev-parse', 'refs/remotes/origin/main').trim();
   git(repository, 'clone', '-q', '--no-local', '--no-checkout', '--', repository, root);
-  git(root, 'switch', '--detach', source);
-  git(root, 'switch', '-c', 'main');
+  if (git(root, 'branch', '--list', 'main').trim()) {
+    git(root, 'switch', 'main');
+    git(root, 'merge', '--ff-only', source);
+  } else {
+    git(root, 'switch', '--detach', source);
+    git(root, 'switch', '-c', 'main');
+  }
   git(root, 'config', 'user.name', 'Workshop learner');
   git(root, 'config', 'user.email', 'learner@example.invalid');
   for (const path of [
