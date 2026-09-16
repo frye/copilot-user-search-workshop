@@ -272,6 +272,10 @@ Fixture/server version stays **1.0.0**, the updated **plugin** becomes **1.1.0**
 
 ## Client steps
 
+**Why update the plugin later?** Connecting MCP makes the two fixture tools available; it does not update the installed `api-change-workflow` skill. First request the tools explicitly while package **1.0.0** remains active. Then switch to **1.1.0** and observe the revised skill requesting standards as part of its own procedure. This separates evidence that the tools work from evidence that the updated procedure uses them.
+
+**What changes?** Building 1.1.0 creates a new immutable directory in author; it does not switch consumer's existing plugin registration to that directory. Update the installed plugin source using the same route you chose in Lab 04, leaving only one lab version active. This is a **plugin update**, not another MCP server registration. Keep the old package directory for rollback.
+
 ### VS Code
 
 #### Connect the fixture server
@@ -297,16 +301,20 @@ Fixture/server version stays **1.0.0**, the updated **plugin** becomes **1.1.0**
 
 #### Update the lab registration later
 
-Return here only after the first tool exercise and [Build and register the update](#build-and-register-the-update).
+**On your first pass, skip this update.** Complete [Observe both fixture tools](#observe-both-fixture-tools), then the author build and inspection in steps 1–2 of [Build and register the update](#build-and-register-the-update). Step 3 there sends you back here with the actual new package path.
 
-1. With learner approval, open the Copilot Chat **cogwheel** (**Open Customizations**) > **Plugins** and disable or uninstall only the old lab plugin. Select **Install Plugin from Source**.
+**If you installed a local folder through the UI in Lab 04, use the UI steps below.** That installation still needs to switch from the 1.0.0 package to the newly built 1.1.0 package; building the new directory or reloading the window alone does not change the old source. **Do not create or edit `.vscode/settings.json` for this route**; skip the advanced manual alternative below. If discovery already confirms the intended 1.1.0 source and only one active lab version, no further registration change is needed; proceed to [Observe the updated procedure](#observe-the-updated-procedure).
+
+1. With learner approval, open the Copilot Chat **cogwheel** (**Open Customizations**) > **Plugins** and disable or uninstall only the old `user-search-toolkit` lab plugin. Select **Install Plugin from Source**. If your build labels its local-folder action **Install Local**, use that action to select the new package.
 2. Paste the full absolute path `/ABSOLUTE/AUTHOR/toolkit/dist/user-search-toolkit-1.1.0`, replacing `/ABSOLUTE/AUTHOR` with the actual author workspace. Choose the package root containing `plugin.json`, not its nested `skills/` directory.
-3. Confirm the source, review any installation/trust prompt, and inspect source/version. Installation can affect the client profile; do not assume workspace-only scope. Reload consumer if discovery has not refreshed; keep only one active lab version.
+3. Confirm the source, review any installation/trust prompt, and inspect the installed plugin/skill source and version **1.1.0**. Installation can affect the client profile; do not assume workspace-only scope. Reload consumer if discovery has not refreshed; keep only one active lab version and preserve the old package directory for rollback.
 4. [Observe the updated procedure](#observe-the-updated-procedure). Restart just the MCP server if rebuilding its consumer output, not all extensions or unrelated servers. [Plugin update/rollback](../reference/plugin.md) · [MCP configuration](../reference/mcp.md).
 
 ##### Advanced alternative: update the manual workspace registration
 
-If you used the advanced settings route in 04, update only that lab path **instead of** adding a UI installation. After approval, edit consumer `.vscode/settings.json`: remove/disable **only** the old `.../user-search-toolkit-1.0.0` lab entry, merge the new actual absolute path with value `true`, and preserve all unrelated entries. This full minimal reference shows the **result for the lab entry**, not an instruction to replace your settings.
+**Only if you registered the plugin manually with `chat.pluginLocations` in Lab 04:** update that lab path **instead of** using the UI installation steps above. The old path still selects the unchanged 1.0.0 package, so it must point to the new package before you can observe the revised procedure.
+
+After the first tool exercise, the author build/inspection and approval, edit consumer `.vscode/settings.json`: remove/disable **only** the old `.../user-search-toolkit-1.0.0` lab entry, merge the new actual absolute path with value `true`, and preserve all unrelated entries. This full minimal reference shows the **result for the lab entry**, not an instruction to replace your settings.
 
 **File:** `.vscode/settings.json` (merge; consumer; vscode; revision; 1.1.0).
 
