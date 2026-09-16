@@ -91,6 +91,7 @@ This fallback means the local build has no `WORKSHOP_SOURCE_URL` configured; it 
 mean the source or guide is unpublished. The existing `#not-published` anchor is retained for
 links from the site configuration and older bookmarks.
 
+- Source repository quick links are available by default, but do not by themselves enable hosted example links. An approved `WORKSHOP_SOURCE_URL` updates those quick links and enables the relative example links in the generated guide; the plain Markdown source is unchanged.
 - In the **repository Markdown view**, each lab's relative “Browse examples branch” link points to its examples branch directory.
 - In a **local preview without a source URL**, those links lead here. Browse the [published examples branch](https://github.com/frye/copilot-user-search-workshop/tree/examples/examples/steps/) or use local Git and the pinned per-step commands.
 - For hosted-source links in a local build, use shell-scoped configuration; this builds documentation only and does not deploy or authorize remote writes:

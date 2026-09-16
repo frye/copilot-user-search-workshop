@@ -4,6 +4,8 @@ Create, load, use, inspect evidence, and improve. Learn to build reusable instru
 prompts, skills, plugins, MCP configuration, and bounded agent roles, then use your toolkit
 for one approved API change.
 
+Get the workshop code and lab assets from the [Source repository](https://github.com/frye/copilot-user-search-workshop).
+
 > **Your copy. Your toolkit. No shared-repository submission.**
 >
 > Keep your exercise work local. The shared source is read-only for this workshop.

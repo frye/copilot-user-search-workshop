@@ -1,5 +1,7 @@
 # Start here
 
+Get the workshop code and lab assets from the [Source repository](https://github.com/frye/copilot-user-search-workshop).
+
 ## Scope and prerequisites
 
 This is the canonical setup route: clone the public workshop into a fresh **author** folder, keep
@@ -12,6 +14,7 @@ Markdown; both describe the same multi-page lab route.
   required of the learner. Optional live Spec Kit generation in Lab 09 requires Python 3.11+ and `uv`; its bundled
   artifact route does not.
 - The [public source](https://github.com/frye/copilot-user-search-workshop) and guide are already published. Your changes stay local; no fork, personal upstream, push, PR, cloud task, or submission is required. [Publication boundaries](reference/publication.md).
+- A source link alone does not establish your permitted access or verify the refs in your copy. Use an approved readable clone or Git bundle and complete the local tag checks below. Any new Pages publication or audience change requires separate approval.
 - Never work in an account-notes repository. Confirm `git rev-parse --show-toplevel` before any edit.
 - Choose an approved parent without `.github` customizations, including inherited customizations from ancestors. Author and the later consumer must be separate siblings, never nested.
 - Do not run concurrent writers, or disable unrelated user/global customizations to force success.

@@ -1,5 +1,7 @@
 # Sources and rehearsal status
 
+Get the workshop code and lab assets from the [Source repository](https://github.com/frye/copilot-user-search-workshop).
+
 - Retrieved/reviewed for this workshop on **2026-09-15 UTC**. Documentation describes candidate support; it does not prove installed-client behavior.
 - [CLI skills](https://docs.github.com/en/enterprise-cloud@latest/copilot/how-tos/copilot-cli/customize-copilot/add-skills): project layout, discovery, reload and inspection.
 - [CLI plugin reference](https://docs.github.com/en/copilot/reference/copilot-cli-reference/cli-plugin-reference): root Agent Plugins 1.0 manifest, local-path installation, list JSON source/version, named uninstall/update/disable.
