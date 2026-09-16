@@ -2,6 +2,7 @@ import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { existsSync, readFileSync, readdirSync } from 'node:fs';
 import { resolve, dirname, basename } from 'node:path';
+import { linksIn, sectionsIn } from './markdown.mjs';
 
 const root = process.cwd();
 const walk = dir => readdirSync(dir, { withFileTypes: true }).flatMap(entry =>
@@ -22,17 +23,58 @@ test('canonical Markdown has real local links, complete lab routes and plain cli
   for (const file of files) {
     const text = readFileSync(file, 'utf8');
     assert.ok(!/<(?:ClientTabs|script|template)|::: tabs/.test(text), `Vue-only instructions in ${file}`);
-    for (const match of text.matchAll(/\[[^\]]+\]\(([^)\s]+)\)/g)) {
-      const href = match[1];
+    for (const href of linksIn(text)) {
       if (/^(?:https?:|#|mailto:)/.test(href) || href.startsWith('../../../../tree/examples/')) continue;
       const target = resolve(dirname(file), href.split('#')[0]);
       assert.ok(existsSync(target), `${file}: missing ${href}`);
     }
     if (file.includes('/labs/')) {
-      for (const heading of ['Goal and starting workspace', 'Build it yourself', 'Inspect the example', 'Bring in this step', 'If you already changed these files', 'Verify the result', 'Client steps']) {
-        assert.ok(text.includes(`## ${heading}`), `${file}: missing ${heading}`);
+      const sections = sectionsIn(text);
+      const top = sections.filter(section => section.level === 2);
+      for (const heading of ['Goal and starting workspace', 'Choose your route', 'Continue with this lab', 'Try it', 'Verify the result', 'Client steps']) {
+        assert.equal(top.filter(section => section.name === heading).length, 1, `${file}: missing/duplicate ${heading}`);
       }
-      for (const client of ['VS Code', 'Copilot CLI', 'Copilot app']) assert.ok(text.includes(`### ${client}`));
+      assert.deepEqual(top.slice(0, 2).map(section => section.name),
+        ['Goal and starting workspace', 'Choose your route'], `${file}: put the route choice near the top`);
+      assert.ok(!top[0].tokens.some(token => token.type === 'table_open'),
+        `${file}: long inventories belong after the route selector`);
+      const route = top.find(section => section.name === 'Choose your route');
+      const children = section => sections.filter(child =>
+        child.level === 3 && child.start > section.start && child.start < section.end);
+      assert.deepEqual(children(route).map(section => section.name),
+        ['Build it yourself', 'Copy-and-paste', 'Bring in this step'], `${file}: exactly three alternate routes required`);
+      assert.equal(top.find(section => section.name === 'Continue with this lab').start, route.end,
+        `${file}: shared continuation must immediately follow the route group`);
+      for (const name of ['Client steps', 'Try it', 'Verify the result']) {
+        assert.ok(top.find(section => section.name === name).start >= route.end,
+          `${file}: ${name} must be shared, not part of an authoring route`);
+      }
+      for (const section of children(route)) {
+        assert.ok(section.tokens.some(token => (token.children ?? []).some(child =>
+          child.type === 'link_open' && child.attrGet('href') === '#continue-with-this-lab')),
+        `${file}: ${section.name} must lead to the shared continuation`);
+      }
+      const labels = route.tokens.filter(token => token.type === 'inline' && token.content.startsWith('**File:**'));
+      assert.ok(!labels.some(token => token.content.includes('`.lab-evidence/')),
+        `${file}: evidence templates must be available to every route`);
+      assert.ok(!labels.some(token => /;\s*revision/.test(token.content)),
+        `${file}: later revision exercises must be shared`);
+      if (file.endsWith('/08-review-and-handoff.md')) {
+        assert.ok(!labels.some(token => /`(?:toolkit\/|\.github\/skills\/)/.test(token.content)),
+          'Lab 08 must review the defect before applying its shared 1.2.0 improvement');
+      }
+      const sharedCommands = /^npm (?:ci|test|run (?:build|preflight|verify:baseline|verify:solution|verify:speckit-solution|test:search|test:team-filter|toolkit:build|consumer:create))(?:\s|$)/m;
+      assert.ok(!route.tokens.some(token => token.type === 'fence' && token.info === 'sh' && sharedCommands.test(token.content)),
+        `${file}: run/build/verify commands belong below the alternative preparation routes`);
+      for (const name of ['Inspect the example', 'If you already changed these files']) {
+        assert.ok(sections.some(section => section.name === name), `${file}: missing ${name}`);
+      }
+      const clients = top.find(section => section.name === 'Client steps');
+      assert.deepEqual(children(clients).map(section => section.name),
+        ['VS Code', 'Copilot CLI', 'Copilot app'], `${file}: client tabs require exactly three headings`);
+      const clientTokens = clients.tokens;
+      assert.ok(clientTokens.filter(token => token.type === 'ordered_list_open').length >= 3,
+        `${file}: each client needs numbered actions`);
     }
   }
 });
@@ -45,14 +87,17 @@ test('Labs 00-08 use one activation per workspace and retain optional comparison
   for (const step of steps) {
     const file = `docs/labs/${step.id}.md`;
     const text = read(file);
-    const section = text.split('## Bring in this step\n')[1].split('\n## ')[0];
-    const actual = shellBlocks(section).flatMap(commands)
+    const section = sectionsIn(text).find(section => section.level === 3 && section.name === 'Bring in this step');
+    assert.ok(section, `${file}: missing import route`);
+    const actual = section.tokens.filter(token => token.type === 'fence' && token.info === 'sh')
+      .flatMap(token => commands(token.content))
       .filter(command => /^npm run lab:/.test(command));
     const selectors = step.id === '05-mcp-and-update'
       ? [' --workspace author', ' --workspace consumer --client cli']
       : step.id === '06-agent-roles' ? [' --workspace consumer --client cli'] : [''];
     assert.deepEqual(actual, selectors.map(selector => `npm run lab:activate -- --step ${step.id}${selector}`), file);
-    assert.doesNotMatch(section, /--preview|--stage|--apply/, `${file}: no mandatory mode sequence`);
+    assert.ok(!section.tokens.some(token => /--preview|--stage|--apply/.test(token.content)),
+      `${file}: no mandatory mode sequence`);
     assert.ok(links(text).includes('../reference/examples.md'), `${file}: comparison/recovery route`);
   }
   const reference = read('docs/reference/examples.md');
@@ -69,9 +114,14 @@ test('Labs 00-08 use one activation per workspace and retain optional comparison
 });
 
 test('VS Code plugin guidance leads with source installation and the absolute package root', () => {
-  const files = ['docs/labs/04-plugin.md', 'docs/labs/05-mcp-and-update.md',
-    'docs/clients.md', 'docs/reference/plugin.md'];
-  for (const file of files) {
+  const files = [
+    ['docs/labs/04-plugin.md', '1.0.0'],
+    ['docs/labs/05-mcp-and-update.md', '1.1.0'],
+    ['docs/labs/08-review-and-handoff.md', '1.2.0'],
+    ['docs/clients.md', '1.0.0'],
+    ['docs/reference/plugin.md', '1.0.0'],
+  ];
+  for (const [file, version] of files) {
     const section = read(file).split('### VS Code\n')[1].split('\n### ')[0];
     const steps = ['cogwheel', 'Open Customizations', 'Plugins', 'Install Plugin from Source'];
     let previous = -1;
@@ -80,7 +130,6 @@ test('VS Code plugin guidance leads with source installation and the absolute pa
       assert.ok(position > previous, `${file}: missing or unordered UI step ${step}`);
       previous = position;
     }
-    const version = file.includes('05-mcp-and-update') ? '1.1.0' : '1.0.0';
     assert.ok(section.includes(`/ABSOLUTE/AUTHOR/toolkit/dist/user-search-toolkit-${version}`), file);
     assert.match(section, /containing `plugin\.json`/);
     assert.match(section, /not.*nested `skills\/` directory/);

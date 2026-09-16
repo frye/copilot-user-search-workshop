@@ -28,13 +28,14 @@ import { withBase } from 'vitepress';
     </template>
     <template #sidebar-nav-after>
       <p class="workshop-navigation-tip">
-        Client tabs: Left / Right, Home / End. Your selection follows you between labs when browser storage is available.
+        Route and client tabs: Left / Right, Home / End. Your selections follow you independently between labs when browser storage is available.
       </p>
     </template>
     <template #doc-before>
       <noscript>
         <p class="workshop-notice">
-          JavaScript is off. All client instructions are visible.
+          JavaScript is off. All client instructions are visible, along with all three preparation routes.
+          Choose one preparation route, then continue with the shared steps.
           <a :href="withBase('/#progressive-route')">Browse every lab</a> and select command text manually to copy.
         </p>
       </noscript>
