@@ -128,13 +128,6 @@ preview/comparison is available through [safe example operations](../reference/e
 npm run lab:activate -- --step 07-use-toolkit
 ```
 
-#### If you already changed these files
-
-- Keep your checklist/evidence; stage and compare. Never merge the examples branch or overwrite an attempted implementation.
-- Ordinary importer cannot write `src` or fetch a solution. [Conflict and checkpoint rules](../reference/examples.md).
-- Inline copies and personalized checklists may correctly cause an importer conflict. Keep them,
-  compare the staged reference, and merge only useful structure. Never force an overwrite.
-
 [Continue with this lab](#continue-with-this-lab). The other preparation routes are not required.
 
 ## Continue with this lab

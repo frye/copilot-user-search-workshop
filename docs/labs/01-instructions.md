@@ -98,11 +98,6 @@ npm run lab:activate -- --step 01-instructions
 - Activation displays the plan and applies all three files only after the importer checks pass; it does not merge learner rules. Optional preview/comparison is available through [safe example operations](../reference/examples.md#optional-inspection-and-comparison).
 - A clean tracked starter instructions file is the only known replacement. The reviewed full file retains the starter section; inspect it after activation or use the optional comparison route first. No commit is required by this lab. If you later choose a local checkpoint commit, review its exact scope yourself.
 
-#### If you already changed these files
-
-- Edited/untracked/committed alternative instructions block replacement. Keep them; stage and manually merge wanted rules.
-- Do not discard safety guidance to satisfy a sample hash. [Recovery](../reference/examples.md).
-
 [Continue with this lab](#continue-with-this-lab).
 
 ## Continue with this lab

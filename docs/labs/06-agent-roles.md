@@ -252,12 +252,6 @@ npm run lab:activate -- --step 06-agent-roles --workspace consumer --client cli
 
 - Before switching clients, stage the other client's definitions. Do not force them over edited/loaded roles.
 
-#### If you already changed these files
-
-- Preserve role/tool choices; compare sample responsibility and handoff sections manually. Inline copied/personalized role files may correctly conflict with importer hashes; stage references and merge, not force overwrite.
-- Changing clients writes the same three destinations. Stage the new variants first, preserve your current definitions, choose one client set, and reload that client after a reviewed merge.
-- If a tool identifier is unsupported, correct it using actual client discovery or use manually scoped sessions. Never replace restrictions with wildcard tools just to load. [Recovery](../reference/examples.md).
-
 [Continue with this lab](#continue-with-this-lab).
 
 ## Continue with this lab

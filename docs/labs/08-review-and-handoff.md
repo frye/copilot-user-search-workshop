@@ -203,14 +203,6 @@ preview/comparison is available through [safe example operations](../reference/e
 npm run lab:activate -- --step 08-review-and-handoff
 ```
 
-#### If you already changed these files
-
-- Never replace your actual handoff/results with sample text. Stage a fresh reference and merge structure only.
-- Changed fixtures or role definitions remain protected. [Recovery](../reference/examples.md).
-- A manual copy can correctly conflict with a subsequent import. Do not reset learner work merely to
-  satisfy the importer. Keep the staged specimen and compare only the four named review artifacts.
-- Never merge the examples branch, edit an immutable package directory, or apply author files in consumer.
-
 [Continue with this lab](#continue-with-this-lab). The other preparation routes are not required.
 
 ## Continue with this lab

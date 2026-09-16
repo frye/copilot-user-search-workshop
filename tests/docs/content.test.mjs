@@ -22,6 +22,9 @@ test('canonical Markdown has real local links, complete lab routes and plain cli
   const files = walk(resolve(root, 'docs'));
   for (const file of files) {
     const text = readFileSync(file, 'utf8');
+    const sections = sectionsIn(text);
+    assert.ok(!sections.some(section => section.name === 'If you already changed these files'),
+      `${file}: removed recovery section must not return`);
     assert.ok(!/<(?:ClientTabs|script|template)|::: tabs/.test(text), `Vue-only instructions in ${file}`);
     for (const href of linksIn(text)) {
       if (/^(?:https?:|#|mailto:)/.test(href) || href.startsWith('../../../../tree/examples/')) continue;
@@ -29,7 +32,6 @@ test('canonical Markdown has real local links, complete lab routes and plain cli
       assert.ok(existsSync(target), `${file}: missing ${href}`);
     }
     if (file.includes('/labs/')) {
-      const sections = sectionsIn(text);
       const top = sections.filter(section => section.level === 2);
       for (const heading of ['Goal and starting workspace', 'Choose your route', 'Continue with this lab', 'Try it', 'Verify the result', 'Client steps']) {
         assert.equal(top.filter(section => section.name === heading).length, 1, `${file}: missing/duplicate ${heading}`);
@@ -66,9 +68,8 @@ test('canonical Markdown has real local links, complete lab routes and plain cli
       const sharedCommands = /^npm (?:ci|test|run (?:build|preflight|verify:baseline|verify:solution|verify:speckit-solution|test:search|test:team-filter|toolkit:build|consumer:create))(?:\s|$)/m;
       assert.ok(!route.tokens.some(token => token.type === 'fence' && token.info === 'sh' && sharedCommands.test(token.content)),
         `${file}: run/build/verify commands belong below the alternative preparation routes`);
-      for (const name of ['Inspect the example', 'If you already changed these files']) {
-        assert.ok(sections.some(section => section.name === name), `${file}: missing ${name}`);
-      }
+      assert.ok(sections.some(section => section.name === 'Inspect the example'),
+        `${file}: missing Inspect the example`);
       const clients = top.find(section => section.name === 'Client steps');
       assert.deepEqual(children(clients).map(section => section.name),
         ['VS Code', 'Copilot CLI', 'Copilot app'], `${file}: client tabs require exactly three headings`);
@@ -98,7 +99,9 @@ test('Labs 00-08 use one activation per workspace and retain optional comparison
     assert.deepEqual(actual, selectors.map(selector => `npm run lab:activate -- --step ${step.id}${selector}`), file);
     assert.ok(!section.tokens.some(token => /--preview|--stage|--apply/.test(token.content)),
       `${file}: no mandatory mode sequence`);
-    assert.ok(links(text).includes('../reference/examples.md'), `${file}: comparison/recovery route`);
+    assert.ok(section.tokens.some(token => (token.children ?? []).some(child =>
+      child.type === 'link_open' && child.attrGet('href') === '../reference/examples.md#optional-inspection-and-comparison')),
+    `${file}: optional comparison route`);
   }
   const reference = read('docs/reference/examples.md');
   for (const operation of ['--preview', '--stage', '--apply']) {
