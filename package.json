@@ -25,6 +25,7 @@
     "mcp": "node dist/src/standards-mcp/main.js",
     "lab:examples:fetch": "node scripts/fetch-examples.mjs",
     "lab:example": "node scripts/import-example.mjs",
+    "lab:activate": "node scripts/import-example.mjs --apply",
     "lab:03:bootstrap": "node scripts/bootstrap-lab-03.mjs",
     "lab:09:bootstrap": "node scripts/bootstrap-lab-09.mjs",
     "toolkit:build": "node scripts/package-toolkit.mjs",

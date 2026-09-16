@@ -1,5 +1,11 @@
 # 04 — Package, install, and verify
 
+Agent plugins bundle reusable customizations into an installable package; this lab packages the
+skill you authored. Versioned packaging lets you verify the exact procedure used in a separate
+workspace and manage updates or rollback without copying the source into each project.
+
+**Documentation:** [Agent plugins in VS Code](https://code.visualstudio.com/docs/agent-customization/agent-plugins).
+
 ## Goal and starting workspace
 
 Begin in **author**, after 03; finish with a clean **sibling consumer** using an installed package. Search remains the intentional **501** starter: this is a packaging/planning exercise, not API implementation.
@@ -64,18 +70,16 @@ Create the parent `toolkit/` directory in author if absent. Copy file contents o
 - The importer uses the pinned `examples-v1` release, not the moving branch. Only metadata/catalog belongs to this step; use the explicit 03 prerequisite if needed. Never distribute an opaque prebuilt archive or write your own provenance.
 - The inline recipe is an alternative to importing, not a requirement to import over files you just authored. Inspect source read-only with `git show examples-v1:examples/steps/04-plugin/files/plugin.json` and `git show examples-v1:examples/steps/04-plugin/files/catalog.md`.
 
-Prepare only the author metadata/catalog with this import. Inspect each preview/staged result before applying; packaging is a shared step afterward.
+Prepare only the author metadata/catalog with this activation. It displays the plan and applies after safety checks; packaging is a shared step afterward. Optional preview and comparison are available in [safe example operations](../reference/examples.md#optional-inspection-and-comparison).
 
 ```sh
 # AUTHOR only
-npm run lab:example -- --step 04-plugin --preview
-npm run lab:example -- --step 04-plugin --stage
-npm run lab:example -- --step 04-plugin --apply
+npm run lab:activate -- --step 04-plugin
 ```
 
 #### If you already changed these files
 
-- Preview first. If manually copied or personalized content conflicts, stage and compare the references, then merge metadata/catalog yourself. Do not replace learner skill content or commit merely to bypass a conflict.
+- If manually copied or personalized content conflicts, optionally preview or stage the references, then merge metadata/catalog yourself. Do not replace learner skill content or commit merely to bypass a conflict.
 - [Safe imports](../reference/examples.md) · [Complete installation/update/rollback procedure](../reference/plugin.md).
 
 [Continue with this lab](#continue-with-this-lab).

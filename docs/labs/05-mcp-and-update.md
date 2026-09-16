@@ -1,5 +1,12 @@
 # 05 — Connect MCP and update the installed procedure
 
+Model Context Protocol (MCP) provides a standard way for an AI client to access tools and context
+from a server. Connecting the local standards tools and updating the installed skill makes the
+workflow use inspectable requirements instead of relying only on remembered or pasted guidance.
+Checking tool results and package versions shows which source and procedure actually informed the work.
+
+**Documentation:** [MCP architecture](https://modelcontextprotocol.io/docs/learn/architecture) and [Agent plugins in VS Code](https://code.visualstudio.com/docs/agent-customization/agent-plugins).
+
 ## Goal and starting workspace
 
 Use **author** for the canonical skill/package update and **consumer** for MCP plus the installed 1.0.0 package from Lab 04. Demonstrate real tool evidence and the updated 1.1.0 procedure. Search stays **501**; no API implementation or fixture edits.
@@ -197,24 +204,20 @@ description: Use for planning, approved implementation, or review of a small HTT
 - Two explicit groups: updated skill/checklist/metadata in author, inert client-specific MCP setup in consumer. Imports use pinned `examples-v1`; branch browsing is not the version pin.
 - For example, inspect the pinned author procedure with `git show examples-v1:examples/steps/05-mcp-and-update/author/SKILL.md`; inspect the CLI recipe with `git show examples-v1:examples/steps/05-mcp-and-update/consumer/cli-mcp.md`. Inline/manual authoring is an alternative, not a reason to apply the example over your work.
 
-Import the four author revisions and only your consumer client's inert recipe. Inspect preview/staged changes before applying. Do not build/register 1.1.0 yet; the shared workflow first observes tools while installed 1.0.0 remains active.
+Activate the four author revisions and only your consumer client's inert recipe, once per workspace. Each command displays the plan and applies after safety checks; optional preview/comparison is described in [safe example operations](../reference/examples.md#optional-inspection-and-comparison). Do not build/register 1.1.0 yet; the shared workflow first observes tools while installed 1.0.0 remains active.
 
 ```sh
 # AUTHOR
-npm run lab:example -- --step 05-mcp-and-update --workspace author --preview
-npm run lab:example -- --step 05-mcp-and-update --workspace author --stage
-npm run lab:example -- --step 05-mcp-and-update --workspace author --apply
+npm run lab:activate -- --step 05-mcp-and-update --workspace author
 # CONSUMER — choose the actual client (cli, vscode, or app)
-npm run lab:example -- --step 05-mcp-and-update --workspace consumer --client cli --preview
-npm run lab:example -- --step 05-mcp-and-update --workspace consumer --client cli --stage
-npm run lab:example -- --step 05-mcp-and-update --workspace consumer --client cli --apply
+npm run lab:activate -- --step 05-mcp-and-update --workspace consumer --client cli
 ```
 
 - Application refuses wrong workspace. Other client groups use exactly `--client vscode` or `--client app`; no undocumented step substitution.
 
 #### If you already changed these files
 
-- Preview/stage first. Sample updates may require clean known sample prerequisites; inspect that requirement rather than auto-committing. Personalized skill/metadata can correctly block overwrite even when committed.
+- For comparison or recovery, optionally preview or stage the sample. Updates may require clean known sample prerequisites; inspect that requirement rather than auto-committing. Personalized skill/metadata can correctly block overwrite even when committed.
 - Stage references and merge the tool/fallback behavior into your authored skill; retain your improvements. Inline copied files may also conflict because they are not importer-owned bytes.
 - The import prepares inert files only; any active settings changes belong to the shared client setup. [Recovery](../reference/examples.md).
 

@@ -1,5 +1,12 @@
 # 08 — Review, improve, and carry context forward
 
+Evidence-backed review checks a concrete change against requirements and a reproducible result,
+while a continuation brief carries the essential context into a fresh session. Together, they make
+findings actionable, feed improvements back into the reusable toolkit, and reduce repeated
+investigation without relying on a long chat history.
+
+**Documentation:** [Custom agents and handoffs in VS Code](https://code.visualstudio.com/docs/agent-customization/custom-agents) and [Manage agent sessions in VS Code](https://code.visualstudio.com/docs/agents/run/sessions/manage-sessions).
+
 ## Goal and starting workspace
 
 - **Consumer**, after a 07 attempt; preserve real implementation/ref/results, even if incomplete.
@@ -185,17 +192,15 @@ Remaining work: inspect the unverified fields and record the actual state before
   The pinned payload supplies the four consumer review files; the later 1.2.0 author improvement is
   your evidence-driven extension, not something the consumer importer builds for you.
 
-#### Preview, stage, and apply
+#### Activate the review artifacts
 
-1. Preview the four consumer destinations and inspect the teaching-only payload.
-2. Stage a reference for comparison, preserving any existing staged copy.
-3. Apply only after review and conflict resolution; this does not run the review or update a package.
+Run the single command below in consumer. It displays the four-file import plan and applies after
+the whole-step safety checks. This does not run the review or update a package. Optional
+preview/comparison is available through [safe example operations](../reference/examples.md#optional-inspection-and-comparison).
 
 ```sh
 # CONSUMER
-npm run lab:example -- --step 08-review-and-handoff --preview
-npm run lab:example -- --step 08-review-and-handoff --stage
-npm run lab:example -- --step 08-review-and-handoff --apply
+npm run lab:activate -- --step 08-review-and-handoff
 ```
 
 #### If you already changed these files

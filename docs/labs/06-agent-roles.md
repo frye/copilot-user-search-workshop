@@ -1,5 +1,12 @@
 # 06 — Author bounded roles
 
+Custom agents define specialized responsibilities, guidance, and tool access for roles such as
+planner, implementer, and reviewer. Separating those roles makes ownership and human handoffs
+clearer, reducing the risk that planning or review silently becomes implementation. The boundary
+is only technically enforced when the client's actual tool permissions support it.
+
+**Documentation:** [Custom agents and handoffs in VS Code](https://code.visualstudio.com/docs/agent-customization/custom-agents).
+
 ## Goal and starting workspace
 
 In **consumer**, after 05, prepare planner, implementer and independent reviewer roles using the installed updated skill and MCP or explicit fallback. This is a **planning/handoff rehearsal**, not implementation approval: search stays **501** until explicit Lab 07 approval.
@@ -236,13 +243,11 @@ description: Advisory-only independent app reviewer requiring actual permission 
 - Client-specific tool candidates are separate payloads in pinned `examples-v1`. Inspect identifiers in your build; no parity guarantee.
 - Read a pinned source with `git show examples-v1:examples/steps/06-agent-roles/clients/cli/workshop-planner.agent.md`; change the client directory to `vscode` or `app` and role basename to inspect the other variants. Do not check out/merge examples over your work.
 
-Import only your actual client's three role files. Inspect preview/staged definitions before applying. Loading, real grants and rehearsal are shared steps afterward.
+Activate only your actual client's three role files. The command displays the plan and applies after safety checks; optional preview/comparison is available through [safe example operations](../reference/examples.md#optional-inspection-and-comparison). Loading, real grants and rehearsal are shared steps afterward.
 
 ```sh
 # CONSUMER; cli, vscode and app are supported selectors
-npm run lab:example -- --step 06-agent-roles --workspace consumer --client cli --preview
-npm run lab:example -- --step 06-agent-roles --workspace consumer --client cli --stage
-npm run lab:example -- --step 06-agent-roles --workspace consumer --client cli --apply
+npm run lab:activate -- --step 06-agent-roles --workspace consumer --client cli
 ```
 
 - Before switching clients, stage the other client's definitions. Do not force them over edited/loaded roles.

@@ -28,6 +28,7 @@ function commit(root, message = 'Checkpoint reviewed example assets') {
 function fixture(t) {
   mkdirSync('.lab-scratch', { recursive: true });
   const parent = mkdtempSync(resolve('.lab-scratch/helpers with spaces-'));
+  t.after(() => rmSync(parent, { recursive: true }));
   const root = resolve(parent, 'author workspace');
   git(repository, 'clone', '-q', '--no-local', '--no-checkout', '--', repository, root);
   git(root, 'switch', '--detach', json(resolve(repository, 'workshop/starter-lock.json')).commit);
@@ -35,13 +36,15 @@ function fixture(t) {
   git(root, 'remote', 'remove', 'origin');
   for (const path of [
     'package.json',
+    'scripts/bootstrap-lab-03.mjs',
+    'scripts/bootstrap-lab-09.mjs',
+    'scripts/make-consumer.mjs',
     'scripts/spec-kit-reference.mjs',
     'tests/team-filter/team-filter.test.ts',
     'workshop/examples-lock.json',
     'workshop/starter-lock.json',
   ]) write(root, path, read(repository, path));
   copyTree(repository, root, 'workshop/spec-kit-reference');
-  t.after(() => rmSync(parent, { recursive: true }));
   return root;
 }
 function importStep(root, id, client = 'cli') {
@@ -53,6 +56,106 @@ function importStep(root, id, client = 'cli') {
 function authorReady(root) {
   for (const id of ['01-instructions', '02-planning-prompt', '03-skill', '04-plugin']) importStep(root, id);
 }
+function activate(root, id, ...options) {
+  const output = run('npm', ['run', '--silent', 'lab:activate', '--', '--step', id, ...options], root);
+  return JSON.parse(output.trim().split('\n').at(-1));
+}
+
+test('activation imports a step once, preserves optional references and repeats before and after commit', t => {
+  const root = fixture(t);
+  importStep(root, '01-instructions');
+  importStep(root, '02-planning-prompt');
+  const plan = planStep(root, '03-skill');
+  const head = git(root, 'rev-parse', 'HEAD');
+  const search = read(root, 'src/api/search.ts');
+  write(root, 'learner-notes.txt', 'preserve learner work\n');
+  const before = git(root, 'status', '--porcelain');
+  run('npm', ['run', '--silent', 'lab:example', '--', '--step', '03-skill', '--preview'], root);
+  assert.equal(git(root, 'status', '--porcelain'), before);
+
+  assert.deepEqual(activate(root, '03-skill'), { changed: plan.entries.length, unchanged: 0 });
+  assert.equal(git(root, 'rev-parse', 'HEAD'), head);
+  assert.equal(git(root, 'diff', '--cached'), '');
+  assert.ok(!existsSync(resolve(root, '.lab-references')));
+  const imported = git(root, 'status', '--porcelain');
+  const unchanged = { changed: 0, unchanged: plan.entries.length };
+  assert.deepEqual(activate(root, '03-skill'), unchanged);
+  assert.equal(git(root, 'status', '--porcelain'), imported);
+  for (const entry of plan.entries) assert.equal(hash(read(root, entry.destination)), entry.sha256);
+
+  run('npm', ['run', '--silent', 'lab:example', '--', '--step', '03-skill', '--stage'], root);
+  const referencePath = '.lab-references/03-skill-author-cli/reference.json';
+  const reference = read(root, referencePath);
+  assert.deepEqual(activate(root, '03-skill'), unchanged);
+  assert.equal(read(root, referencePath), reference);
+  assert.equal(git(root, 'rev-parse', 'HEAD'), head);
+  assert.equal(read(root, 'learner-notes.txt'), 'preserve learner work\n');
+  assert.equal(read(root, 'src/api/search.ts'), search);
+  assert.match(search, /NOT_IMPLEMENTED/);
+  assert.ok(!existsSync(resolve(root, 'toolkit/plugin.json')));
+
+  commit(root);
+  const committed = git(root, 'rev-parse', 'HEAD');
+  assert.deepEqual(activate(root, '03-skill'), unchanged);
+  assert.equal(git(root, 'rev-parse', 'HEAD'), committed);
+  assert.equal(git(root, 'status', '--porcelain'), '');
+  for (const entry of plan.entries) assert.equal(hash(read(root, entry.destination)), entry.sha256);
+});
+
+test('activation refuses learner edits, collisions and missing prerequisites without partial writes', async t => {
+  for (const mode of ['edited import', 'committed edit', 'untracked collision', 'missing prerequisite']) {
+    await t.test(mode, t => {
+      const root = fixture(t);
+      const destination = '.github/instructions/api.instructions.md';
+      if (mode === 'edited import' || mode === 'committed edit') activate(root, '01-instructions');
+      if (mode !== 'missing prerequisite') write(root, destination, 'learner-owned\n');
+      if (mode === 'committed edit') commit(root, 'Preserve edited imported instructions');
+      const before = git(root, 'status', '--porcelain');
+      const head = git(root, 'rev-parse', 'HEAD');
+      assert.throws(() => activate(root, mode === 'missing prerequisite' ? '03-skill' : '01-instructions'), /preflight failed/);
+      assert.equal(git(root, 'status', '--porcelain'), before);
+      assert.equal(git(root, 'rev-parse', 'HEAD'), head);
+      assert.ok(!existsSync(resolve(root, '.github/skills')));
+      assert.ok(!existsSync(resolve(root, '.lab-references')));
+      if (mode !== 'missing prerequisite') assert.equal(read(root, destination), 'learner-owned\n');
+      if (mode === 'untracked collision' || mode === 'missing prerequisite') {
+        assert.ok(!existsSync(resolve(root, '.github/instructions/tests.instructions.md')));
+      }
+    });
+  }
+});
+
+test('activation forwards workspace and client selectors in new consumers without changing Lab 09 commands', async t => {
+  for (const client of ['cli', 'vscode', 'app']) {
+    await t.test(client, t => {
+      const root = fixture(t);
+      authorReady(root);
+      const consumer = makeConsumer(root, `../activation consumer-${client}`).destination;
+      const scripts = json(resolve(consumer, 'package.json')).scripts;
+      assert.equal(scripts['lab:activate'], 'node scripts/import-example.mjs --apply');
+      assert.equal(scripts['lab:09:bootstrap'], 'node scripts/bootstrap-lab-09.mjs');
+      assert.equal(read(consumer, 'scripts/spec-kit-reference.mjs'), read(repository, 'scripts/spec-kit-reference.mjs'));
+      assert.equal(read(consumer, 'scripts/bootstrap-lab-09.mjs'), read(repository, 'scripts/bootstrap-lab-09.mjs'));
+      const before = git(consumer, 'status', '--porcelain');
+      assert.throws(() => activate(consumer, '05-mcp-and-update', '--workspace', 'author', '--client', client), /consumer workspace/);
+      assert.equal(git(consumer, 'status', '--porcelain'), before);
+      assert.deepEqual(activate(consumer, '05-mcp-and-update', '--workspace', 'consumer', '--client', client), { changed: 1, unchanged: 0 });
+      assert.deepEqual(activate(consumer, '05-mcp-and-update', '--workspace', 'consumer', '--client', client), { changed: 0, unchanged: 1 });
+      assert.deepEqual(activate(consumer, '06-agent-roles', '--workspace', 'consumer', '--client', client), { changed: 3, unchanged: 0 });
+      assert.deepEqual(activate(consumer, '06-agent-roles', '--client', client), { changed: 0, unchanged: 3 });
+      for (const id of ['05-mcp-and-update', '06-agent-roles']) {
+        for (const entry of planStep(consumer, id, 'consumer', client).entries) {
+          assert.equal(hash(read(consumer, entry.destination)), entry.sha256);
+        }
+      }
+      assert.ok(!existsSync(resolve(consumer, '.github/skills')));
+      assert.ok(!existsSync(resolve(consumer, '.lab-references')));
+      assert.ok(!existsSync(resolve(consumer, 'workshop/artifacts/review')));
+      assert.equal(git(consumer, 'remote').trim(), '');
+      assert.match(read(consumer, 'src/api/search.ts'), /NOT_IMPLEMENTED/);
+    });
+  }
+});
 
 test('offline source pin, preview, inert stage, safe apply and exact repeat', t => {
   const root = fixture(t);

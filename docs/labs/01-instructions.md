@@ -1,5 +1,11 @@
 # 01 — Author repository and scoped instructions
 
+Custom instructions give Copilot durable project guidance, with repository-wide rules for shared
+conventions and scoped rules for particular files. They reduce repeated prompting and help keep
+generated changes aligned with the codebase without burdening every task with unrelated rules.
+
+**Documentation:** [Custom instructions in VS Code](https://code.visualstudio.com/docs/agent-customization/custom-instructions).
+
 ## Goal and starting workspace
 
 - **Author**, after 00; main-based learner branch with intentional 501.
@@ -86,13 +92,11 @@ applyTo: "tests/**/*.ts"
 - The helper verifies the pinned `examples-v1` release. Explicitly run the operations below from author; tab selection is not permission to execute them.
 
 ```sh
-npm run lab:example -- --step 01-instructions --preview
-npm run lab:example -- --step 01-instructions --stage
-npm run lab:example -- --step 01-instructions --apply
+npm run lab:activate -- --step 01-instructions
 ```
 
-- Preview, then stage and compare the three reviewed files. Apply only if all destinations pass the importer checks; it does not merge learner rules.
-- A clean tracked starter instructions file is the only known replacement. The reviewed full file retains the starter section; compare it before applying. No commit is required by this lab. If you later choose a local checkpoint commit, review its exact scope yourself.
+- Activation displays the plan and applies all three files only after the importer checks pass; it does not merge learner rules. Optional preview/comparison is available through [safe example operations](../reference/examples.md#optional-inspection-and-comparison).
+- A clean tracked starter instructions file is the only known replacement. The reviewed full file retains the starter section; inspect it after activation or use the optional comparison route first. No commit is required by this lab. If you later choose a local checkpoint commit, review its exact scope yourself.
 
 #### If you already changed these files
 

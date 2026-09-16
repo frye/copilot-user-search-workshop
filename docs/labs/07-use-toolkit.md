@@ -1,5 +1,12 @@
 # 07 — Use the toolkit to implement search
 
+An approval-gated agent workflow combines project instructions, an installed skill, MCP tools,
+and specialized roles to deliver a tested change. Applying the toolkit to user search shows whether
+the customizations work together in practice, while explicit approval and independent review keep
+the implementation bounded and its results inspectable.
+
+**Documentation:** [Build with agents in VS Code](https://code.visualstudio.com/docs/agents/overview) and [Custom agents and handoffs in VS Code](https://code.visualstudio.com/docs/agent-customization/custom-agents).
+
 ## Goal and starting workspace
 
 - **Consumer**, after 06: no canonical local skill, exactly one installed **1.1.0** package, MCP configured or fallback disclosed, roles inspected.
@@ -110,17 +117,15 @@ Do not claim solution walkthrough output as a toolkit-produced implementation.
 - Read-only local alternative: `git show examples-v1:examples/steps/07-use-toolkit/files/toolkit-checkpoint.md`.
   Compare its readiness structure with your file; it is not a record of your execution.
 
-#### Preview, stage, and apply
+#### Activate the checkpoint
 
-1. Preview the checkpoint destination and inspect the proposed change.
-2. Stage the reference for comparison; preserve an existing staged reference instead of overwriting it.
-3. Apply only after reviewing the preview and resolving conflicts without discarding learner work.
+Run the single command below in consumer. It displays the checkpoint import plan and applies after
+the whole-step safety checks. Unchanged reruns succeed without replacing learner work. Optional
+preview/comparison is available through [safe example operations](../reference/examples.md#optional-inspection-and-comparison).
 
 ```sh
 # CONSUMER; import readiness checklist only
-npm run lab:example -- --step 07-use-toolkit --preview
-npm run lab:example -- --step 07-use-toolkit --stage
-npm run lab:example -- --step 07-use-toolkit --apply
+npm run lab:activate -- --step 07-use-toolkit
 ```
 
 #### If you already changed these files

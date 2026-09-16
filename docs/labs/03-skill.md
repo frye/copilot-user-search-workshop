@@ -1,5 +1,11 @@
 # 03 — Build and exercise a skill
 
+Agent skills package a specialized procedure with supporting instructions and resources that Copilot
+can load when relevant. They make multi-step work repeatable and easier to improve without placing
+the entire procedure in always-on project guidance.
+
+**Documentation:** [About agent skills](https://docs.github.com/en/enterprise-cloud@latest/copilot/concepts/agents/about-agent-skills).
+
 ## Goal and starting workspace
 
 - **Author**, after 02; [optional reviewed prerequisites](#starting-here-with-reviewed-prerequisites) are available if starting here.
@@ -98,12 +104,10 @@ description: Use for planning, approved implementation, or independent review of
 - Requires reviewed prompt/guidance. If starting here without them, inspect the separate [optional prerequisite shortcut](#starting-here-with-reviewed-prerequisites) before import. The helper verifies the pinned `examples-v1` release; importing does not invoke the skill.
 
 ```sh
-npm run lab:example -- --step 03-skill --preview
-npm run lab:example -- --step 03-skill --stage
-npm run lab:example -- --step 03-skill --apply
+npm run lab:activate -- --step 03-skill
 ```
 
-- Explicitly preview first, stage both files for inspection, and apply only with safe destinations. The private journal and later personalized criterion are not imported. Manually authored or revised files may correctly block later sample replacement.
+- Activation displays the plan and applies both files only with safe destinations. Optional preview/comparison is available through [safe example operations](../reference/examples.md#optional-inspection-and-comparison). The private journal and later personalized criterion are not imported. Manually authored or revised files may correctly block later sample replacement.
 
 #### If you already changed these files
 

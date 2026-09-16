@@ -1,10 +1,24 @@
 # 00 — Start and choose a client
 
+GitHub Copilot offers AI assistance through clients such as VS Code, the CLI, and the app, with
+capabilities that depend on the client and organizational policy. Choosing a supported client and
+establishing a known local baseline helps you distinguish customization behavior from setup problems,
+including the workshop's intentional 501 search response.
+
+**Documentation:** [About GitHub Copilot](https://docs.github.com/en/copilot/get-started/about-github-copilot).
+
 ## Goal and starting workspace
 
-- **Author**, learner branch from main; no completed customizations loaded.
+**Author workspace** means your existing local checkout of
+`copilot-user-search-workshop`, where you will create the workshop customizations.
+It is not a folder named `author`; do not create or rename a folder for this step.
+
+- Use a learner branch from main in this checkout; no completed customizations loaded.
 - Prove baseline readiness, distinguish intentional 501, and record real client/build.
-- Prerequisites: [start guide](../start.md). Artifact-only participation is acceptable when explicitly labeled.
+- Prerequisites: complete the [canonical local-clone setup](../start.md#start-here), including approved Node **24.20.0** / npm **11.19.0**, baseline and both pinned local release refs.
+- The public source is read-only for learners. Author has the source fetch URL and disabled origin push URL; that Git guard does not prevent API writes, PRs, or cloud-agent tasks. None belongs in this local-only learner route.
+- No consumer yet: Lab 04 creates the fresh named sibling `../workshop-consumer` through `consumer:create`, which removes its origin. Do not clone the bootstrap tag as your author entry point.
+- Approved pairing or explicitly labeled artifact-only participation is acceptable when policy blocks runtime work. No submission does not waive required evidence or checkpoint prerequisites.
 
 ## Choose your route
 
@@ -50,18 +64,16 @@ Create the parent directories if needed in your editor. Copy only the file body,
 - The helper verifies the pinned `examples-v1` release. Selecting this route does not import anything; explicitly run each chosen operation from author.
 
 ```sh
-npm run lab:example -- --step 00-start --preview
-npm run lab:example -- --step 00-start --stage
-npm run lab:example -- --step 00-start --apply
+npm run lab:activate -- --step 00-start
 ```
 
 - Destination: `workshop/artifacts/setup-checklist.md`; no client discovery path.
-- Preview first, stage a reference for inspection, then apply only if the destination is safe. Import is not permission to overwrite learner work and does not fill your private evidence journal.
+- Activation checks the complete step before applying it and is safe to rerun unchanged. Optional inspection and comparison are described in [safe example operations](../reference/examples.md#optional-inspection-and-comparison); they are not a required sequence. Import does not overwrite learner work or fill your private evidence journal.
 
 #### If you already changed these files
 
 - Keep your real evidence; stage/compare checklist rather than replace it. [Whole-step conflict rules](../reference/examples.md).
-- Missing release tag: use the local fetch verifier or obtain approved refs, never switch to examples.
+- Missing or mismatched release tag: stop and follow [local release recovery](../reference/examples.md#verify-local-release-refs) using an approved bundle or fresh clone. Never force-fetch, replace tags, relax hashes, enable implicit network, or switch to examples.
 
 [Continue with this lab](#continue-with-this-lab).
 
@@ -80,11 +92,11 @@ All paths below are relative to the author repository root.
 
 ### Shared readiness
 
-1. Open the author repository, not an account-notes project. Confirm the root, learner branch, ref, and existing changes using the identity commands below. If still on main, follow the [start guide](../start.md) to create a learner branch; do not switch branches over unreviewed work. Do not switch to examples or solution.
+1. Open the author repository, not an account-notes project. Confirm the root, learner branch, ref, existing changes, and origin fetch/push URLs using the identity commands below and the [start guide](../start.md). If still on main, follow that guide to create a learner branch; do not switch branches over unreviewed work. Do not switch to examples or solution.
 2. Read `workshop/task-brief.md`, `workshop/approved-contract.md`, and its authoritative target `docs/reference/contract.md`. Then inspect `src/api/server.ts`, `src/api/search.ts`, `src/api/users.ts`, `tests/baseline/api.test.ts`, `tests/starter/stub.test.ts`, and `tests/search/search.test.ts`. Identify the unchanged health/list/get routes, frozen fixture, and deliberate search 501 without implementing anything.
 3. Read `standards/api-conventions.json`, `standards/validation-commands.json`, and `workshop/templates/authoring-guide.md`. The templates are inert orientation, not completed customizations.
 4. Create `.lab-evidence/00-start.md` from the shared template below, preserving any existing journal. Obtain the root/ref/tool versions from the terminal and the actual client build from its version/About view. Leave unperformed operations **not run** and unseen behavior **not observed**; record only privacy-safe summaries.
-5. Check Node/npm against the approved versions in `package.json` and the [start guide](../start.md). Run the dependency/preflight/baseline commands individually; record each exit before proceeding. A missing package, unavailable registry, runtime mismatch, or build failure is not the intentional search failure. Use an approved runtime or label the blocked activity artifact-only; do not install globally or change personal settings.
+5. Check Node/npm against the approved versions in `package.json` and the [start guide](../start.md). Run the dependency/preflight/baseline commands individually and complete the [local tag checks](../start.md#verify-the-local-release-refs), followed by `npm run lab:examples:fetch`; record each exit before proceeding. Retain actual setup results already obtained in this same checkout/session. A missing package, unavailable registry, runtime mismatch, or build failure is not the intentional search failure. Use an approved runtime or label the blocked activity artifact-only; do not install globally or change personal settings.
 6. Run the separate acceptance command below. It must build successfully and reach assertions that observe 501 where the contract requires 200/400. Keep the test name and status mismatch, not sensitive request/response output. Do not edit tests or implement search to turn this lab green.
 7. Complete the health/list exercise under [Try it](#try-it), select one [client route](#client-steps), and fill the journal. Client directions and Try it describe the same exercise; do not run it twice merely because both sections mention it. The checklist is an observation aid; the private journal is the actual run record.
 
@@ -95,6 +107,8 @@ git rev-parse --show-toplevel
 git branch --show-current
 git rev-parse HEAD
 git status --short
+git remote get-url origin
+git remote get-url --push origin
 node --version
 npm --version
 ```
@@ -167,11 +181,11 @@ Create this private file in your editor if absent. If it exists, update actual o
 
 ### VS Code
 
-1. Open the author folder and check the integrated terminal root/ref against the identity commands. Inspect workspace trust and installed VS Code/Copilot versions; record the actual build rather than this guide's expected capabilities.
+1. If this repository is already open in VS Code, keep using that window. Otherwise, choose **File > Open Folder...** and select the repository root containing `README.md`, `package.json`, `src/`, and `workshop/`. Check the integrated terminal root/ref against the identity commands. Inspect workspace trust and installed VS Code/Copilot versions; record the actual build rather than this guide's expected capabilities.
 2. Open `workshop/artifacts/setup-checklist.md` and `.lab-evidence/00-start.md`. Use the integrated terminal for the checks and a separate terminal for the foreground server.
 3. Inspect the available Chat customization/context views for unexpected workshop skills/prompts/roles. Lab 00 creates no native customization; if discovery is absent, manually read the two files or attach them to Chat and state **manual context equivalent**.
 4. Send the readiness request under **Try it**. Inspect any cited file/context indicators and check the answer against actual terminal output. Do not treat fluent prose as execution evidence.
-5. Update one observation, repeat the request, and record the difference and remaining gaps. Keep this window as author after consumer gets its own window in 04.
+5. Update one observation, repeat the request, and record the difference and remaining gaps. Keep this window as author; [Lab 04](04-plugin.md) creates the separate sibling consumer, which gets its own window. No consumer is needed in Lab 00.
 
 ### Copilot CLI
 
@@ -238,5 +252,6 @@ Create this private file in your editor if absent. If it exists, update actual o
 - `npm run verify:exercise -- --step 00-start` checks imported/authored checklist presence only.
 - Baseline green, named search checks intentionally red for 501, server stopped, actual ref recorded.
 - Save the real outcomes in `.lab-evidence/00-start.md`. A populated template or passing file-presence check proves neither runtime readiness nor client discovery.
+- Search stays 501 until Lab 07; implement only in consumer then. `npm run verify:solution` is the final completion check, not today's starter-only baseline.
 - Recovery: fix dependency/runtime failures before claiming readiness; otherwise label artifact-only.
 - Next: [01 — Instructions](01-instructions.md).

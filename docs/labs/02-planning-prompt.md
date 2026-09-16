@@ -1,5 +1,13 @@
 # 02 — Create a reusable planning prompt
 
+Reusable planning prompts capture a task's context and expected output in a request you can invoke
+again, rather than in rules applied to every interaction. They make scope, open questions, tests,
+and the human approval point easier to review consistently before implementation. Native prompt-file
+support depends on the client and session type; the manual route preserves the planning exercise
+when discovery is unavailable.
+
+**Documentation:** [Prompt files in VS Code](https://code.visualstudio.com/docs/agent-customization/prompt-files).
+
 ## Goal and starting workspace
 
 - **Author**, after 01; instructions present, search still 501.
@@ -63,12 +71,10 @@ Read the [task brief](../../workshop/task-brief.md), [approved contract](../../w
 - Prerequisite: reviewed Lab 01 guidance. Presence allows authored equivalents; you must check their quality. The helper verifies the pinned `examples-v1` release.
 
 ```sh
-npm run lab:example -- --step 02-planning-prompt --preview
-npm run lab:example -- --step 02-planning-prompt --stage
-npm run lab:example -- --step 02-planning-prompt --apply
+npm run lab:activate -- --step 02-planning-prompt
 ```
 
-- Explicitly preview first, stage the pinned prompt for comparison, and apply only if the protected destination permits it. Importing a prompt does not invoke it or create `.lab-evidence/02-planning-prompt.md`.
+- Activation displays the plan and applies only if the protected destination permits it. Optional preview/comparison is available through [safe example operations](../reference/examples.md#optional-inspection-and-comparison). Importing a prompt does not invoke it or create `.lab-evidence/02-planning-prompt.md`.
 
 #### If you already changed these files
 
