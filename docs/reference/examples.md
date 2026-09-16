@@ -56,8 +56,8 @@ npm run lab:03:bootstrap
 ## Not published
 
 - In the **repository Markdown view**, every lab's relative “Browse examples branch” link points to its examples branch directory.
-- In the **local site**, those links lead here because owner/host is intentionally unresolved. Use local Git plus the exact step commands, not a fabricated hosted URL.
-- Once owner approves publishing, set `WORKSHOP_SOURCE_URL` to the approved repository URL when building to enable hosted source links.
+- In the **local site** without `WORKSHOP_SOURCE_URL`, those links lead here because hosted examples require explicit publication approval. The source repository quick links do not enable hosted examples. Use local Git plus the exact step commands.
+- Once owner approves publishing, set `WORKSHOP_SOURCE_URL` to the approved repository URL when building to enable hosted example links and override source repository quick links.
 - ZIP downloads without `.git`: use browser-copy from the exact reviewed examples tag and compare per-file SHA-256 against the manifest. Do not initialize a synthetic Git history just to bypass checks.
 - No reviewed standalone archive is included; offline ZIP users should obtain the prepared repository/bundle or use the labeled browser-copy route.
 

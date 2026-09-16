@@ -2,8 +2,10 @@ import { defineConfig } from 'vitepress';
 
 const base = process.env.WORKSHOP_BASE ?? '/copilot-user-search-workshop/';
 const source = process.env.WORKSHOP_SOURCE_URL;
+const defaultRepositoryUrl = 'https://github.com/frye/copilot-user-search-workshop';
 if (!base.startsWith('/') || !base.endsWith('/')) throw new Error('WORKSHOP_BASE must start/end with /.');
 if (source && !/^https:\/\/github\.com\/[A-Za-z0-9_.-]+\/[A-Za-z0-9_.-]+$/.test(source)) throw new Error('WORKSHOP_SOURCE_URL must be an approved GitHub repository URL.');
+const repositoryUrl = source || defaultRepositoryUrl;
 
 export default defineConfig({
   title: 'Copilot customization workshop',
@@ -13,12 +15,14 @@ export default defineConfig({
   lastUpdated: false,
   markdown: {
     config(md) {
-      md.core.ruler.after('inline', 'repository-example-links', state => {
+      md.core.ruler.after('inline', 'repository-source-links', state => {
         for (const block of state.tokens) {
           for (const token of block.children ?? []) {
             if (token.type !== 'link_open') continue;
             const href = token.attrGet('href');
-            if (href?.startsWith('../../../../tree/examples/')) {
+            if (href === defaultRepositoryUrl) {
+              token.attrSet('href', repositoryUrl);
+            } else if (href?.startsWith('../../../../tree/examples/')) {
               token.attrSet('href', source ? `${source}/${href.slice('../../../../'.length)}` : '/reference/examples.html#not-published');
             }
           }
@@ -38,6 +42,7 @@ export default defineConfig({
         ['08 — Review/handoff', '08-review-and-handoff'], ['09 — Spec Kit', '09-spec-kit'],
       ].map(([text, slug]) => ({ text, link: `/labs/${slug}` })) },
       { text: 'Reference', items: [
+        { text: 'Source repository', link: repositoryUrl },
         { text: 'Examples / recovery', link: '/reference/examples' },
         { text: 'Plugin lifecycle', link: '/reference/plugin' },
         { text: 'MCP', link: '/reference/mcp' },
