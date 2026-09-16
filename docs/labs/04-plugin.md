@@ -21,7 +21,7 @@ Choose **one** way to prepare the manifest and catalog, then continue with the s
 3. Write `toolkit/catalog.md` with title `User-search toolkit catalog` and these complete content requirements:
    - **Purpose/maintainer:** planning, human-approved implementation and independent review of a contract-driven HTTP API change; maintainer is the learner of the local author workspace, with repository/publication ownership unresolved.
    - **Source/version:** canonical `.github/skills/api-change-workflow/` plus `toolkit/plugin.json`; package 1.0.0 and Agent Plugins schema 1.0.0, skill-only.
-   - **Compatibility/permissions:** VS Code workspace registration and CLI local install require real-build rehearsal; app local loading is an unverified CLI bridge. Procedure text only: no executables, hooks, embedded MCP or blanket execution/network approval; client permissions govern work.
+   - **Compatibility/permissions:** VS Code local source installation and CLI local install require real-build rehearsal; app local loading is an unverified CLI bridge. Procedure text only: no executables, hooks, embedded MCP or blanket execution/network approval; client permissions govern work.
    - **Integrity/install:** inspect generated provenance, three packaged inputs, per-file hashes, aggregate checksum and source commit/dirty state; establish clean consumer absence, then explicitly approve registration of one package.
    - **Rollback/evidence:** remove only this lab registration, re-register a preserved prior immutable version if available, otherwise return to no-plugin baseline; refresh and verify source/version. Static build success is not discovery or invocation evidence.
 4. Save both files with your merged personalizations. Leave validation, package generation, consumer creation and registration for the common steps.
@@ -52,7 +52,7 @@ Create the parent `toolkit/` directory in author if absent. Copy file contents o
 - Purpose: reusable planning, approved implementation and review procedure for a small contract-driven HTTP API change.
 - Maintainer role: learner of this local author workspace. Repository/publication owner intentionally unresolved.
 - Version: **1.0.0**; source: `.github/skills/api-change-workflow/` plus `toolkit/plugin.json`.
-- Compatibility: Agent Plugins **1.0.0**, skill-only. VS Code workspace registration and CLI local install are documented; real client builds need rehearsal. App local install is a CLI bridge, not native/verified.
+- Compatibility: Agent Plugins **1.0.0**, skill-only. VS Code local source installation and CLI local install are documented; real client builds need rehearsal. App local install is a CLI bridge, not native/verified.
 - Permissions: procedure text only; no executables, hooks, embedded MCP, arbitrary network or blanket shell approval. Client permissions govern invoked work.
 - Integrity: inspect generated `provenance.json`, exact three packaged input files, per-file hashes, aggregate source checksum, source commit/dirty state.
 - Install: build locally, establish clean consumer absence, then explicitly register only one package through the selected client.
@@ -102,10 +102,10 @@ All three routes converge here. Keep the revised guide open from **author**: con
 | Author | `toolkit/dist/user-search-toolkit-1.0.0/skills/api-change-workflow/SKILL.md` | Generate; never hand-edit |
 | Author | `toolkit/dist/user-search-toolkit-1.0.0/skills/api-change-workflow/references/review-checklist.md` | Generate; never hand-edit |
 | Author | `toolkit/dist/user-search-toolkit-1.0.0/provenance.json` | Generate checksums/ref; never fabricate |
-| Consumer, VS Code only | `.vscode/settings.json` | Merge one workspace registration after approval |
+| Consumer, VS Code advanced alternative only | `.vscode/settings.json` | Optionally merge one workspace registration instead of UI installation, after approval |
 | Author and consumer | `.lab-evidence/04-plugin.md` | Create one journal per workspace; record actual observations |
 
-CLI registration is client-managed and may affect the user's profile. The app route is an **unverified CLI bridge**, not a promise of native local installation. Neither route asks you to create a personal settings file.
+VS Code UI installation and CLI registration are client-managed and may affect the user's profile. The app route is an **unverified CLI bridge**, not a promise of native local installation. These routes do not ask you to create a personal settings file; the optional workspace settings file is only for VS Code's advanced alternative.
 
 ### Build the package and prepare consumer
 
@@ -141,8 +141,19 @@ CLI registration is client-managed and may affect the user's profile. The app ro
 
 ### VS Code
 
-1. Open **consumer** in a separate window. Inspect workspace and user plugin settings/discovery for an existing `user-search-toolkit` or duplicate `api-change-workflow`; stop and resolve the lab duplicate without removing unrelated plugins.
-2. Explicitly approve a **workspace-only merge** into consumer `.vscode/settings.json`. Replace the placeholder with the absolute directory printed in author. The following is a minimal settings object: if the file already exists, merge only this entry into its existing `chat.pluginLocations` object. Preserve all other settings and plugin entries. Do not paste a second top-level object or replace the file.
+1. Open **consumer** in a separate VS Code window. Inspect existing plugin/skill discovery for a duplicate `user-search-toolkit` or `api-change-workflow`; resolve only the lab duplicate and preserve unrelated plugins. In Copilot Chat, select the **cogwheel** at the top (**Open Customizations**).
+2. Select **Plugins**, then **Install Plugin from Source**.
+3. Paste the full absolute path to the author's built package, for example `/ABSOLUTE/AUTHOR/toolkit/dist/user-search-toolkit-1.0.0`. Use the directory containing `plugin.json`, not `toolkit/dist` or the nested `skills/` directory.
+4. With explicit learner approval, confirm the source and review any installation/trust prompt. Installation can affect the client profile; do not assume it is workspace-only.
+5. Inspect native plugin/skill discovery: require `user-search-toolkit`, version `1.0.0`, `api-change-workflow`, and the package source path, not the canonical author `.github/skills` directory. Reload the consumer window if discovery has not refreshed.
+6. Select/invoke the discovered skill with **Try it**. Inspect the displayed skill context/source and its linked checklist. If discovery is unavailable in this build, inspect/read those two **package** files manually and label the request a manual package walkthrough; do not claim installed usage. Record actual client build, discovery source, one-registration check and invocation outcome.
+
+- Do not register the canonical source and package simultaneously or use two installation routes for the same package.
+- [Complete UI procedure and advanced settings alternative](../reference/plugin.md).
+
+#### Advanced alternative: manual workspace registration
+
+Use this **instead of** UI installation, never in addition to it. Explicitly approve a **workspace-only merge** into consumer `.vscode/settings.json`. Replace the placeholder with the absolute directory printed in author. The following is a minimal settings object: if the file already exists, merge only this entry into its existing `chat.pluginLocations` object. Preserve all other settings and plugin entries. Do not paste a second top-level object or replace the file.
 
 **File:** `.vscode/settings.json` (merge; consumer; vscode).
 
@@ -154,9 +165,7 @@ CLI registration is client-managed and may affect the user's profile. The app ro
 }
 ```
 
-3. Reload the consumer window using the supported window reload command. Inspect native plugin/skill discovery: require `user-search-toolkit`, version `1.0.0`, `api-change-workflow`, and the package source path, not the canonical author `.github/skills` directory.
-4. Select/invoke the discovered skill with **Try it**. Inspect the displayed skill context/source and its linked checklist. If discovery is unavailable in this build, inspect/read those two **package** files manually and label the request a manual package walkthrough; do not claim installed usage.
-5. Record actual client build, discovery source, one-registration check and invocation outcome. See [plugin procedure](../reference/plugin.md) for scoped rollback.
+Reload the consumer window, then perform the same discovery, source/version and **Try it** checks above. See [plugin procedure](../reference/plugin.md) for scoped rollback.
 
 ### Copilot CLI
 
@@ -239,7 +248,7 @@ CLI registration is client-managed and may affect the user's profile. The app ro
 - preflight and verify:baseline commands / exits: not run
 - Local canonical skill absent / existing registrations checked: not observed
 - Installation approval and scope: not recorded
-- Registration command or workspace entry / result: not run
+- Registration UI action, command or workspace entry / result: not run
 - Exactly one active lab package / observed source / version: not observed
 - Discovery mechanism: not observed (native, manual, or app bridge)
 - Skill and linked checklist source shown by client: not observed
@@ -254,5 +263,5 @@ CLI registration is client-managed and may affect the user's profile. The app ro
 1. **Author:** `npm run verify:exercise -- --step 04-plugin` validates the manifest and skill shape; repeat `npm run toolkit:build` unchanged. A failure about extra/missing skill files means inspect the two-file canonical allowlist, not weaken validation.
 2. **Consumer:** `npm run verify:baseline` should stay green. `npm run test:search` is intentionally red against 501; do not implement to make this lab pass. Check no local canonical skill, exactly one lab registration, and real source/version plus two invocation observations.
 3. **Evidence limit:** packaging/static validation proves file integrity, not installation, permission enforcement or client invocation. Clearly leave native installation unverified if you used the manual fallback.
-4. **Recovery/cleanup:** remove/disable only the lab path in `.vscode/settings.json`, or use `copilot plugin uninstall user-search-toolkit` after reviewing the exact registration. Preserve all unrelated settings/plugins. No broad cache/profile cleanup, automatic commits or publishing.
+4. **Recovery/cleanup:** disable or uninstall only the lab plugin in VS Code **Plugins**; for the advanced settings route, remove/disable only its `.vscode/settings.json` entry instead. For CLI-owned registration, use `copilot plugin uninstall user-search-toolkit` after reviewing the exact registration. Preserve all unrelated settings/plugins. No broad cache/profile cleanup, automatic commits or publishing.
 - Next: [05 — MCP and update](05-mcp-and-update.md).

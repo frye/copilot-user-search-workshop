@@ -244,7 +244,7 @@ Fixture/server version stays **1.0.0**, the updated **plugin** becomes **1.1.0**
 | Consumer, CLI | `client-configs/cli-mcp.md` | Prepare selected inert recipe through one route |
 | Consumer, app | `client-configs/app-mcp.md` | Prepare selected inert recipe through one route |
 | Consumer, VS Code | `.vscode/mcp.json` | Merge active server entry separately after approval |
-| Consumer, VS Code | `.vscode/settings.json` | Merge replacement lab plugin registration |
+| Consumer, VS Code advanced alternative only | `.vscode/settings.json` | Replace only the optional manual lab registration instead of UI installation |
 | Author | `.github/skills/api-change-workflow/SKILL.md` | Prepared canonical procedure for 1.1.0 |
 | Author | `.github/skills/api-change-workflow/references/review-checklist.md` | Prepared canonical review checks for 1.1.0 |
 | Author | `toolkit/plugin.json` | Prepared metadata at package version 1.1.0 |
@@ -297,7 +297,16 @@ Fixture/server version stays **1.0.0**, the updated **plugin** becomes **1.1.0**
 
 #### Update the lab registration later
 
-Return here only after the first tool exercise and [Build and register the update](#build-and-register-the-update). After approval, edit consumer `.vscode/settings.json`: remove/disable **only** the old `.../user-search-toolkit-1.0.0` lab entry, merge the new actual absolute path with value `true`, and preserve all unrelated entries. This full minimal reference shows the **result for the lab entry**, not an instruction to replace your settings.
+Return here only after the first tool exercise and [Build and register the update](#build-and-register-the-update).
+
+1. With learner approval, open the Copilot Chat **cogwheel** (**Open Customizations**) > **Plugins** and disable or uninstall only the old lab plugin. Select **Install Plugin from Source**.
+2. Paste the full absolute path `/ABSOLUTE/AUTHOR/toolkit/dist/user-search-toolkit-1.1.0`, replacing `/ABSOLUTE/AUTHOR` with the actual author workspace. Choose the package root containing `plugin.json`, not its nested `skills/` directory.
+3. Confirm the source, review any installation/trust prompt, and inspect source/version. Installation can affect the client profile; do not assume workspace-only scope. Reload consumer if discovery has not refreshed; keep only one active lab version.
+4. [Observe the updated procedure](#observe-the-updated-procedure). Restart just the MCP server if rebuilding its consumer output, not all extensions or unrelated servers. [Plugin update/rollback](../reference/plugin.md) · [MCP configuration](../reference/mcp.md).
+
+##### Advanced alternative: update the manual workspace registration
+
+If you used the advanced settings route in 04, update only that lab path **instead of** adding a UI installation. After approval, edit consumer `.vscode/settings.json`: remove/disable **only** the old `.../user-search-toolkit-1.0.0` lab entry, merge the new actual absolute path with value `true`, and preserve all unrelated entries. This full minimal reference shows the **result for the lab entry**, not an instruction to replace your settings.
 
 **File:** `.vscode/settings.json` (merge; consumer; vscode; revision; 1.1.0).
 
@@ -309,7 +318,7 @@ Return here only after the first tool exercise and [Build and register the updat
 }
 ```
 
-Reload the consumer window. Inspect plugin/skill discovery source/version, verify one lab revision, then [observe the updated procedure](#observe-the-updated-procedure). Restart just the MCP server if rebuilding its consumer output, not all extensions or unrelated servers. [MCP reference](../reference/mcp.md).
+Reload the consumer window. Inspect plugin/skill discovery source/version, verify one lab revision, then [observe the updated procedure](#observe-the-updated-procedure).
 
 ### Copilot CLI
 

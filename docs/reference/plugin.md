@@ -52,8 +52,28 @@ npm run consumer:create -- --destination ../workshop-consumer
 
 ### VS Code
 
-- Open **consumer** `.vscode/settings.json` (create `.vscode/` and the file only if missing).
-  Merge a single lab entry into its existing JSON object; preserve every unrelated setting:
+1. Open **consumer** in a separate VS Code window. Select the **cogwheel** at the top of Copilot Chat (**Open Customizations**).
+2. Select **Plugins**, then **Install Plugin from Source**.
+3. Paste the **full absolute path** to the built package in **author**, for example:
+
+```text
+/ABSOLUTE/AUTHOR/toolkit/dist/user-search-toolkit-1.0.0
+```
+
+4. With explicit learner approval, confirm the source and review any installation/trust prompt. Installation can affect the client profile; opening a consumer window does not guarantee workspace-only scope.
+5. Inspect the installed plugin and `api-change-workflow` skill in consumer. Confirm package source and version, then request planning through the skill. Reload the consumer window if discovery has not refreshed.
+
+- Replace `/ABSOLUTE/AUTHOR` with the actual author workspace path. The build creates `toolkit/dist/user-search-toolkit-VERSION/`; choose that **package root containing `plugin.json`**, not `toolkit/dist`, a `toolkit/dist/skill` path, the nested `skills/` directory, or `SKILL.md`.
+- The source prompt accepts `owner/repo`, a Git URL, or a **local folder path**. This lab uses the local folder; no repository upload or marketplace is needed.
+- Use only one registration route and one active version. Never also copy the canonical skill into consumer.
+- Update: in **Plugins**, disable or uninstall **only `user-search-toolkit`**, then repeat **Install Plugin from Source** with `/ABSOLUTE/AUTHOR/toolkit/dist/user-search-toolkit-1.1.0`. Inspect source/version and invoke again; do not assume a registry update refreshes a local package.
+- Lab 08 repeats that same UI replacement from `1.1.0` to `1.2.0`; use the new absolute package directory and confirm the revised checklist is present in the installed source before re-invoking review.
+- Rollback: disable/remove only the new lab registration, then re-enable the prior immutable package or install its `1.0.0` directory through the same UI. Verify source/version before invoking.
+- Cleanup: disable or uninstall only the lab plugin using plugin management. Preserve unrelated registrations and immutable author package directories; no broad cache/profile cleanup.
+
+#### Advanced alternative: manual workspace registration
+
+Use this **instead of** the UI installation, not in addition to it. Open **consumer** `.vscode/settings.json` (create `.vscode/` and the file only if missing). Merge a single lab entry into its existing JSON object; preserve every unrelated setting:
 
 ```json
 {
@@ -64,11 +84,10 @@ npm run consumer:create -- --destination ../workshop-consumer
 ```
 
 - Replace the illustrative path with the actual built directory. The value is `true`, not an array or relative path.
-- Reload consumer window; inspect native plugin/skill discovery, confirm package source and version, then request planning through `api-change-workflow`.
-- Update: remove/disable **only the old lab path**, add the new `1.1.0` path, reload and inspect again. Never register both.
-- Lab 08 repeats that same replacement from `1.1.0` to `1.2.0`; confirm the revised checklist is
-  present in the installed source before re-invoking review.
-- Rollback: disable the new lab path, re-enable prior immutable package, reload and verify. Cleanup removes only this lab's settings entry.
+- Reload consumer, inspect plugin/skill discovery and source/version, then invoke planning.
+- For this settings-based route, update by removing/disabling **only the old lab path** and adding the new `1.1.0` path. Reload and inspect again; never enable both.
+- For Lab 08, repeat that same settings replacement from `1.1.0` to `1.2.0`; confirm the revised checklist is present in the installed source before re-invoking review.
+- Rollback disables the new lab path and re-enables the prior immutable package. Cleanup removes only this lab's settings entry.
 
 ### Copilot CLI
 

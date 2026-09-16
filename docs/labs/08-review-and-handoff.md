@@ -237,7 +237,7 @@ Use the client-specific steps as you reach each shared stage, not as another aut
 | `toolkit/dist/user-search-toolkit-1.2.0/provenance.json` | Generate in author; inspect | Builder-owned source/version/checksums |
 | `toolkit/dist/user-search-toolkit-1.2.0/skills/api-change-workflow/SKILL.md` | Generate in author; inspect | Existing MCP-aware workflow |
 | `toolkit/dist/user-search-toolkit-1.2.0/skills/api-change-workflow/references/review-checklist.md` | Generate in author; inspect | Updated review criteria |
-| `.vscode/settings.json` | Merge only the lab registration in consumer, VS Code route | Replace the 1.1.0 path with the real 1.2.0 path |
+| `.vscode/settings.json` | Advanced VS Code alternative only; update instead of UI installation | Replace only the manual lab's 1.1.0 path with the real 1.2.0 path |
 
 CLI/app registration uses the owning client's controls, not an invented repository settings file.
 Do not create or edit package output by hand, and do not copy a canonical skill into consumer.
@@ -379,7 +379,7 @@ fourth packaged skill file.
 - Version: **1.2.0**, adding evidence-backed pre-limit total review to the MCP-aware 1.1.0 workflow.
 - Maintainer role: learner in local author workspace; publication owner and visibility remain unresolved.
 - Source: canonical .github/skills/api-change-workflow/ and toolkit/plugin.json. Inspect builder-generated provenance.json for sourceChecksum, sourceCommit, sourceDirty, version, and per-file hashes.
-- Compatibility: Agent Plugins 1.0.0, skill-only; VS Code workspace registration, CLI local install, and an app CLI bridge unverified until actual discovery.
+- Compatibility: Agent Plugins 1.0.0, skill-only; VS Code local source installation, CLI local install, and an app CLI bridge unverified until actual discovery.
 - Permissions: no hooks, executables, embedded MCP, automatic installation, or server startup. Configure the two read-only fixture tools separately in consumer and label any file fallback.
 - Change: require a file/line trace from total to pre-limit matches, a fixed-match comparison at limits 1 and 2, and findings linked to contract, reproduction, behavior, and impact. A successful teaching probe detects a defect; it is not API acceptance.
 - Build: use npm run toolkit:build in author. The two canonical skill files and manifest produce an immutable toolkit/dist/user-search-toolkit-1.2.0/ plus generated provenance.
@@ -455,15 +455,21 @@ a new context that checks facts before continuing. They are not prefilled result
 2. Send the first review request. Record the line-level finding, actual checklist source, and probe
    result in `.lab-evidence/08-review-and-handoff.md`. This is local review, not hosted Code Review.
 3. Switch to author for the canonical append, metadata updates, and build commands. Return to
-   consumer and open `.vscode/settings.json`.
-4. With registration permission, under `chat.pluginLocations` remove or set `false` on only the old
-   lab's absolute 1.1.0 key, and set the actual absolute 1.2.0 directory printed in author to `true`.
-   Preserve all unrelated settings and registrations. Never leave both lab versions enabled.
-5. Reload the consumer window. Inspect native plugin/skill discovery and the actual 1.2.0 checklist
+   consumer and open the Copilot Chat **cogwheel** (**Open Customizations**) > **Plugins**.
+4. With registration approval, disable or uninstall only the old lab plugin. Select **Install Plugin from Source**
+   and paste `/ABSOLUTE/AUTHOR/toolkit/dist/user-search-toolkit-1.2.0`, replacing `/ABSOLUTE/AUTHOR` with the actual author path.
+   Choose the package root containing `plugin.json`, not its nested `skills/` directory. Confirm the source and review any trust prompt.
+   Preserve all unrelated registrations; installation can affect the client profile. Never leave both lab versions enabled.
+5. Reload the consumer window if discovery has not refreshed. Inspect native plugin/skill discovery and the actual 1.2.0 checklist
    source, then send the second review request. If role discovery is unavailable, use the reviewed
    role body as manual advisory context and record that limitation.
 6. Update the continuation brief. Open a fresh consumer chat and send the continuation prompt;
    record what it re-checked and any stale facts it detected.
+
+If you used the advanced workspace settings route, update only the manual lab entry **instead of** adding a UI installation:
+under `chat.pluginLocations` in consumer `.vscode/settings.json`, remove or disable the old 1.1.0 key and set the actual absolute
+1.2.0 directory to `true`. Preserve unrelated entries, reload, and perform the same source/version and review checks.
+[Plugin update and rollback](../reference/plugin.md).
 
 ### Copilot CLI
 
