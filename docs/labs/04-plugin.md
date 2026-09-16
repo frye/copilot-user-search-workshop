@@ -23,9 +23,7 @@
 
 ```sh
 # AUTHOR only
-npm run lab:example -- --step 04-plugin --preview
-npm run lab:example -- --step 04-plugin --stage
-npm run lab:example -- --step 04-plugin --apply
+npm run lab:activate -- --step 04-plugin
 npm run toolkit:build
 ```
 

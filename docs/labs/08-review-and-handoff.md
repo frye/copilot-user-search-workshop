@@ -24,9 +24,7 @@
 
 ```sh
 # CONSUMER
-npm run lab:example -- --step 08-review-and-handoff --preview
-npm run lab:example -- --step 08-review-and-handoff --stage
-npm run lab:example -- --step 08-review-and-handoff --apply
+npm run lab:activate -- --step 08-review-and-handoff
 ```
 
 ## If you already changed these files

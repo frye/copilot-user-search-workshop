@@ -29,9 +29,7 @@ It is not a folder named `author`; do not create or rename a folder for this ste
 ## Bring in this step
 
 ```sh
-npm run lab:example -- --step 00-start --preview
-npm run lab:example -- --step 00-start --stage
-npm run lab:example -- --step 00-start --apply
+npm run lab:activate -- --step 00-start
 ```
 
 - Destination: `workshop/artifacts/setup-checklist.md`; no client discovery path.

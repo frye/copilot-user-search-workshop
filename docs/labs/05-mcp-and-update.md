@@ -23,14 +23,10 @@
 
 ```sh
 # AUTHOR
-npm run lab:example -- --step 05-mcp-and-update --workspace author --preview
-npm run lab:example -- --step 05-mcp-and-update --workspace author --stage
-npm run lab:example -- --step 05-mcp-and-update --workspace author --apply
+npm run lab:activate -- --step 05-mcp-and-update --workspace author
 npm run toolkit:build
 # CONSUMER — choose the actual client (cli, vscode, or app)
-npm run lab:example -- --step 05-mcp-and-update --workspace consumer --client cli --preview
-npm run lab:example -- --step 05-mcp-and-update --workspace consumer --client cli --stage
-npm run lab:example -- --step 05-mcp-and-update --workspace consumer --client cli --apply
+npm run lab:activate -- --step 05-mcp-and-update --workspace consumer --client cli
 ```
 
 - Application refuses wrong workspace. Other client groups use exactly `--client vscode` or `--client app`; no undocumented step substitution.
