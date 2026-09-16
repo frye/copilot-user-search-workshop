@@ -93,23 +93,6 @@ node scripts/spec-kit-reference.mjs --apply
 3. Run apply only if the destinations are missing and the preview is acceptable. Apply creates
    the reference working packet, not the learner checkpoint, evidence, tests, or implementation.
 
-#### If you already changed these files
-
-- `--apply` refuses any destination collision. Use `--stage` and compare the named files instead.
-- Keep learner-authored specs, checklists, tests, and implementation. Never replace actual evidence
-  with the supplied packet.
-- A consumer created before this Lab 09 update may not contain the support script, packet, or focused
-  test. Use the [optional bootstrap](#fast-forward-from-an-earlier-lab), create a fresh consumer from
-  the updated author workspace, or copy only those named Lab 09 files after reviewing the diff.
-- Live Spec Kit initialization is optional. If you already initialized it, keep useful `.specify/`
-  and `specs/` work; do not apply the reference packet over active generated artifacts.
-- Preserve the fourteen source files and reference provenance. For personalized working specs,
-  compare each mapped pair and record intentional differences in the learner checkpoint. Never
-  change `learnerEvidence` to true or replace actual evidence with a reviewed sample.
-- An older consumer with missing scripts/tests cannot complete T001/T002 by assertion. Use the
-  explicit bootstrap/current consumer route or review and separately approve the exact missing-file
-  additions. Do not copy source implementations as an unannounced setup repair.
-
 [Continue with this lab](#continue-with-this-lab). The other preparation routes are not required.
 
 ## Continue with this lab

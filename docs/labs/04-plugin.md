@@ -77,11 +77,6 @@ Prepare only the author metadata/catalog with this activation. It displays the p
 npm run lab:activate -- --step 04-plugin
 ```
 
-#### If you already changed these files
-
-- If manually copied or personalized content conflicts, optionally preview or stage the references, then merge metadata/catalog yourself. Do not replace learner skill content or commit merely to bypass a conflict.
-- [Safe imports](../reference/examples.md) · [Complete installation/update/rollback procedure](../reference/plugin.md).
-
 [Continue with this lab](#continue-with-this-lab).
 
 ## Continue with this lab

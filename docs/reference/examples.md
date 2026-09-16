@@ -139,14 +139,6 @@ npm run lab:03:bootstrap
 - LF checkout policy keeps reviewed text hashes portable. On unexpected line-ending conflicts, stage/compare and inspect local Git attributes rather than forcing replacement.
 - The per-step `lab:example` helper and its `lab:activate` shortcut never install a package, invoke a skill, execute imported content, edit user settings, commit, push, or touch search code. Only the separate `lab:03:bootstrap` command creates its documented local checkpoint commit.
 
-## If you already changed these files
-
-1. Keep your authored files. `git diff` and `git diff --cached` explain local changes; committing is an explicit learner choice, not an importer action.
-2. Use the step's `--stage` route even if apply is blocked. Compare side by side; manually incorporate only wanted rules.
-3. Known prerequisite updates require the prior sample to be committed cleanly. **Committing different learner content does not authorize replacement**.
-4. Do not erase your personalization just to match a hash. Use manual merge; rerun static checks and actual client invocation.
-5. Preserve useful staged references outside discovery paths; remove only the named reference directory after your comparison. Never broad-clean the workspace.
-
 <a id="not-published"></a>
 
 ## Source links in local previews

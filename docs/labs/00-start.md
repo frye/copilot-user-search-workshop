@@ -70,11 +70,6 @@ npm run lab:activate -- --step 00-start
 - Destination: `workshop/artifacts/setup-checklist.md`; no client discovery path.
 - Activation checks the complete step before applying it and is safe to rerun unchanged. Optional inspection and comparison are described in [safe example operations](../reference/examples.md#optional-inspection-and-comparison); they are not a required sequence. Import does not overwrite learner work or fill your private evidence journal.
 
-#### If you already changed these files
-
-- Keep your real evidence; stage/compare checklist rather than replace it. [Whole-step conflict rules](../reference/examples.md).
-- Missing or mismatched release tag: stop and follow [local release recovery](../reference/examples.md#verify-local-release-refs) using an approved bundle or fresh clone. Never force-fetch, replace tags, relax hashes, enable implicit network, or switch to examples.
-
 [Continue with this lab](#continue-with-this-lab).
 
 ## Continue with this lab

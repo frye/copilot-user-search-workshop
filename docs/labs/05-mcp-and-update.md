@@ -215,12 +215,6 @@ npm run lab:activate -- --step 05-mcp-and-update --workspace consumer --client c
 
 - Application refuses wrong workspace. Other client groups use exactly `--client vscode` or `--client app`; no undocumented step substitution.
 
-#### If you already changed these files
-
-- For comparison or recovery, optionally preview or stage the sample. Updates may require clean known sample prerequisites; inspect that requirement rather than auto-committing. Personalized skill/metadata can correctly block overwrite even when committed.
-- Stage references and merge the tool/fallback behavior into your authored skill; retain your improvements. Inline copied files may also conflict because they are not importer-owned bytes.
-- The import prepares inert files only; any active settings changes belong to the shared client setup. [Recovery](../reference/examples.md).
-
 [Continue with this lab](#continue-with-this-lab).
 
 ## Continue with this lab

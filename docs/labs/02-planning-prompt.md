@@ -76,11 +76,6 @@ npm run lab:activate -- --step 02-planning-prompt
 
 - Activation displays the plan and applies only if the protected destination permits it. Optional preview/comparison is available through [safe example operations](../reference/examples.md#optional-inspection-and-comparison). Importing a prompt does not invoke it or create `.lab-evidence/02-planning-prompt.md`.
 
-#### If you already changed these files
-
-- Stage and compare rather than overwrite your prompt. A clean but different authored file is still protected.
-- Fix relative links in your own file, not by importing a later skill. [Recovery](../reference/examples.md).
-
 [Continue with this lab](#continue-with-this-lab).
 
 ## Continue with this lab

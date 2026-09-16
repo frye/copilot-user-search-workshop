@@ -109,11 +109,6 @@ npm run lab:activate -- --step 03-skill
 
 - Activation displays the plan and applies both files only with safe destinations. Optional preview/comparison is available through [safe example operations](../reference/examples.md#optional-inspection-and-comparison). The private journal and later personalized criterion are not imported. Manually authored or revised files may correctly block later sample replacement.
 
-#### If you already changed these files
-
-- Retain your procedure; stage references and manually merge. Source personalization is expected.
-- When 05 later updates the sample, different authored content remains protected even after a commit. [Recovery](../reference/examples.md).
-
 [Continue with this lab](#continue-with-this-lab).
 
 ## Continue with this lab
