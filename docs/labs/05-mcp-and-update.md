@@ -1,5 +1,12 @@
 # 05 — Connect MCP and update the installed procedure
 
+Model Context Protocol (MCP) provides a standard way for an AI client to access tools and context
+from a server. Connecting the local standards tools and updating the installed skill makes the
+workflow use inspectable requirements instead of relying only on remembered or pasted guidance.
+Checking tool results and package versions shows which source and procedure actually informed the work.
+
+**Documentation:** [MCP architecture](https://modelcontextprotocol.io/docs/learn/architecture) and [Agent plugins in VS Code](https://code.visualstudio.com/docs/agent-customization/agent-plugins).
+
 ## Goal and starting workspace
 
 - **Consumer:** unfinished app plus installed 1.0.0 package from 04.

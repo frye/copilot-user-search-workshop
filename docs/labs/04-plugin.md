@@ -1,5 +1,11 @@
 # 04 — Package, install, and verify
 
+Agent plugins bundle reusable customizations into an installable package; this lab packages the
+skill you authored. Versioned packaging lets you verify the exact procedure used in a separate
+workspace and manage updates or rollback without copying the source into each project.
+
+**Documentation:** [Agent plugins in VS Code](https://code.visualstudio.com/docs/agent-customization/agent-plugins).
+
 ## Goal and starting workspace
 
 - Begin in **author**, after 03; finish with a clean **sibling consumer** using an installed package.

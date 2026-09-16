@@ -1,5 +1,12 @@
 # 00 — Start and choose a client
 
+GitHub Copilot offers AI assistance through clients such as VS Code, the CLI, and the app, with
+capabilities that depend on the client and organizational policy. Choosing a supported client and
+establishing a known local baseline helps you distinguish customization behavior from setup problems,
+including the workshop's intentional 501 search response.
+
+**Documentation:** [About GitHub Copilot](https://docs.github.com/en/copilot/get-started/about-github-copilot).
+
 ## Goal and starting workspace
 
 **Author workspace** means your existing local checkout of

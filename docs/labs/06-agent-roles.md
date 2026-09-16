@@ -1,5 +1,12 @@
 # 06 — Author bounded roles
 
+Custom agents define specialized responsibilities, guidance, and tool access for roles such as
+planner, implementer, and reviewer. Separating those roles makes ownership and human handoffs
+clearer, reducing the risk that planning or review silently becomes implementation. The boundary
+is only technically enforced when the client's actual tool permissions support it.
+
+**Documentation:** [Custom agents and handoffs in VS Code](https://code.visualstudio.com/docs/agent-customization/custom-agents).
+
 ## Goal and starting workspace
 
 - **Consumer**, after 05: installed updated skill plus configured MCP (or explicit fallback).
