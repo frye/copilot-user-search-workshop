@@ -2,7 +2,11 @@
 
 ## Goal and starting workspace
 
-- **Author**, learner branch from main; no completed customizations loaded.
+**Author workspace** means your existing local checkout of
+`copilot-user-search-workshop`, where you will create the workshop customizations.
+It is not a folder named `author`; do not create or rename a folder for this step.
+
+- Use a learner branch from main in this checkout; no completed customizations loaded.
 - Prove baseline readiness, distinguish intentional 501, and record real client/build.
 - Prerequisites: [start guide](../start.md). Artifact-only participation is acceptable when explicitly labeled.
 
@@ -38,9 +42,16 @@ npm run lab:example -- --step 00-start --apply
 
 ### VS Code
 
-- Open author folder, inspect workspace trust and Copilot build, and use integrated terminal for checks.
+- If this repository is already open in VS Code, keep using that window.
+  Otherwise, choose **File > Open Folder...** and select the repository root:
+  the folder containing `README.md`, `package.json`, `src/`, and `workshop/`.
+- In the integrated terminal, run `git rev-parse --show-toplevel` to confirm the
+  repository root before continuing. Use this terminal for the lab checks.
+- Inspect workspace trust and the Copilot build.
 - Confirm no completed skill/prompt/role exists in native customization discovery.
-- Keep this window as author after consumer gets its own window in 04.
+- Keep this as your author window. [Lab 04](04-plugin.md) creates a separate
+  sibling consumer workspace, which you will open in its own VS Code window;
+  no consumer is needed in Lab 00.
 
 ### Copilot CLI
 
