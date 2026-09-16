@@ -2,10 +2,19 @@
 
 Get the workshop code and lab assets from the [Source repository](https://github.com/frye/copilot-user-search-workshop).
 
+**Author workspace** means your local checkout of
+`copilot-user-search-workshop`, where you will create the workshop customizations.
+It is a role, not a required folder name: do not rename an existing checkout or add
+a nested `author` folder. If you already completed this setup in a permitted local
+clone, keep that checkout and continue with the tool and baseline checks below.
+A separate **consumer workspace** is created in [Lab 04](labs/04-plugin.md) to
+use the packaged customizations. No consumer is needed in Lab 00.
+
 ## Scope and prerequisites
 
-This is the canonical setup route: clone the public workshop into a fresh **author** folder, keep
-all learner work local, and create the separate **consumer** only in Lab 04.
+For a first-time setup, clone the public workshop into a fresh folder that becomes your
+**author workspace**. Keep all learner work local, and create the separate **consumer** only
+in Lab 04. An already prepared author checkout does not need another clone.
 Read the [published guide](https://frye.github.io/copilot-user-search-workshop/) or this plain
 Markdown; both describe the same multi-page lab route.
 
@@ -113,10 +122,17 @@ or payloads.
 
 ### VS Code
 
-- Open only the author folder; confirm workspace trust is appropriate.
+- If this repository is already open in VS Code, keep using that window.
+  Otherwise, choose **File > Open Folder...** and select the repository root:
+  the folder containing `README.md`, `package.json`, `src/`, and `workshop/`.
+- In the integrated terminal, run `git rev-parse --show-toplevel` to confirm the
+  repository root before continuing. Use this terminal for the workshop commands.
+- Confirm workspace trust is appropriate.
 - Inspect installed VS Code/Copilot versions and managed settings; record them privately.
 - Use native Chat customization discovery; check instructions, prompts, skills, and agents individually as their labs create them.
-- For plugin consumption open the sibling consumer in a separate window. Local plugin settings are not portable paths.
+- Keep this as your author window. In [Lab 04](labs/04-plugin.md), open the new
+  sibling consumer in a separate window for plugin consumption. Local plugin
+  settings are not portable paths.
 
 ### Copilot CLI
 
