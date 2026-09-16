@@ -10,6 +10,34 @@
 - The server is genuinely read-only by implementation, not merely by annotation. Client policies still control whether it launches.
 - `npm test` uses a real SDK stdio client to initialize/list/call/close; malformed/missing fixtures fail closed.
 
+## Recipe versus active configuration
+
+Lab 05 supplies one inert file for your client: `client-configs/vscode.mcp.json`,
+`client-configs/cli-mcp.md`, or `client-configs/app-mcp.md`. Saving a recipe does **not** start the
+server. VS Code's active workspace file is `.vscode/mcp.json`; CLI and app registration use their
+own supported MCP controls rather than a configuration filename invented by this guide.
+
+In consumer, run `npm run build` first. Run `pwd` and append
+`/dist/src/standards-mcp/main.js` to obtain the absolute entry path needed by CLI/app. Pass that
+entire path as **one argument**, including when it contains spaces. VS Code alone can use the
+`${workspaceFolder}` variable shown below. No credentials are required.
+
+After approving only this server, use this request:
+
+```text
+Call workshop-standards get_api_conventions with {} and get_validation_commands with {}.
+For each call identify the tool, source path, fixture version, and the requirements or validation
+commands relevant to the approved search contract. Do not edit files or execute returned commands.
+If a tool is unavailable or denied, say so and read standards/api-conventions.json and
+standards/validation-commands.json as "file-based fallback; no MCP invocation observed".
+```
+
+Inspect the actual two call records. Expect fixture `version` **1.0.0** and sources
+`standards/api-conventions.json` and `standards/validation-commands.json`. This is independent of
+the installed plugin's version (1.1.0 in Lab 05, 1.2.0 after Lab 08). Record source/version,
+observed call or fallback, and any failure in `.lab-evidence/05-mcp-and-update.md`; never claim a
+tool call merely because the response summarizes those files.
+
 ## Client steps
 
 ### VS Code
@@ -29,7 +57,8 @@
 ```
 
 - This variable is VS Code-specific. Inspect/trust only this server; start it using native MCP controls.
-- Confirm both tool names, invoke `get_api_conventions` with `{}`, and inspect source/version. Stop/restart just this server after rebuilds.
+- Confirm both tool names, invoke each with `{}` using the request above, and inspect both
+  source/version results. Stop/restart just this server after rebuilds.
 - If policy blocks it, read the two `standards/*.json` files and label file-based fallback.
 
 ### Copilot CLI
