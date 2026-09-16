@@ -15,6 +15,38 @@ Start with the [normal main clone](../start.md#start-here), not a bootstrap or s
 - Actual release SHAs live in presenter release evidence. Tags are append-only release identifiers; never move them.
 - **Do not** pull/merge examples, switch an active learner workspace to examples, reset files, force checkout, or use solution as a hidden starter.
 
+## Copy from the guide or import an example
+
+Each lab groups **Build it yourself**, **Copy & Paste**, and **Bring in this step** under one
+route selector near the top. **Bring in this step** is the first-visit default; the guide remembers
+your later choice across labs, independently of your client choice. Pick one route to obtain the
+initial artifacts, then follow **Continue with this lab** below all three alternatives.
+
+The copy route provides complete initial file contents, and the build route explains how to author
+them. The **File** label is the exact destination, and its action tells you to create, append, or
+merge. Neither manual route requires switching to the examples branch or running the importer.
+Shared evidence templates and later revision blocks appear below the routes where everyone needs
+them. A tab selection changes the displayed instructions only; imports still require explicitly
+running `lab:activate`. Preview and staging are optional inspection/comparison tools.
+The guide uses the reviewed examples as a starting point but may explain or extend them; inline
+content is not a promise of byte-for-byte identity with the immutable `examples-v1` release.
+
+- For a new file, create its parent directory and paste only the fenced contents into the named
+  file. For `.github/copilot-instructions.md`, preserve the starter safety rules and append/merge
+  the lab extension. Never paste the guide's surrounding prose into an automatically loaded file.
+- If the destination already exists, compare first. Keep personalizations and copy only missing
+  sections. A complete sample is not authorization to replace a learner's file.
+- Do not run `--apply` after manually copying the same files and expect it to adopt them. Matching
+  untracked bytes without an import receipt can still be a protected collision. Committed
+  alternatives are also protected. Use `--stage` for comparison; do not edit hashes or force/reset.
+- Later version updates must preserve earlier improvements. A learner-authored Lab 03 skill may
+  correctly block the Lab 05 sample update; manually merge the MCP stage and update the manifest.
+- Lab 09's larger complete packet is already under `workshop/spec-kit-reference/`. Its lab maps
+  every source and destination and provides the separate no-install copy workflow.
+
+After either construction route, return to **Try it**, **Client steps**, and **Verify the result**.
+Copying an evidence template must leave observations unfilled/not run until you perform the work.
+
 ## Verify local release refs
 
 The published annotated tags match the existing reviewed locks:

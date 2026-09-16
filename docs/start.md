@@ -118,6 +118,47 @@ or payloads.
 - Author maintains the canonical skill/package. Consumer loads the installed package, configures MCP/roles, and later implements search. Do not copy the project skill into consumer to bypass installation.
 - No submission does **not** make lab evidence or checkpoint prerequisites optional. Follow the dependency route; keep real refs, client/build, commands/results, discovery source/version, approvals, and gaps privately in `.lab-evidence/`. Sample output is not your execution evidence.
 
+## How to complete each lab
+
+1. Read **Goal and starting workspace** and the artifact table. Every filename is relative to the
+   named workspace root, not to `docs/` or the file currently open in your editor. **Author** owns
+   canonical customization/package sources; **consumer** owns application changes and client setup.
+2. Under **Choose your route**, select **Build it yourself**, **Copy & Paste**, or **Bring in this
+   step**. Only that preparation route is shown in the interactive guide. **Bring in this step**
+   is selected on a first visit; your next choice is remembered across labs and reloads in this
+   browser, separately from your VS Code/CLI/app selection. Complete **one** route, not all three.
+   Selecting a tab never imports a file or runs a command.
+3. For each copy block, create any missing parent directory, open the exact **File** path, and
+   follow its action: **create** only if absent, **append** without removing existing rules, or
+   **merge/replace** only after comparing and preserving learner-owned content. Copy the fenced
+   contents, not the fence markers or the filename paragraph.
+4. Follow **Continue with this lab** below the tabs, whichever route you chose. The shared
+   inventory, runtime/build steps, evidence templates, **Client steps**, **Try it**, and
+   **Verify the result** apply to every route. Complete later revisions where the shared
+   sequence requests them, not during initial artifact creation. Copying a file does not load
+   it, and loading it does not prove that an agent used it.
+5. Run **Verify the result** and fill the lab's exact `.lab-evidence/<lab-id>.md` file with your
+   observations. Replace `not run`/`not observed` only with results you actually obtained. Record
+   ref, client/build, native/manual route, source/version, approvals, command exit codes, and gaps.
+   Do not save names, query text, query-bearing URLs, credentials, or payloads in logs/evidence.
+
+An explicit `?route=build`, `?route=copy`, or `?route=import` link selects that route. A link to a
+heading inside a route opens its panel even if another route was saved. Otherwise the last saved
+choice is used. Client links keep their separate `client` setting. If browser storage is blocked,
+the guide reports that persistence is unavailable while keeping the tabs usable.
+
+Repository Markdown, no-JavaScript viewing, and printing expose all three alternatives for
+readability. They still mean **choose one**, then continue with the shared steps below.
+
+The copyable material supplies complete customization rules, not fabricated execution results.
+Environment-specific values such as absolute directories and discovered tool identifiers are
+explained where they are needed. API implementation answers remain behind the capstone's separate
+solution walkthrough; copying a checklist is not completing search.
+
+Keep this guide open from the **author** checkout or its local generated site when moving to a
+consumer. The consumer helper starts from a pinned release, so its bundled guide may be older than
+the guide you are following. Do not move release tags or copy the entire author tree to refresh it.
+
 ## Client steps
 
 ### VS Code

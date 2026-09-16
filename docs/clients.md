@@ -16,6 +16,29 @@
 | Roles | Native `.github/agents` | Native `.github/agents`; verify tool IDs | Agent picker; verify compatibility and permissions |
 | Cloud/Mobile | Optional separate hosted handoff only | No local package/MCP transfer assumed | No Mobile authoring/install/MCP claims |
 
+## What to inspect in every client
+
+1. Open the workspace named by the lab and confirm the actual root/ref before creating files.
+   Use the lab's full filenames; never put a project artifact in a personal customization folder.
+2. After saving, inspect the appropriate instructions, prompts, skills, or agents view. Record
+   the exact source file or installed package directory. Use only controls present in your build;
+   the guide does not assume undocumented menu labels or identical tool IDs across clients.
+3. Run the lab's copyable request. Inspect its included-context/source indicators and tool-call
+   records, not just whether the prose mentions the right rule. A statement such as "I loaded
+   the skill" without source/invocation evidence is not proof of native loading.
+4. After a rule revision, refresh the relevant customization or start a fresh bounded session,
+   repeat the request, and compare the named output. `/skills reload` refreshes skills, not
+   instructions, prompts, or plugin installation by itself.
+5. If native inclusion is unsupported or cannot be observed, explicitly attach/read the exact
+   file named in the lab. Record **manual context equivalent** for instructions/prompts or
+   **manual walkthrough** for a skill. A denied capability is not permission to bypass policy.
+
+Use the `.lab-evidence/<lab-id>.md` template from the lab. For each operation record one of
+**observed native**, **manual equivalent/walkthrough**, **blocked**, or **not observed**, together
+with the source and actual result. For plugins, a manual file read is package inspection, not
+installation. For MCP, local JSON inspection is a file fallback, not a client tool call. For
+roles, inspect the effective tools: a shell-capable role is not technically read-only.
+
 ## Client steps
 
 ### VS Code

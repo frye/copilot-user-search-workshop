@@ -66,19 +66,26 @@ test('tabs have accessible target sizes, contrast, focus and high-contrast selec
     expect(bounds.height).toBeGreaterThanOrEqual(44);
     expect(bounds.width).toBeGreaterThanOrEqual(44);
   }
-  const selected = page.getByRole('tab', { name: 'Copilot CLI', exact: true });
-  const colors = await selected.evaluate(element => {
-    const style = getComputedStyle(element);
-    return [style.color, style.backgroundColor];
-  });
-  expect(contrast(...colors)).toBeGreaterThanOrEqual(4.5);
-  await selected.focus();
-  await expect(selected).toHaveCSS('outline-width', '3px');
-  await expect(selected).toHaveCSS('outline-style', 'solid');
-  await expect(selected).not.toHaveCSS('box-shadow', 'none');
+  const selectedTabs = [
+    page.getByRole('tab', { name: 'Copilot CLI', exact: true }),
+    page.getByRole('tab', { name: 'Bring in this step', exact: true }),
+  ];
+  for (const selected of selectedTabs) {
+    const colors = await selected.evaluate(element => {
+      const style = getComputedStyle(element);
+      return [style.color, style.backgroundColor];
+    });
+    expect(contrast(...colors)).toBeGreaterThanOrEqual(4.5);
+    await selected.focus();
+    await expect(selected).toHaveCSS('outline-width', '3px');
+    await expect(selected).toHaveCSS('outline-style', 'solid');
+    await expect(selected).not.toHaveCSS('box-shadow', 'none');
+  }
   await page.emulateMedia({ forcedColors: 'active' });
-  await expect(selected).toHaveCSS('border-top-width', '3px');
-  await expect(selected).toHaveCSS('text-decoration-line', 'underline');
+  for (const selected of selectedTabs) {
+    await expect(selected).toHaveCSS('border-top-width', '3px');
+    await expect(selected).toHaveCSS('text-decoration-line', 'underline');
+  }
 });
 
 test('sticky navigation does not cover the lab and keyboard users can skip the hero', async ({ page }) => {
@@ -88,7 +95,7 @@ test('sticky navigation does not cover the lab and keyboard users can skip the h
   await expect(skip).toBeFocused();
   await page.keyboard.press('Enter');
   await expect(page).toHaveURL(/#VPContent$/);
-  await page.getByRole('tablist').scrollIntoViewIfNeeded();
+  await page.getByRole('tablist', { name: 'Authoring route', exact: true }).scrollIntoViewIfNeeded();
   const sidebar = await page.locator('.VPSidebar').boundingBox();
   const navigation = await page.locator('.VPNav').boundingBox();
   expect(sidebar.y).toBeGreaterThanOrEqual(navigation.y + navigation.height);
@@ -123,9 +130,14 @@ test('print exposes every client and keeps code and tables readable', async ({ p
   await page.emulateMedia({ media: 'print' });
   await expect(page.locator('.VPNav')).toBeHidden();
   await expect(page.locator('.VPSidebar')).toBeHidden();
-  await expect(page.getByRole('tablist')).toBeHidden();
+  for (const name of ['Authoring route', 'Workshop client']) {
+    await expect(page.getByRole('tablist', { name, exact: true })).toBeHidden();
+  }
   for (const client of ['vscode', 'cli', 'app']) {
     await expect(page.locator(`#client-panel-${client}`)).toBeVisible();
+  }
+  for (const route of ['build', 'copy', 'import']) {
+    await expect(page.locator(`#route-panel-${route}`)).toBeVisible();
   }
   await expect(page.locator('body')).toHaveCSS('background-color', 'rgb(255, 255, 255)');
   await expect(page.locator('.vp-doc pre code').first()).toHaveCSS('white-space', 'pre-wrap');
