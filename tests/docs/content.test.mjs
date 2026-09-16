@@ -1,7 +1,7 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { existsSync, readFileSync, readdirSync } from 'node:fs';
-import { resolve, dirname } from 'node:path';
+import { resolve, dirname, basename } from 'node:path';
 
 const root = process.cwd();
 const walk = dir => readdirSync(dir, { withFileTypes: true }).flatMap(entry =>
@@ -33,9 +33,39 @@ test('canonical Markdown has real local links, complete lab routes and plain cli
         assert.ok(text.includes(`## ${heading}`), `${file}: missing ${heading}`);
       }
       for (const client of ['VS Code', 'Copilot CLI', 'Copilot app']) assert.ok(text.includes(`### ${client}`));
-      for (const operation of ['--preview', '--stage', '--apply']) assert.ok(text.includes(operation));
     }
   }
+});
+
+test('Labs 00-08 use one activation per workspace and retain optional comparison separately', () => {
+  const pkg = JSON.parse(read('package.json'));
+  assert.equal(pkg.scripts['lab:activate'], 'node scripts/import-example.mjs --apply');
+  assert.equal(pkg.scripts['lab:example'], 'node scripts/import-example.mjs');
+  const steps = JSON.parse(read('workshop/steps.json')).steps.filter(step => !step.id.startsWith('09-'));
+  for (const step of steps) {
+    const file = `docs/labs/${step.id}.md`;
+    const text = read(file);
+    const section = text.split('## Bring in this step\n')[1].split('\n## ')[0];
+    const actual = shellBlocks(section).flatMap(commands)
+      .filter(command => /^npm run lab:/.test(command));
+    const selectors = step.id === '05-mcp-and-update'
+      ? [' --workspace author', ' --workspace consumer --client cli']
+      : step.id === '06-agent-roles' ? [' --workspace consumer --client cli'] : [''];
+    assert.deepEqual(actual, selectors.map(selector => `npm run lab:activate -- --step ${step.id}${selector}`), file);
+    assert.doesNotMatch(section, /--preview|--stage|--apply/, `${file}: no mandatory mode sequence`);
+    assert.ok(links(text).includes('../reference/examples.md'), `${file}: comparison/recovery route`);
+  }
+  const reference = read('docs/reference/examples.md');
+  for (const operation of ['--preview', '--stage', '--apply']) {
+    assert.ok(shellBlocks(reference).flatMap(commands).includes(`npm run lab:example -- --step 03-skill ${operation}`));
+  }
+  assert.match(reference, /not a required sequence/);
+  assert.match(reference, /changed: 0/);
+  assert.match(reference, /rerunning is not a reset/);
+  assert.match(reference, /Existing consumers are not silently\s+updated/);
+  assert.ok(links(reference).includes('../labs/09-spec-kit.md'));
+  assert.deepEqual(walk(resolve(root, 'docs/labs')).filter(file => /npm run lab:activate/.test(readFileSync(file, 'utf8')))
+    .map(file => basename(file, '.md')).sort(), steps.map(step => step.id).sort());
 });
 
 test('intentional-red routing stays separate from final solution checks', () => {
@@ -176,6 +206,14 @@ test('setup and local-preview source fallback retain their linked anchors and pl
 
 test('Lab 09 provides artifact-first Spec Kit guidance and a separate built-in workflow comparison', () => {
   const lab = readFileSync('docs/labs/09-spec-kit.md', 'utf8');
+  const labCommands = shellBlocks(lab).flatMap(commands);
+  for (const operation of ['--preview', '--stage', '--apply']) {
+    assert.ok(labCommands.includes(`node scripts/spec-kit-reference.mjs ${operation}`));
+  }
+  for (const operation of ['--preview', '--apply']) {
+    assert.ok(labCommands.includes(`npm run lab:09:bootstrap -- ${operation} --destination ../user-search-lab-09`));
+  }
+  assert.doesNotMatch(lab, /npm run lab:activate/);
   assert.doesNotMatch(lab, /unavailable in this release/i);
   assert.match(lab, /requires no Spec Kit installation/i);
   assert.match(lab, /uv tool install specify-cli/);

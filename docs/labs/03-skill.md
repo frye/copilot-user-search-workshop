@@ -41,9 +41,7 @@ npm run lab:03:bootstrap
 ## Bring in this step
 
 ```sh
-npm run lab:example -- --step 03-skill --preview
-npm run lab:example -- --step 03-skill --stage
-npm run lab:example -- --step 03-skill --apply
+npm run lab:activate -- --step 03-skill
 ```
 
 - Requires reviewed prompt/guidance. Import does not invoke the skill.

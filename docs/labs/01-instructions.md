@@ -27,9 +27,7 @@ generated changes aligned with the codebase without burdening every task with un
 ## Bring in this step
 
 ```sh
-npm run lab:example -- --step 01-instructions --preview
-npm run lab:example -- --step 01-instructions --stage
-npm run lab:example -- --step 01-instructions --apply
+npm run lab:activate -- --step 01-instructions
 ```
 
 - A clean tracked starter instructions file is the only known replacement. Review diff and explicitly commit when ready for later sample updates.

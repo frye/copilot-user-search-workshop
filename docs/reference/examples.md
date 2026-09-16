@@ -43,12 +43,44 @@ need separate owner review; the public source's existence does not grant that ap
 
 ## Commands
 
+For Labs 00–08, import the selected step with one command:
+
 ```sh
-npm run lab:examples:fetch
+npm run lab:activate -- --step 03-skill
+```
+
+Activation displays the import plan and applies it after the existing whole-step safety checks.
+Running this command explicitly requests application; no separate preview, staging directory, or
+confirmation prompt is required. It imports only the selected step, not missing prerequisites.
+It does not load or invoke the imported customization in your client.
+
+**Safe to rerun:** unchanged imports succeed with `changed: 0`, including before you commit them.
+Existing comparison directories do not block activation. Edited files, personalized content, and
+later-step updates remain protected; rerunning is not a reset. Stop on conflicts and compare manually.
+
+New consumers receive this shortcut through `consumer:create`. Existing consumers are not silently
+updated; if the shortcut is unavailable there, the equivalent single command is
+`npm run lab:example -- --step 03-skill --apply` (substitute that consumer step and client).
+[Lab 09](../labs/09-spec-kit.md) keeps its separate Spec Kit packet and bootstrap commands; do not
+substitute the legacy `09-spec-kit` examples payload for its bundled packet.
+
+### Optional inspection and comparison
+
+These are alternatives for inspection or recovery, **not a required sequence**:
+
+```sh
+# Read-only preview
 npm run lab:example -- --step 03-skill --preview
+# Stage inert references for manual comparison
 npm run lab:example -- --step 03-skill --stage
+# Explicit apply, equivalent to lab:activate
 npm run lab:example -- --step 03-skill --apply
 ```
+
+Use `lab:example`, not `lab:activate`, when selecting preview or staging.
+The separate `npm run lab:examples:fetch` release check remains part of setup, not every activation.
+
+### Starting at Lab 03
 
 To begin specifically at Lab 03 with the reviewed Lab 01–02 prerequisites:
 
@@ -73,7 +105,7 @@ npm run lab:03:bootstrap
 - Payload-relative links resolve at their declared imported destination, not inside the inert examples directory.
 - Filesystem operations cannot guarantee recovery from power loss/process termination; use one writer, keep Git checkpoints, and inspect a stopped transaction before retrying.
 - LF checkout policy keeps reviewed text hashes portable. On unexpected line-ending conflicts, stage/compare and inspect local Git attributes rather than forcing replacement.
-- The per-step `lab:example` helper never installs a package, invokes a skill, executes imported content, edits user settings, commits, pushes, or touches search code. Only the separate `lab:03:bootstrap` command creates its documented local checkpoint commit.
+- The per-step `lab:example` helper and its `lab:activate` shortcut never install a package, invoke a skill, execute imported content, edit user settings, commit, push, or touch search code. Only the separate `lab:03:bootstrap` command creates its documented local checkpoint commit.
 
 ## If you already changed these files
 
@@ -106,7 +138,7 @@ WORKSHOP_BASE=/copilot-user-search-workshop/ WORKSHOP_SOURCE_URL=https://github.
 ## Checkpoints are dependency maps, not answer dumps
 
 - `presenter/checkpoint-map.json` is generated from the same manifest.
-- Each upstream step requires its own preview and explicit application or reviewed authored equivalent.
+- Each upstream step requires its own explicit activation or reviewed authored equivalent. Preview and staging are optional comparison tools.
 - 07 imports only a toolkit-readiness checklist. Configure and **install** the author-built package in consumer separately; ordinary imports cannot bring in the search solution.
 - 09 uses a repository-bundled, reviewed Spec Kit reference packet rather than the immutable
   `examples-v1` payload. The packet records its actual preparation version, but it is never learner

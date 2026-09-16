@@ -31,9 +31,7 @@ the implementation bounded and its results inspectable.
 
 ```sh
 # CONSUMER; import readiness checklist only
-npm run lab:example -- --step 07-use-toolkit --preview
-npm run lab:example -- --step 07-use-toolkit --stage
-npm run lab:example -- --step 07-use-toolkit --apply
+npm run lab:activate -- --step 07-use-toolkit
 ```
 
 ## If you already changed these files

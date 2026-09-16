@@ -29,9 +29,7 @@ when discovery is unavailable.
 ## Bring in this step
 
 ```sh
-npm run lab:example -- --step 02-planning-prompt --preview
-npm run lab:example -- --step 02-planning-prompt --stage
-npm run lab:example -- --step 02-planning-prompt --apply
+npm run lab:activate -- --step 02-planning-prompt
 ```
 
 - Prerequisite: reviewed Lab 01 guidance. Presence allows authored equivalents; you must check their quality.

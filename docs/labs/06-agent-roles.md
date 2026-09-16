@@ -32,9 +32,7 @@ is only technically enforced when the client's actual tool permissions support i
 
 ```sh
 # CONSUMER; cli, vscode and app are supported selectors
-npm run lab:example -- --step 06-agent-roles --workspace consumer --client cli --preview
-npm run lab:example -- --step 06-agent-roles --workspace consumer --client cli --stage
-npm run lab:example -- --step 06-agent-roles --workspace consumer --client cli --apply
+npm run lab:activate -- --step 06-agent-roles --workspace consumer --client cli
 ```
 
 - Before switching clients, stage the other client's definitions. Do not force them over edited/loaded roles.

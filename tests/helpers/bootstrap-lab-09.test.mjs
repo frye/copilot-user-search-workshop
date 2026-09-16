@@ -17,9 +17,12 @@ function write(root, path, data) {
 function fixture(t) {
   mkdirSync(resolve(repository, '.lab-scratch'), { recursive: true });
   const parent = mkdtempSync(resolve(repository, '.lab-scratch/lab09 bootstrap-'));
+  t.after(() => rmSync(parent, { recursive: true, force: true }));
   const root = resolve(parent, 'author workspace');
   const source = git(repository, 'rev-parse', 'refs/remotes/origin/main').trim();
   git(repository, 'clone', '-q', '--no-local', '--no-checkout', '--', repository, root);
+  // A local clone does not carry commits reachable only through the source's remote-tracking refs.
+  git(root, 'fetch', '-q', '--no-tags', 'origin', source);
   if (git(root, 'branch', '--list', 'main').trim()) {
     git(root, 'switch', 'main');
     git(root, 'merge', '--ff-only', source);
@@ -41,7 +44,6 @@ function fixture(t) {
   }
   git(root, 'switch', '-c', 'participant-work');
   git(root, 'remote', 'remove', 'origin');
-  t.after(() => rmSync(parent, { recursive: true, force: true }));
   return { parent, root };
 }
 
