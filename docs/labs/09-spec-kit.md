@@ -6,6 +6,9 @@ to reconcile the finished change against what was approved. This lab applies tha
 bounded team-filter extension, with a complete artifact-guided route that does not require
 installing Spec Kit.
 
+Reviewing the supplied artifacts is the **recommended path**; if you want to install Spec Kit, follow
+the [detailed steps below, starting with installation](#optional-install-and-run-the-latest-spec-kit).
+
 **Documentation:** [Spec Kit quickstart](https://github.com/github/spec-kit/blob/main/docs/quickstart.md).
 
 ## Goal and starting workspace
