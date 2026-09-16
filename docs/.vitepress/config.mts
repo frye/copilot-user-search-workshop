@@ -9,8 +9,10 @@ export default defineConfig({
   title: 'Copilot customization workshop',
   description: 'Author, test, package, install, update and use a portable API-change toolkit.',
   base,
+  appearance: 'dark',
   cleanUrls: false,
   lastUpdated: false,
+  head: [['meta', { name: 'theme-color', content: '#0d1117' }]],
   markdown: {
     config(md) {
       md.core.ruler.after('inline', 'repository-example-links', state => {
@@ -27,9 +29,12 @@ export default defineConfig({
     },
   },
   themeConfig: {
-    nav: [{ text: 'Start', link: '/start' }, { text: 'Clients', link: '/clients' }, { text: 'Contract', link: '/reference/contract' }],
+    siteTitle: 'Copilot workshop',
+    aside: false,
+    sidebarMenuLabel: 'Your route',
+    nav: [{ text: 'Set up your own copy', link: '/start' }, { text: 'Clients', link: '/clients' }, { text: 'Contract', link: '/reference/contract' }],
     sidebar: [
-      { text: 'Workshop', items: [{ text: 'Overview', link: '/' }, { text: 'Start', link: '/start' }] },
+      { text: 'Workshop', items: [{ text: 'Overview', link: '/' }, { text: 'Set up your own copy', link: '/start' }] },
       { text: 'Labs', items: [
         ['00 — Start', '00-start'], ['01 — Instructions', '01-instructions'],
         ['02 — Prompt', '02-planning-prompt'], ['03 — Skill', '03-skill'],

@@ -1,9 +1,27 @@
 # Build a portable customization toolkit
 
-- Create → load → use → inspect evidence → improve.
-- Three client views share **one complete Markdown source**. Pages adds selectable tabs; plain repository Markdown, no-JavaScript, and print show all steps.
-- [Start and prerequisites](start.md) · [Client support and limits](clients.md) · [Examples / safe recovery](reference/examples.md).
-- Main search is deliberately unfinished; later examples never silently complete it.
+Create, load, use, inspect evidence, and improve. Learn to build reusable instructions,
+prompts, skills, plugins, MCP configuration, and bounded agent roles, then use your toolkit
+for one approved API change.
+
+> **Your copy. Your toolkit. No shared-repository submission.**
+>
+> Keep your exercise work local. The shared source is read-only for this workshop.
+> Search stays deliberately unfinished until the capstone; a green baseline does not
+> mean the search exercise is complete.
+
+## Set up your own copy
+
+Start with a fresh local **author** clone and disable pushes to the shared source.
+In Lab 04, create a separate **sibling consumer** for the toolkit you built.
+No fork, push, PR, or cloud task is required.
+
+[Set up your own copy and check the starter](start.md) before opening
+[Lab 00](labs/00-start.md). Already set up?
+[Choose your client](clients.md) or review the [safe recovery options](reference/examples.md).
+
+Three client views share **one complete Markdown source**. The site adds selectable tabs;
+plain repository Markdown, no-JavaScript, and print show every client.
 
 ## Progressive route
 
