@@ -1,5 +1,7 @@
 # Build a portable customization toolkit
 
+Get the workshop code and lab assets from the [Source repository](https://github.com/frye/copilot-user-search-workshop).
+
 - Create → load → use → inspect evidence → improve.
 - Three client views share **one complete Markdown source**. Pages adds selectable tabs; plain repository Markdown, no-JavaScript, and print show all steps.
 - [Start and prerequisites](start.md) · [Client support and limits](clients.md) · [Examples / safe recovery](reference/examples.md).
