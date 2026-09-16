@@ -68,6 +68,31 @@ test('Labs 00-08 use one activation per workspace and retain optional comparison
     .map(file => basename(file, '.md')).sort(), steps.map(step => step.id).sort());
 });
 
+test('VS Code plugin guidance leads with source installation and the absolute package root', () => {
+  const files = ['docs/labs/04-plugin.md', 'docs/labs/05-mcp-and-update.md',
+    'docs/clients.md', 'docs/reference/plugin.md'];
+  for (const file of files) {
+    const section = read(file).split('### VS Code\n')[1].split('\n### ')[0];
+    const steps = ['cogwheel', 'Open Customizations', 'Plugins', 'Install Plugin from Source'];
+    let previous = -1;
+    for (const step of steps) {
+      const position = section.indexOf(step);
+      assert.ok(position > previous, `${file}: missing or unordered UI step ${step}`);
+      previous = position;
+    }
+    const version = file.includes('05-mcp-and-update') ? '1.1.0' : '1.0.0';
+    assert.ok(section.includes(`/ABSOLUTE/AUTHOR/toolkit/dist/user-search-toolkit-${version}`), file);
+    assert.match(section, /containing `plugin\.json`/);
+    assert.match(section, /not.*nested `skills\/` directory/);
+    assert.match(section, /approval/);
+  }
+  const reference = read('docs/reference/plugin.md');
+  assert.ok(reference.indexOf('Install Plugin from Source') < reference.indexOf('chat.pluginLocations'));
+  assert.match(reference, /instead of\*\* the UI installation, not in addition/);
+  const compatibility = JSON.parse(read('workshop/compatibility.json'));
+  assert.equal(compatibility.clients.vscode.plugin, 'chat-customizations-install-plugin-from-source');
+});
+
 test('intentional-red routing stays separate from final solution checks', () => {
   const pkg = JSON.parse(readFileSync('package.json', 'utf8'));
   assert.ok(!pkg.scripts.test.includes('search') && !pkg.scripts.test.includes('stub'));

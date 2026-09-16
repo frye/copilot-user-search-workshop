@@ -50,7 +50,9 @@ npm run lab:activate -- --step 05-mcp-and-update --workspace consumer --client c
 
 - Use consumer sample `--client vscode`; inspect `client-configs/vscode.mcp.json`, then merge its `servers.workshop-standards` entry into workspace `.vscode/mcp.json`.
 - Start/trust only this server using native MCP controls; inspect tools and call both.
-- Change workspace plugin registration from 1.0.0 path to 1.1.0 path, reload, inspect source/version, then invoke updated skill. [Exact shapes](../reference/mcp.md).
+- With learner approval, open the Copilot Chat **cogwheel** (**Open Customizations**) > **Plugins** and disable or uninstall only the old lab plugin. Select **Install Plugin from Source** and paste the full absolute path `/ABSOLUTE/AUTHOR/toolkit/dist/user-search-toolkit-1.1.0`, replacing `/ABSOLUTE/AUTHOR` with the actual author workspace. Choose the package root containing `plugin.json`, not its nested `skills/` directory.
+- Confirm the source, review any installation/trust prompt, inspect source/version, then invoke the updated skill. Reload consumer if discovery has not refreshed; keep only one active lab version.
+- If you used the advanced settings route in 04, update only that lab path instead of adding a UI installation. [Plugin update/rollback](../reference/plugin.md) · [MCP configuration](../reference/mcp.md).
 
 ### Copilot CLI
 

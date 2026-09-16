@@ -2,6 +2,7 @@
 
 - **Prepared/documented is not observed runtime support.** No Copilot client was installed or run to prepare this release.
 - Static package checks and Node protocol tests are observed; real client discovery, permissions, installs, updates, hosted review, and Pages publishing remain unrehearsed.
+- The VS Code UI route and local-folder input were inspected separately on **2026-09-16**; the prompt was canceled without installing. This is not package loading or invocation evidence.
 - Record exact client/build, operation, source/version, and output in `.lab-evidence/`; omit personal data.
 - [Sources](reference/sources.md) · [Plugin procedure](reference/plugin.md) · [MCP procedure](reference/mcp.md).
 
@@ -11,7 +12,7 @@
 | Path-scoped instructions | Native | Confirm build; manual context fallback | Confirm build; manual context fallback |
 | Prompt file | Native prompt picker | Explicit prompt text (manual equivalent) | Explicit prompt text unless native discovery observed |
 | Project skill | Native skill discovery | `.github/skills`; `/skills reload`, `/skills info` | Customize Skills; inspect actual source |
-| Local skill plugin | `chat.pluginLocations` workspace setting | `copilot plugin install <local-directory>` | CLI bridge, not app-native; unverified |
+| Local skill plugin | Chat cogwheel > Plugins > Install Plugin from Source; absolute local package path | `copilot plugin install <local-directory>` | CLI bridge, not app-native; unverified |
 | MCP | `.vscode/mcp.json` | Interactive `/mcp` configuration | Customize MCP; inspect actual server command |
 | Roles | Native `.github/agents` | Native `.github/agents`; verify tool IDs | Agent picker; verify compatibility and permissions |
 | Cloud/Mobile | Optional separate hosted handoff only | No local package/MCP transfer assumed | No Mobile authoring/install/MCP claims |
@@ -20,8 +21,10 @@
 
 ### VS Code
 
-- Local package registration uses an **absolute** directory key set to `true` under `chat.pluginLocations`.
-- Refresh by reloading the consumer window after registration/update; inspect customization discovery and skill source before invoking.
+- Open consumer, then select the Copilot Chat **cogwheel** (**Open Customizations**) > **Plugins** > **Install Plugin from Source**.
+- Paste the full absolute author-package path, for example `/ABSOLUTE/AUTHOR/toolkit/dist/user-search-toolkit-1.0.0`, using your actual author location. Choose the package root containing `plugin.json`, not the nested `skills/` directory.
+- Install only with explicit learner approval; review any trust prompt and do not assume profile changes are workspace-only. Inspect plugin/skill source and version before invoking; reload consumer if discovery has not refreshed.
+- For updates, replace only the lab plugin through the same UI with the new version's package path. [Installation, update, rollback, and advanced settings alternative](reference/plugin.md).
 - Never also copy `.github/skills` into consumer or register two package versions simultaneously.
 - Use current native customization/tool UI to inspect actual tool names. Sample tools are documented candidates, not a permission guarantee.
 

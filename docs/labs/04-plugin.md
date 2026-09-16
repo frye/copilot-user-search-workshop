@@ -43,9 +43,14 @@ npm run toolkit:build
 
 ### VS Code
 
-- Open **consumer** in a separate window; merge one absolute author-package path under workspace `chat.pluginLocations`, value `true`.
-- Reload consumer, inspect plugin and skill source/version, then invoke planning through the packaged skill.
-- Do not register the canonical source and package simultaneously. See the exact settings shape in [plugin procedure](../reference/plugin.md).
+1. Open **consumer** in a separate VS Code window. In Copilot Chat, select the **cogwheel** at the top (**Open Customizations**).
+2. Select **Plugins**, then **Install Plugin from Source**.
+3. Paste the full absolute path to the author's built package, for example `/ABSOLUTE/AUTHOR/toolkit/dist/user-search-toolkit-1.0.0`. Use the directory containing `plugin.json`, not `toolkit/dist` or the nested `skills/` directory.
+4. With explicit learner approval, confirm the source and review any installation/trust prompt. Installation can affect the client profile; do not assume it is workspace-only.
+5. Inspect plugin and skill discovery in consumer, confirm source/version, then invoke planning through the packaged skill. Reload the consumer window if discovery has not refreshed.
+
+- Do not register the canonical source and package simultaneously or use two installation routes for the same package.
+- [Complete UI procedure and advanced settings alternative](../reference/plugin.md).
 
 ### Copilot CLI
 
