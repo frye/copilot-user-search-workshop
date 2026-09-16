@@ -1,5 +1,11 @@
 # 01 — Author repository and scoped instructions
 
+Custom instructions give Copilot durable project guidance, with repository-wide rules for shared
+conventions and scoped rules for particular files. They reduce repeated prompting and help keep
+generated changes aligned with the codebase without burdening every task with unrelated rules.
+
+**Documentation:** [Custom instructions in VS Code](https://code.visualstudio.com/docs/agent-customization/custom-instructions).
+
 ## Goal and starting workspace
 
 - **Author**, after 00; main-based learner branch with intentional 501.

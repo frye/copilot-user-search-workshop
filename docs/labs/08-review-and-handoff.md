@@ -1,5 +1,12 @@
 # 08 — Review, improve, and carry context forward
 
+Evidence-backed review checks a concrete change against requirements and a reproducible result,
+while a continuation brief carries the essential context into a fresh session. Together, they make
+findings actionable, feed improvements back into the reusable toolkit, and reduce repeated
+investigation without relying on a long chat history.
+
+**Documentation:** [Custom agents and handoffs in VS Code](https://code.visualstudio.com/docs/agent-customization/custom-agents) and [Manage agent sessions in VS Code](https://code.visualstudio.com/docs/agents/run/sessions/manage-sessions).
+
 ## Goal and starting workspace
 
 - **Consumer**, after a 07 attempt; preserve real implementation/ref/results, even if incomplete.

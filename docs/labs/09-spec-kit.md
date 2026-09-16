@@ -1,5 +1,13 @@
 # 09 — Spec Kit: extend search with a team filter
 
+Spec Kit supports specification-driven development through linked requirements, plans, checklists,
+and implementation tasks. Those artifacts help expose ambiguity before coding and make it possible
+to reconcile the finished change against what was approved. This lab applies that workflow to a
+bounded team-filter extension, with a complete artifact-guided route that does not require
+installing Spec Kit.
+
+**Documentation:** [Spec Kit quickstart](https://github.com/github/spec-kit/blob/main/docs/quickstart.md).
+
 ## Goal and starting workspace
 
 - **Consumer**, after 07 passes; 08 is recommended but not required.

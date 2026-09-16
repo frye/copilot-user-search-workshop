@@ -1,5 +1,12 @@
 # 07 — Use the toolkit to implement search
 
+An approval-gated agent workflow combines project instructions, an installed skill, MCP tools,
+and specialized roles to deliver a tested change. Applying the toolkit to user search shows whether
+the customizations work together in practice, while explicit approval and independent review keep
+the implementation bounded and its results inspectable.
+
+**Documentation:** [Build with agents in VS Code](https://code.visualstudio.com/docs/agents/overview) and [Custom agents and handoffs in VS Code](https://code.visualstudio.com/docs/agent-customization/custom-agents).
+
 ## Goal and starting workspace
 
 - **Consumer**, after 06: no canonical local skill, exactly one installed **1.1.0** package, MCP configured or fallback disclosed, roles inspected.

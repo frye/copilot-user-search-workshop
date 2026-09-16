@@ -1,5 +1,11 @@
 # 03 — Build and exercise a skill
 
+Agent skills package a specialized procedure with supporting instructions and resources that Copilot
+can load when relevant. They make multi-step work repeatable and easier to improve without placing
+the entire procedure in always-on project guidance.
+
+**Documentation:** [About agent skills](https://docs.github.com/en/enterprise-cloud@latest/copilot/concepts/agents/about-agent-skills).
+
 ## Goal and starting workspace
 
 - **Author**, after 02. Create a reusable procedure before packaging it.
